@@ -18,6 +18,9 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
+import image from "assets/img/signup.jpg";
+
+
 const useStyles = makeStyles(styles);
 
 
@@ -33,15 +36,16 @@ export default function LoginPage(props) {
     <div>
       <Header
         absolute
-        color="dark"
-        brand="Material Kit React"
+        color="transparent"
+        brand="Esport-Influence"
         rightLinks={<HeaderLinks />}
         {...rest}
       />
+
       <div
         className={classes.pageHeader}
         style={{
-          backgroundColor: 'dark',
+          backgroundImage: "url("+ image +")",
           backgroundSize: "cover",
           backgroundPosition: "top center"
         }}
@@ -49,11 +53,11 @@ export default function LoginPage(props) {
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
-              <Card className={classes[cardAnimaton]}>
+              <Card className={classes[cardAnimaton]} style={{backgroundColor: "transparent", color:"white"}}>
                 <form className={classes.form}>
                   <CardBody>
                     <CustomInput
-                      labelText="Email..."
+                      labelText="Email"
                       id="email"
                       formControlProps={{
                         fullWidth: true
@@ -87,7 +91,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                    <Button variant="contained" color="primary" size="lg">
                       CONNEXION
                     </Button>
                   </CardFooter>
