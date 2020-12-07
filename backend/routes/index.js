@@ -10,7 +10,7 @@ const userModel = require('../models/users');
 
 /* GET home page. */
 
-router.post('/sign-up/brand', async function(req, res, next) {
+router.post('/sign-up/brand', async function (req, res, next) {
 
   var error = []
   var result = false
@@ -21,47 +21,103 @@ router.post('/sign-up/brand', async function(req, res, next) {
     email: req.body.emailFromFront
   })
 
-  if(data != null){
+  if (data != null) {
     error.push('User Already Exist')
   }
 
-  if(req.body.firstNameFromFront == ''
-  || req.body.lastNameFromFront == ''
-  || req.body.emailFromFront == ''
-  || req.body.passwordFromFront == ''
-  || req.body.phoneFromFront == ''
-  || req.body.entrepriseFromFront == ''
-  ){
+  if (req.body.firstNameFromFront == ''
+    || req.body.lastNameFromFront == ''
+    || req.body.emailFromFront == ''
+    || req.body.passwordFromFront == ''
+    || req.body.phoneFromFront == ''
+    || req.body.entrepriseFromFront == ''
+  ) {
     error.push('Empty Field')
   }
 
 
-  if(error.length === 0){
+  if (error.length === 0) {
 
     var salt = uid2(32)
     var newUser = new userModel({
       firstName: req.body.firstNameFromFront,
       lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
-      password: SHA256(req.body.passwordFromFront+salt).toString(encBase64),
+      password: SHA256(req.body.passwordFromFront + salt).toString(encBase64),
       token: uid2(32),
       salt: salt,
       phone: req.body.phoneFromFront,
       role: "brand",
       entreprise: req.body.entrepriseFromFront,
-      
+
     })
-  console.log('fName', req.body.firstNameFromFront,)
+    console.log('fName', req.body.firstNameFromFront,)
 
     saveUser = await newUser.save()
-  
-    
-    if(saveUser){
+
+
+    if (saveUser) {
       result = true
       token = saveUser.token
     }
   }
-  res.json({result, saveUser, error, token})
+  res.json({ result, saveUser, error, token })
 })
+router.post('/sign-up/influencer', async function (req, res, next) {
 
+  var error = []
+  var result = false
+  var saveUser = null
+  var token = null
+
+  const data = await userModel.findOne({
+    email: req.body.emailFromFront
+  })
+
+  if (data != null) {
+    error.push('User Already Exist')
+  }
+
+  if (req.body.firstNameFromFront == ''
+    || req.body.lastNameFromFront == ''
+    || req.body.pseudoFromFront == ''
+    || req.body.emailFromFront == ''
+    || req.body.passwordFromFront == ''
+    || req.body.phoneFromFront == ''
+    
+    
+  ) {
+    error.push('Empty Field')
+  }
+
+
+  if (error.length === 0) {
+
+    var salt = uid2(32)
+    var newUser = new userModel({
+      firstName: req.body.firstNameFromFront,
+      lastName: req.body.lastNameFromFront,
+      email: req.body.emailFromFront,
+      password: SHA256(req.body.passwordFromFront + salt).toString(encBase64),
+      token: uid2(32),
+      salt: salt,
+      phone: req.body.phoneFromFront,
+      role: "influenceur",
+      pseudo: req.body.pseudoFromFront,
+      numberFollower: req.body.numberFollowerFromFront,
+      favoriteGame: req.body.favoriteGameFromFront,
+      urlSocialNetwork: req.body.urlSocialNetworkFromFront,
+    })
+    console.log('fName', req.body.firstNameFromFront,)
+
+    saveUser = await newUser.save()
+
+
+    if (saveUser) {
+      result = true
+      token = saveUser.token
+    }
+  }
+  res.json({ result, saveUser, error, token })
+})
 module.exports = router;
