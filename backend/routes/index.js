@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const uid2 = require("uid2");
-const SHA256 = require('crypto-js/sha256')
-const encBase64 = require('crypto-js/enc-base64')
+const SHA256 = require('crypto-js/sha256');
+const encBase64 = require('crypto-js/enc-base64');
+var mongoose = require('mongoose');
 
-const userModel = require('../models/users')
+const userModel = require('../models/users');
 
 
 /* GET home page. */
+
 router.post('/sign-up/brand', async function(req, res, next) {
 
   var error = []
@@ -34,12 +36,12 @@ router.post('/sign-up/brand', async function(req, res, next) {
   }
 
 
-  if(error.length == 0){
+  if(error.length === 0){
 
     var salt = uid2(32)
     var newUser = new userModel({
       firstName: req.body.firstNameFromFront,
-      laststName: req.body.firstNameFromFront,
+      lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
       password: SHA256(req.body.passwordFromFront+salt).toString(encBase64),
       token: uid2(32),
@@ -47,9 +49,10 @@ router.post('/sign-up/brand', async function(req, res, next) {
       phone: req.body.phoneFromFront,
       role: "brand",
       entreprise: req.body.entrepriseFromFront,
-
+      
     })
-  
+  console.log('fName', req.body.firstNameFromFront,)
+
     saveUser = await newUser.save()
   
     

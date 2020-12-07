@@ -30,7 +30,7 @@ const userSchema = mongoose.Schema({
     numberFollower:Number,
     favoriteGame:String,
     urlSocialNetwork:String,
-    fk_campagne_owner:[campagne]
+    // fk_campagne_owner:[campagne]
 })
 
 const userModel = mongoose.model('users', userSchema)
