@@ -30,7 +30,7 @@ router.post('/sign-up/brand', async function (req, res, next) {
     || req.body.emailFromFront == ''
     || req.body.passwordFromFront == ''
     || req.body.phoneFromFront == ''
-    || req.body.entrepriseFromFront == ''
+    || req.body.companyFromFront == ''
   ) {
     error.push('Empty Field')
   }
@@ -48,7 +48,7 @@ router.post('/sign-up/brand', async function (req, res, next) {
       salt: salt,
       phone: req.body.phoneFromFront,
       role: "brand",
-      entreprise: req.body.entrepriseFromFront,
+      entreprise: req.body.companyFromFront,
 
     })
     console.log('fName', req.body.firstNameFromFront,)
@@ -84,8 +84,8 @@ router.post('/sign-up/influencer', async function (req, res, next) {
     || req.body.emailFromFront == ''
     || req.body.passwordFromFront == ''
     || req.body.phoneFromFront == ''
-    
-    
+
+
   ) {
     error.push('Empty Field')
   }
@@ -119,5 +119,46 @@ router.post('/sign-up/influencer', async function (req, res, next) {
     }
   }
   res.json({ result, saveUser, error, token })
+})
+
+router.post('/sign-in', async function (req, res, next) {
+
+  var result = false
+  var user = null
+  var error = []
+  var token = null
+
+  if (req.body.emailFromFront == ''
+    || req.body.passwordFromFront == ''
+  ) {
+    error.push('Empty')
+  }
+
+  if (error.length == 0) {
+    const user = await userModel.findOne({
+      email: req.body.emailFromFront,
+    })
+
+
+    if (user) {
+      const passwordEncrypt = SHA256(req.body.passwordFromFront + user.salt).toString(encBase64)
+
+      if (passwordEncrypt == user.password) {
+        result = true
+        token = user.token
+      } else {
+        result = false
+        error.push('Incorrect password mother fucker')
+      }
+
+    } else {
+      error.push('Incorrect email mother fucker ')
+    }
+  }
+
+
+  res.json({ result, user, error, token })
+
+
 })
 module.exports = router;
