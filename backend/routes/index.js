@@ -80,7 +80,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
 
   if (req.body.firstNameFromFront == ''
     || req.body.lastNameFromFront == ''
-    || req.body.pseudoFromFront == ''
+    || req.body.userNameFromFront == ''
     || req.body.emailFromFront == ''
     || req.body.passwordFromFront == ''
     || req.body.phoneFromFront == ''
@@ -103,7 +103,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
       salt: salt,
       phone: req.body.phoneFromFront,
       role: "influenceur",
-      pseudo: req.body.pseudoFromFront,
+      pseudo: req.body.userNameFromFront,
       numberFollower: req.body.numberFollowerFromFront,
       favoriteGame: req.body.favoriteGameFromFront,
       urlSocialNetwork: req.body.urlSocialNetworkFromFront,
