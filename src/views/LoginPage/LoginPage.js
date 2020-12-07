@@ -20,6 +20,8 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 const useStyles = makeStyles(styles);
 
+
+
 export default function LoginPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {

@@ -29,7 +29,7 @@ export default function SignUpPage(props) {
 const [signUpFirstNameCompany, setSignUpFirstNameCompany] = useState('')
 const [signUpEmailCompany, setSignUpEmailCompany] = useState('')
 const [signUpPasswordCompany, setSignUpPasswordCompany] = useState('')
-const [signUpCompagnyCompany, setSignUpCompagnyCompany] = useState('')
+const [signUpCompany, setSignUpCompagnyCompany] = useState('')
 const [signUpLastNameCompany, setSignUpLastNameCompany] = useState('')
 const [signUpPhoneCompany, setSignUpPhoneCompany] = useState('')
 
@@ -56,7 +56,7 @@ var handleSubmitSignupCompany = async () => {
   const data = await fetch('/sign-up', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: `companyFromFront=${signUpCompagnyCompany}&firstNameFromFront=${signUpFirstNameCompany}&lastNameFromFront=${signUpLastNameCompany}&emailFromFront=${signUpEmailCompany}&phoneFromFront=${signUpPhoneCompany}&passwordFromFront=${signUpPasswordCompany}`
+    body: `companyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstNameCompany}&lastNameFromFront=${signUpLastNameCompany}&emailFromFront=${signUpEmailCompany}&phoneFromFront=${signUpPhoneCompany}&passwordFromFront=${signUpPasswordCompany}`
   })
 
   // const body = await data.json()
@@ -76,7 +76,7 @@ var handleSubmitSignupInfluencer = async () => {
   const data = await fetch('/sign-up', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: `companyFromFront=${signUpCompagnyCompany}&firstNameFromFront=${signUpFirstNameCompany}&lastNameFromFront=${signUpLastNameCompany}&emailFromFront=${signUpEmailCompany}&phoneFromFront=${signUpPhoneCompany}&passwordFromFront=${signUpPasswordCompany}`
+    body: `firstNameFromFront=${XXX}&lastNameFromFront=${XXX}&usernameFromFront=${XXX}&phoneFromFront=${XXX}&passwordFromFront=${XXX}&urlFromFront=${XXX}` 
   })
 
   // const body = await data.json()
@@ -262,14 +262,14 @@ var handleSubmitSignupInfluencer = async () => {
                       }}
                     />
 
-                    <CustomInput onChange={(e) => setSignUpTwitchInfluencer(e.target.value)} 
-                      labelText="Twitch url"
-                      id="twitch"
+                    <CustomInput onChange={(e) => setSignUpUrlSocialNetworkInfluencer(e.target.value)} 
+                      labelText="URL Social Network "
+                      id="Social Network"
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
-
+{/* 
                     <CustomInput onChange={(e) => setSignUpInstaInfluencer(e.target.value)} 
                       labelText="Instagram url"
                       id="instagram"
@@ -292,7 +292,7 @@ var handleSubmitSignupInfluencer = async () => {
                       formControlProps={{
                         fullWidth: true
                       }}
-                    />
+                    /> */}
 
                   </CardBody>
                   
