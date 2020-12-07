@@ -7,8 +7,8 @@ const reviewSchema = mongoose.Schema({
     rate:Number,
     audience:Number,
     writtenCommentary:String,
-    user_writter:String,
-    user_evaluated:String
+    user_writter:[userSchema],
+    user_evaluated:[userSchema]
 })
 
 

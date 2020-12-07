@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://admin:tr-909@cluster0.vwjgt.mongodb.net/esport-d
         if (err) {
             console.log(`error, failed to connect to the database because --> ${err}`);
           } else {
-            console.info('*** Database Ticketac connection : Success ***');
+            console.info('*** Database E-Sport connection : Success ***');
           }
     }
 )

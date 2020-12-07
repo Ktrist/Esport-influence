@@ -10,15 +10,10 @@ const campagne = mongoose.Schema({
     audienceCriteria:String,
     uploadedDoc:String,
     public_id_doc:String,
-    id_influenceur_participant:String
+    id_influenceur_participant:String,
+    
 
 })
-
-
-
-
-
-
 
 // User
 const userSchema = mongoose.Schema({
