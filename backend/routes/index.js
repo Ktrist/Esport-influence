@@ -12,6 +12,8 @@ const userModel = require('../models/users');
 
 router.post('/sign-up/brand', async function (req, res, next) {
 
+  console.log('PASSING', req.body);
+
   var error = []
   var result = false
   var saveUser = null
@@ -32,11 +34,14 @@ router.post('/sign-up/brand', async function (req, res, next) {
     || req.body.phoneFromFront == ''
     || req.body.companyFromFront == ''
   ) {
+    console.log('ERROR');
     error.push('Empty Field')
   }
 
 
   if (error.length === 0) {
+
+    console.log('NO ERROR');
 
     var salt = uid2(32)
     var newUser = new userModel({
@@ -64,6 +69,8 @@ router.post('/sign-up/brand', async function (req, res, next) {
   res.json({ result, saveUser, error, token })
 })
 router.post('/sign-up/influencer', async function (req, res, next) {
+
+  console.log();
 
   var error = []
   var result = false

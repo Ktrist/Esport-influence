@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -25,53 +25,44 @@ const useStyles = makeStyles(styles);
 
 
 export default function SignUpPage(props) {
-// STATE FOR COMPANY
-const [signUpFirstNameCompany, setSignUpFirstNameCompany] = useState('')
-const [signUpEmailCompany, setSignUpEmailCompany] = useState('')
-const [signUpPasswordCompany, setSignUpPasswordCompany] = useState('')
-const [signUpCompany, setSignUpCompagnyCompany] = useState('')
-const [signUpLastNameCompany, setSignUpLastNameCompany] = useState('')
-const [signUpPhoneCompany, setSignUpPhoneCompany] = useState('')
+  // GLOBAL STATE 
+  const [signUpFirstName, setSignUpFirstName] = useState('')
+  const [signUpEmail, setSignUpEmail] = useState('')
+  const [signUpPassword, setSignUpPassword] = useState('')
+  const [signUpCompany, setSignUpCompagny] = useState('')
+  const [signUpLastName, setSignUpLastName] = useState('')
+  const [signUpPhone, setSignUpPhone] = useState('')
 
-
-//  STATE FOR INFLUENCER
-const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
-const [signUpFirstNameInfluencer, setSignUpFirstNameInfluencer] = useState('')
-const [signUpLastNameInfluencer, setSignUpLastNameInfluencer] = useState('')
-const [signUpEmailInfluencer, setSignUpEmailInfluencer] = useState('')
-const [signUpPhoneInfluencer, setSignUpPhoneInfluencer] = useState('')
-const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
-const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer ] = useState('')
-const [signUpTwitchInfluencer, setSignUpTwitchInfluencer ] = useState('')
-const [signUpInstaInfluencer, setSignUpInstaInfluencer ] = useState('')
-const [signUpFacebookInfluencer, setSignUpFacebookInfluencer  ] = useState('')
-const [signUpYoutubeInfluencer, setSignUpYoutubeInfluencer  ] = useState('')
+  const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
+  const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
+  const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
+  const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
 
 
 
+  var handleSubmitSignupCompany = async () => {
+    console.log("HELLO WORLD")
 
+    const data = await fetch('/sign-up/brand', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `CompanyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}`
+    })
+    console.log(data.body + "HELLO WORLD")
 
-var handleSubmitSignupCompany = async () => {
-    
-  const data = await fetch('/sign-up/brand', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: `companyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstNameCompany}&lastNameFromFront=${signUpLastNameCompany}&emailFromFront=${signUpEmailCompany}&phoneFromFront=${signUpPhoneCompany}&passwordFromFront=${signUpPasswordCompany}`
-  })
+    // const body = await data.json()
 
-  // const body = await data.json()
+    // if(body.result == true){
+    //   props.addToken(body.token)
+    //   setUserExists(true)
 
-  // if(body.result == true){
-  //   props.addToken(body.token)
-  //   setUserExists(true)
-    
-  // } else {
-  //   setErrorsSignup(body.error)
-  // }
-}
+    // } else {
+    //   setErrorsSignup(body.error)
+    // }
+  }
 
-const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-  setTimeout(function() {
+  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  setTimeout(function () {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
@@ -83,18 +74,17 @@ const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
         color="transparent"
         brand="Esport-Influence"
         rightLinks={<HeaderLinks />}
-        leftLinks={"/landing-page"}
         fixed
         changeColorOnScroll={{
-          height:100,
-          color:"dark"
+          height: 100,
+          color: "dark"
         }}
         {...rest}
       />
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url("+ image +")",
+          backgroundImage: "url(" + image + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center"
         }}
@@ -102,78 +92,102 @@ const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={6} sm={6} md={6}>
-              <Card className={classes[cardAnimaton]} style={{backgroundColor: "transparent", color:"white"}}>
+              <Card className={classes[cardAnimaton]} style={{ backgroundColor: "transparent", color: "white" }}>
                 <form className={classes.form}>
-                <CardHeader className={classes.CardHeader}>
-                      <h2 className={classes.title}>Sign-up as a Company</h2>
+                  <CardHeader className={classes.CardHeader}>
+                    <h2 className={classes.title}>Sign-up as a Company</h2>
                   </CardHeader>
                   <CardBody>
 
-                  <CustomInput onChange={(e) => setSignUpCompagnyCompany(e.target.value)} 
-                      labelText="Company*"
-                      id="company"
+                    <CustomInput
+                      inputProps={{
+                        onChange: (e) => setSignUpCompagny(e.target.value),
+                      }}
+                        labelText="Company*"
+                        id="company"
+                      
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
-                    <CustomInput onChange={(e) => setSignUpFirstNameCompany(e.target.value)} 
-                      labelText="Firstname*"
-                      id="firstname"
+                    <CustomInput
+                      inputProps={{
+                        onChange: (e) => setSignUpFirstName(e.target.value)
+                      }}
+                        labelText= "Firstname*"
+                        id="firstname"
+                     
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
-                    <CustomInput onChange={(e) => setSignUpLastNameCompany(e.target.value)} 
-                      labelText="Lastname*"
-                      id="lastName"
+                    <CustomInput
+                      inputProps={{
+                        onChange: (e) => setSignUpLastName(e.target.value),
+                      }}
+                        labelTex= "Lastname*"
+                        id= "lastName"
+                      
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
-                    <CustomInput onChange={(e) => setSignUpEmailCompany(e.target.value)} 
-                      labelText="Email*"
-                      id="email"
+                    <CustomInput
+                      inputProps={{
+                        onChange: (e) => setSignUpEmail(e.target.value),
+                      }}
+                        labelText= "Email*"
+                        id= "email"
+                      
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
 
-                    <CustomInput onChange={(e) => setSignUpPhoneCompany(e.target.value)} 
-                      labelText="Phone*"
-                      id="phone"
+                    <CustomInput
+                      inputProps={{
+                        onChange: (e) => setSignUpPhone(e.target.value),
+                      }}
+                        labelText= "Phone*"
+                        id= "phone"
+                      
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
 
-                      <CustomInput onChange={(e) => setSignUpPasswordCompany(e.target.value)} 
-                      labelText="Password*"
-                      id="password"
+                    <CustomInput
+                      inputProps={{
+                        onChange: (e) => setSignUpPassword(e.target.value),
+                      }}
+                        labelText= "Password*"
+                        id="password"
+                      
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
                   </CardBody>
-                  
+
                   <CardFooter className={classes.cardFooter}>
-                    <Button onClick={() => handleSubmitSignupCompany()} color="primary" size="lg">
+                    <Button onClick={() => handleSubmitSignupCompany()} simple color="primary" size="lg">
                       CONNECTION
                     </Button>
                   </CardFooter>
                 </form>
               </Card>
-              </GridItem>
-              </GridContainer>
-              </div>
-          </div>
+            </GridItem>
+          </GridContainer>
+        </div>
       </div>
+    </div>
 
-    
+
   );
 }
