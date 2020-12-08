@@ -4,6 +4,7 @@ export default function (campaignList = [], action) {
         var campaignListCopy = [...campaignList]
 
         campaignListCopy.push(action.campaignAdded)
+        
         return campaignListCopy
     }
     else {

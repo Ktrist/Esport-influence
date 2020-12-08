@@ -86,7 +86,7 @@ const useStyles = makeStyles(styles);
                                     </CardHeader>
                                     <CardBody>
 
-                                        <CustomInput onChange={(e) => setNameCampaign(e.target.value)}
+                                        <CustomInput inputProps={{ onChange:(e)  => setNameCampaign(e.target.value), }}
                                             labelText="Campaign name"
                                             id="nameCampaign"
                                             formControlProps={{
@@ -94,7 +94,7 @@ const useStyles = makeStyles(styles);
                                             }}
                                         />
 
-                                        <CustomInput onChange={(e) => setDateStart(e.target.value)}
+                                        <CustomInput inputProps={{ onChange:(e) => setDateStart(e.target.value), }}
                                             labelText="Date begining"
                                             id="dateStart"
                                             formControlProps={{
@@ -102,7 +102,7 @@ const useStyles = makeStyles(styles);
                                             }}
                                         />
 
-                                        <CustomInput onChange={(e) => setDescription(e.target.value)}
+                                        <CustomInput  inputProps={{ onChange:(e) => setDescription(e.target.value), }}
                                             labelText="Description"
                                             id="description"
                                             formControlProps={{
@@ -110,7 +110,7 @@ const useStyles = makeStyles(styles);
                                             }}
                                         />
 
-                                        <CustomInput onChange={(e) => setAudience(e.target.value)}
+                                        <CustomInput inputProps={{ onChange:(e) => setAudience(e.target.value), }}
                                             labelText="Audience criteria"
                                             id="audience"
                                             formControlProps={{
@@ -119,7 +119,7 @@ const useStyles = makeStyles(styles);
                                         />
 
 
-                                        <CustomInput onChange={(e) => setUploadDoc(e.target.value)}
+                                        <CustomInput inputProps={{ onChange:(e)  => setUploadDoc(e.target.value), }}
                                             labelText="Upload document"
                                             id="uploadDoc"
                                             formControlProps={{

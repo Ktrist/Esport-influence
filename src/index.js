@@ -15,13 +15,15 @@ import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
 import CreateCampaign from "views/Campagne/CreateCampaign.js"
 
 import token from './reducers/token'
+import campaign from './reducers/campaign'
+
 import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 
 
 var hist = createBrowserHistory();
 
-const store = createStore(combineReducers({token}))
+const store = createStore(combineReducers({token, campaign}))
 
 ReactDOM.render(
   <Provider store={store}>

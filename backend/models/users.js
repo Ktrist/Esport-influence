@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const campagne = mongoose.Schema({
     campaignName:String,
     description:String,
-    dateStart:Date,
+    dateStart:String,
     dateEnd:Date,
     status:String,
     audienceCriteria:String,
