@@ -184,7 +184,7 @@ router.post('/addcampaign', async function(req, res, next) {
 
   var userSaved = await user.save()
 
-  console.log(userSaved)
+  console.log(userSaved, token)
 
   res.json({campaign})
   
