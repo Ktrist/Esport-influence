@@ -71,24 +71,24 @@ var handleSubmitSignupCompany = async () => {
 }
 
 
-var handleSubmitSignupInfluencer = async () => {
+// // var handleSubmitSignupInfluencer = async () => {
     
-  const data = await fetch('/sign-up', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: `firstNameFromFront=${XXX}&lastNameFromFront=${XXX}&usernameFromFront=${XXX}&phoneFromFront=${XXX}&passwordFromFront=${XXX}&urlFromFront=${XXX}` 
-  })
+// //   const data = await fetch('/sign-up', {
+// //     method: 'POST',
+// //     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+// //     body: `firstNameFromFront=${XXX}&lastNameFromFront=${XXX}&usernameFromFront=${XXX}&phoneFromFront=${XXX}&passwordFromFront=${XXX}&urlFromFront=${XXX}` 
+// //   })
 
-  // const body = await data.json()
+//   // const body = await data.json()
 
-  // if(body.result == true){
-  //   props.addToken(body.token)
-  //   setUserExists(true)
+//   // if(body.result == true){
+//   //   props.addToken(body.token)
+//   //   setUserExists(true)
     
-  // } else {
-  //   setErrorsSignup(body.error)
-  // }
-}
+//   // } else {
+//   //   setErrorsSignup(body.error)
+//   // }
+// }
 
 
 
