@@ -48,7 +48,7 @@ export default function SignUpPage(props) {
     console.log(data.body + "HELLO WORLD")
 
     // const body = await data.json()
-x
+
     // if(body.result == true){
     //   props.addToken(body.token)
     //   setUserExists(true)
