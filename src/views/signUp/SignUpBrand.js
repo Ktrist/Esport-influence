@@ -83,7 +83,6 @@ const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
         color="transparent"
         brand="Esport-Influence"
         rightLinks={<HeaderLinks />}
-        leftLinks={"/landing-page"}
         fixed
         changeColorOnScroll={{
           height:100,
@@ -162,7 +161,7 @@ const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
                   </CardBody>
                   
                   <CardFooter className={classes.cardFooter}>
-                    <Button onClick={() => handleSubmitSignupCompany()} color="primary" size="lg">
+                    <Button onClick={() => handleSubmitSignupCompany()} simple color="primary" size="lg">
                       CONNECTION
                     </Button>
                   </CardFooter>
