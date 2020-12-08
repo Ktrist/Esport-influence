@@ -21,10 +21,12 @@ import CardHeader from "components/Card/CardHeader";
 
 import image from "assets/img/signup.jpg";
 
+import {connect} from 'react-redux'
+
 const useStyles = makeStyles(styles);
 
 
-export default function SignUpPage(props) {
+ function SignUpBrand(props) {
   // GLOBAL STATE 
   const [signUpFirstName, setSignUpFirstName] = useState('')
   const [signUpEmail, setSignUpEmail] = useState('')
@@ -191,3 +193,16 @@ export default function SignUpPage(props) {
 
   );
 }
+
+function mapDispatchToProps(dispatch){
+  return {
+    addToken: function(token){
+      dispatch({type: 'addToken', token: token})
+    }
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignUpBrand)

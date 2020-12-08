@@ -168,4 +168,25 @@ router.post('/sign-in', async function (req, res, next) {
 
 
 })
+
+router.post('/addcampaign', async function(req, res, next) {
+  
+  // We want to update our onGoingTicket for our user
+  var user = await userModel.findOne({token: req.body.token})
+  
+   user.fk_campagne_owner.push({
+    campaignName: req.body.nameCampaignFromFront,
+    dateStart: req.body.dateStartFromFront,
+    description: req.body.descriptionFromFront,
+    audienceCriteria: req.body.audienceFromFront,
+    uploadedDoc: req.body.uploadDocFromFront
+  })
+
+  var userSaved = await user.save()
+
+  console.log(userSaved)
+
+  res.json({campaign})
+  
+});
 module.exports = router;

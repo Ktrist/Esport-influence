@@ -21,50 +21,30 @@ import CardHeader from "components/Card/CardHeader";
 
 import image from "assets/img/signup.jpg";
 
+import {connect} from 'react-redux'
+
 const useStyles = makeStyles(styles);
 
 
-export default function SignUpPage(props) {
-    // STATE FOR COMPANY
-    const [signUpFirstNameCompany, setSignUpFirstNameCompany] = useState('')
-    const [signUpEmailCompany, setSignUpEmailCompany] = useState('')
-    const [signUpPasswordCompany, setSignUpPasswordCompany] = useState('')
-    const [signUpCompany, setSignUpCompagnyCompany] = useState('')
-    const [signUpLastNameCompany, setSignUpLastNameCompany] = useState('')
-    const [signUpPhoneCompany, setSignUpPhoneCompany] = useState('')
+ function CreateCampaign(props) {
 
+   // GLOBAL STATE 
+   const [nameCampaign, setNameCampaign] = useState('')
+   const [dateStart, setDateStart] = useState('')
+   const [description, setDescription] = useState('')
+   const [audience, setAudience] = useState('')
+   const [uploadDoc, setUploadDoc] = useState('')
 
-    //  STATE FOR INFLUENCER
-    const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
-    const [signUpFirstNameInfluencer, setSignUpFirstNameInfluencer] = useState('')
-    const [signUpLastNameInfluencer, setSignUpLastNameInfluencer] = useState('')
-    const [signUpEmailInfluencer, setSignUpEmailInfluencer] = useState('')
-    const [signUpPhoneInfluencer, setSignUpPhoneInfluencer] = useState('')
-    const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
-    const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
-    const [signUpTwitchInfluencer, setSignUpTwitchInfluencer] = useState('')
-    const [signUpInstaInfluencer, setSignUpInstaInfluencer] = useState('')
-    const [signUpFacebookInfluencer, setSignUpFacebookInfluencer] = useState('')
-    const [signUpYoutubeInfluencer, setSignUpYoutubeInfluencer] = useState('')
+    var handleSubmitCampaign = async () => {
 
-
-    var handleSubmitSignupCompany = async () => {
-
-        const data = await fetch('/sign-up/brand', {
+        const data = await fetch('/addcampaign', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `companyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstNameCompany}&lastNameFromFront=${signUpLastNameCompany}&emailFromFront=${signUpEmailCompany}&phoneFromFront=${signUpPhoneCompany}&passwordFromFront=${signUpPasswordCompany}`
+            body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&descriptionFromFront=${description}&audienceFromFront=${audience}&uploadDocFromFront=${uploadDoc}`
         })
 
-        // const body = await data.json()
+        console.log(data.body + "HELLO add campaign")
 
-        // if(body.result == true){
-        //   props.addToken(body.token)
-        //   setUserExists(true)
-
-        // } else {
-        //   setErrorsSignup(body.error)
-        // }
     }
 
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
@@ -106,7 +86,7 @@ export default function SignUpPage(props) {
                                     </CardHeader>
                                     <CardBody>
 
-                                        <CustomInput onChange={(e) => setSignUpCompagnyCompany(e.target.value)}
+                                        <CustomInput onChange={(e) => setNameCampaign(e.target.value)}
                                             labelText="Campaign name"
                                             id="nameCampaign"
                                             formControlProps={{
@@ -114,34 +94,34 @@ export default function SignUpPage(props) {
                                             }}
                                         />
 
-                                        <CustomInput onChange={(e) => setSignUpFirstNameCompany(e.target.value)}
+                                        <CustomInput onChange={(e) => setDateStart(e.target.value)}
                                             labelText="Date begining"
-                                            id="DateBegining"
+                                            id="dateStart"
                                             formControlProps={{
                                                 fullWidth: true
                                             }}
                                         />
 
-                                        <CustomInput onChange={(e) => setSignUpLastNameCompany(e.target.value)}
+                                        <CustomInput onChange={(e) => setDescription(e.target.value)}
                                             labelText="Description"
-                                            id="lastName"
+                                            id="description"
                                             formControlProps={{
                                                 fullWidth: true
                                             }}
                                         />
 
-                                        <CustomInput onChange={(e) => setSignUpEmailCompany(e.target.value)}
+                                        <CustomInput onChange={(e) => setAudience(e.target.value)}
                                             labelText="Audience criteria"
-                                            id="email"
+                                            id="audience"
                                             formControlProps={{
                                                 fullWidth: true
                                             }}
                                         />
 
 
-                                        <CustomInput onChange={(e) => setSignUpPhoneCompany(e.target.value)}
+                                        <CustomInput onChange={(e) => setUploadDoc(e.target.value)}
                                             labelText="Upload document"
-                                            id="phone"
+                                            id="uploadDoc"
                                             formControlProps={{
                                                 fullWidth: true
                                             }}
@@ -150,7 +130,7 @@ export default function SignUpPage(props) {
                                     </CardBody>
 
                                     <CardFooter className={classes.cardFooter}>
-                                        <Button onClick={() => handleSubmitSignupCompany()} color="primary" size="lg">
+                                        <Button onClick={() => handleSubmitCampaign()} color="primary" size="lg">
                                             Valider                    </Button>
                                     </CardFooter>
                                 </form>
@@ -164,3 +144,22 @@ export default function SignUpPage(props) {
 
     );
 }
+
+function mapStateToProps(state){
+    return {token: state.token}
+  }
+
+  function mapDispatchToProps(dispatch){
+    return {
+      addToCampaignList: function(campaign){
+        dispatch({type: 'addCampaign',
+          campaignAdded: campaign
+        })
+      }
+    }
+  }
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CreateCampaign)
+  
