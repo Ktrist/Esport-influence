@@ -21,7 +21,7 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import ProductSection from "./Sections/ProductSection.js";
 import WorkSection from "./Sections/WorkSection.js";
 
-const dashboardRoutes = [];
+const dashboardRoutes = []; 
 
 const useStyles = makeStyles(styles);
 
