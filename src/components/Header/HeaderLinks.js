@@ -24,6 +24,31 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
+
+      <ListItem className={classes.listItem}>
+        <Button
+          href="/sign-up/brand"
+          color="primary"
+          target="_blank"
+          border
+          className={classes.navLink}
+        >
+          <PersonAddIcon className={classes.icons} /> Sign-Up as a Company
+        </Button>
+      </ListItem>
+
+      <ListItem className={classes.listItem}>
+        <Button
+          href="/sign-up/influencer"
+          color="primary"
+          target="_blank"
+          border
+          className={classes.navLink}
+        >
+          <PersonAddIcon className={classes.icons} /> Sign-Up as an Influencer
+        </Button>
+      </ListItem>
+
       <ListItem className={classes.listItem}>
         <Button 
           href="/login"
@@ -31,20 +56,10 @@ export default function HeaderLinks(props) {
           target="_blank"
           className={classes.navLink}
         >
-          <PersonIcon className={classes.icons} /> Log in
+          <PersonIcon className={classes.icons} /> Login
         </Button>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="/signup"
-          color="primary"
-          target="_blank"
-          border
-          className={classes.navLink}
-        >
-          <PersonAddIcon className={classes.icons} /> Sign Up
-        </Button>
-      </ListItem>
+
     </List>
   );
 }

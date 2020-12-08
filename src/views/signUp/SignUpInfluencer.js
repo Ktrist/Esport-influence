@@ -66,6 +66,7 @@ export default function SignUpPage(props) {
     console.log(data.body + "HELLO WORLD")
 
     
+<<<<<<< HEAD:src/views/signUp/SignUpPage.js
 
     // const body = await data.json()
 
@@ -293,6 +294,136 @@ export default function SignUpPage(props) {
                         }}
                       />
                       {/* 
+=======
+  const data = await fetch('/signup/influencer', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    // body: `firstNameFromFront=${XXX}&lastNameFromFront=${XXX}&usernameFromFront=${XXX}&phoneFromFront=${XXX}&passwordFromFront=${XXX}&urlFromFront=${XXX}` 
+  })
+
+  // const body = await data.json()
+
+  // if(body.result == true){
+  //   props.addToken(body.token)
+  //   setUserExists(true)
+    
+  // } else {
+  //   setErrorsSignup(body.error)
+  // }
+}
+
+
+
+
+
+
+
+  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  setTimeout(function() {
+    setCardAnimation("");
+  }, 700);
+  const classes = useStyles();
+  const { ...rest } = props;
+  return (
+    <div>
+      <Header
+        absolute
+        color="transparent"
+        brand="Esport-Influence"
+        rightLinks={<HeaderLinks />}
+        fixed
+        changeColorOnScroll={{
+          height:100,
+          color:"dark"
+        }}
+        {...rest}
+      />
+      <div
+        className={classes.pageHeader}
+        style={{
+          backgroundImage: "url("+ image +")",
+          backgroundSize: "cover",
+          backgroundPosition: "top center"
+        }}
+      >
+        <div className={classes.container}>
+          <GridContainer justify="center">
+              <GridItem xs={6} sm={6} md={6}>
+
+
+              <Card className={classes[cardAnimaton]} style={{backgroundColor: "transparent", color:"white"}}>
+                <form className={classes.form}>
+                <CardHeader className={classes.CardHeader}>
+                <h2 className={classes.title}>Sign-up as an Influencer</h2>
+                  </CardHeader>
+                  <CardBody>
+
+                  <CustomInput onChange={(e) => setSignUpUsernameInfluencer(e.target.value)} 
+                      labelText="Username*"
+                      id="Username"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+
+                    <CustomInput onChange={(e) => setSignUpFirstNameInfluencer(e.target.value)} 
+                      labelText="Firstname*"
+                      id="firstname"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+
+                    <CustomInput onChange={(e) => setSignUpLastNameInfluencer(e.target.value)} 
+                      labelText="Lastname*"
+                      id="lastName"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+
+                    <CustomInput onChange={(e) => setSignUpEmailInfluencer(e.target.value)} 
+                      labelText="Email*"
+                      id="email"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+
+
+                    <CustomInput onChange={(e) => setSignUpPhoneInfluencer(e.target.value)} 
+                      labelText="Phone*"
+                      id="phone"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+
+                    <CustomInput onChange={(e) => setSignUpFollowerInfluencer(e.target.value)} 
+                      labelText="Number of followers*"
+                      id="followers"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+
+                    <CustomInput onChange={(e) => setSignUpFavoriteGamesInfluencer(e.target.value)} 
+                      labelText="Favorite games"
+                      id="games"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+
+                    {/* <CustomInput onChange={(e) => setSignUpUrlSocialNetworkInfluencer(e.target.value)}  */}
+                      {/* labelText="URL Social Network "
+                      id="Social Network"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    /> */}
+{/* 
+>>>>>>> 924bbcc707bccd85ee58ed06b972e69923ab857e:src/views/signUp/SignUpInfluencer.js
                     <CustomInput onChange={(e) => setSignUpInstaInfluencer(e.target.value)} 
                       labelText="Instagram url"
                       id="instagram"
@@ -317,11 +448,19 @@ export default function SignUpPage(props) {
                       }}
                     /> */}
 
+<<<<<<< HEAD:src/views/signUp/SignUpPage.js
                     </CardBody>
 
                     <CardFooter className={classes.cardFooter}>
                       <Button onClick={() => handleSubmitSignupInfluencer()} simple color="primary" size="lg">
                         CONNECTION
+=======
+                  </CardBody>
+                  
+                  <CardFooter className={classes.cardFooter}>
+                    <Button onClick={() => handleSubmitSignupInfluencer()} color="primary" size="lg">
+                      CONNECTION
+>>>>>>> 924bbcc707bccd85ee58ed06b972e69923ab857e:src/views/signUp/SignUpInfluencer.js
                     </Button>
                     </CardFooter>
                   </form>
