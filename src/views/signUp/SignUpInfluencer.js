@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -25,38 +25,51 @@ const useStyles = makeStyles(styles);
 
 
 export default function SignUpPage(props) {
-// STATE FOR COMPANY
-const [signUpFirstNameCompany, setSignUpFirstNameCompany] = useState('')
-const [signUpEmailCompany, setSignUpEmailCompany] = useState('')
-const [signUpPasswordCompany, setSignUpPasswordCompany] = useState('')
-const [signUpCompany, setSignUpCompagnyCompany] = useState('')
-const [signUpLastNameCompany, setSignUpLastNameCompany] = useState('')
-const [signUpPhoneCompany, setSignUpPhoneCompany] = useState('')
+  // GLOBAL STATE 
+  const [signUpFirstName, setSignUpFirstName] = useState('')
+  const [signUpEmail, setSignUpEmail] = useState('')
+  const [signUpPassword, setSignUpPassword] = useState('')
+  const [signUpCompany, setSignUpCompagny] = useState('')
+  const [signUpLastName, setSignUpLastName] = useState('')
+  const [signUpPhone, setSignUpPhone] = useState('')
+  const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
+  const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
+  const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
+  const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
 
 
-//  STATE FOR INFLUENCER
-const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
-const [signUpFirstNameInfluencer, setSignUpFirstNameInfluencer] = useState('')
-const [signUpLastNameInfluencer, setSignUpLastNameInfluencer] = useState('')
-const [signUpEmailInfluencer, setSignUpEmailInfluencer] = useState('')
-const [signUpPhoneInfluencer, setSignUpPhoneInfluencer] = useState('')
-const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
-const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer ] = useState('')
-const [signUpTwitchInfluencer, setSignUpTwitchInfluencer ] = useState('')
-const [signUpInstaInfluencer, setSignUpInstaInfluencer ] = useState('')
-const [signUpFacebookInfluencer, setSignUpFacebookInfluencer  ] = useState('')
-const [signUpYoutubeInfluencer, setSignUpYoutubeInfluencer  ] = useState('')
+  //  STATE FOR INFLUENCER
+  // const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
+  // const [signUpFirstNameInfluencer, setSignUpFirstNameInfluencer] = useState('')
+  // const [signUpLastNameInfluencer, setSignUpLastNameInfluencer] = useState('')
+  // const [signUpEmailInfluencer, setSignUpEmailInfluencer] = useState('')
+  // const [signUpPhoneInfluencer, setSignUpPhoneInfluencer] = useState('')
+  // const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
+  // const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer ] = useState('')
+  // const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
+  // // const [signUpInstaInfluencer, setSignUpInstaInfluencer ] = useState('')
+  // // const [signUpFacebookInfluencer, setSignUpFacebookInfluencer  ] = useState('')
+  // // const [signUpYoutubeInfluencer, setSignUpYoutubeInfluencer  ] = useState('')
 
 
 
 
 
-var handleSubmitSignupCompany = async () => {
+  var handleSubmitSignupCompany = async () => {
+    console.log("HELLO WORLD")
+
+    const data = await fetch('/sign-up/brand', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `CompanyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}`
+    })
+    console.log(data.body + "HELLO WORLD")
+
     
-  const data = await fetch('/sign-up', {
+  const data = await fetch('/signup/influencer', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: `companyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstNameCompany}&lastNameFromFront=${signUpLastNameCompany}&emailFromFront=${signUpEmailCompany}&phoneFromFront=${signUpPhoneCompany}&passwordFromFront=${signUpPasswordCompany}`
+    // body: `firstNameFromFront=${XXX}&lastNameFromFront=${XXX}&usernameFromFront=${XXX}&phoneFromFront=${XXX}&passwordFromFront=${XXX}&urlFromFront=${XXX}` 
   })
 
   // const body = await data.json()
@@ -69,26 +82,6 @@ var handleSubmitSignupCompany = async () => {
   //   setErrorsSignup(body.error)
   // }
 }
-
-
-// // var handleSubmitSignupInfluencer = async () => {
-    
-// //   const data = await fetch('/sign-up', {
-// //     method: 'POST',
-// //     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-// //     body: `firstNameFromFront=${XXX}&lastNameFromFront=${XXX}&usernameFromFront=${XXX}&phoneFromFront=${XXX}&passwordFromFront=${XXX}&urlFromFront=${XXX}` 
-// //   })
-
-//   // const body = await data.json()
-
-//   // if(body.result == true){
-//   //   props.addToken(body.token)
-//   //   setUserExists(true)
-    
-//   // } else {
-//   //   setErrorsSignup(body.error)
-//   // }
-// }
 
 
 
@@ -125,83 +118,14 @@ var handleSubmitSignupCompany = async () => {
         }}
       >
         <div className={classes.container}>
-          <GridContainer style={{display: "flex"}}>
-            <GridItem xs={6} sm={6} md={6}>
-              <Card className={classes[cardAnimaton]} style={{backgroundColor: "transparent", color:"white"}}>
-                <form className={classes.form}>
-                <CardHeader className={classes.CardHeader}>
-                      <h2 className={classes.title}>Sign-up Company</h2>
-                  </CardHeader>
-                  <CardBody>
-
-                  <CustomInput onChange={(e) => setSignUpCompagnyCompany(e.target.value)} 
-                      labelText="Company*"
-                      id="company"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-
-                    <CustomInput onChange={(e) => setSignUpFirstNameCompany(e.target.value)} 
-                      labelText="Firstname*"
-                      id="firstname"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-
-                    <CustomInput onChange={(e) => setSignUpLastNameCompany(e.target.value)} 
-                      labelText="Lastname*"
-                      id="lastName"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-
-                    <CustomInput onChange={(e) => setSignUpEmailCompany(e.target.value)} 
-                      labelText="Email*"
-                      id="email"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-
-
-                    <CustomInput onChange={(e) => setSignUpPhoneCompany(e.target.value)} 
-                      labelText="Phone*"
-                      id="phone"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-
-
-                      <CustomInput onChange={(e) => setSignUpPasswordCompany(e.target.value)} 
-                      labelText="Password*"
-                      id="password"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-
-                  </CardBody>
-                  
-                  <CardFooter className={classes.cardFooter}>
-                    <Button onClick={() => handleSubmitSignupCompany()} simple color="primary" size="lg">
-                      CONNECTION
-                    </Button>
-                  </CardFooter>
-                </form>
-              </Card>
-              </GridItem>
-
-              <GridItem xs={6} sm={6} md={6} style={{display: "flex"}}>
+          <GridContainer justify="center">
+              <GridItem xs={6} sm={6} md={6}>
 
 
               <Card className={classes[cardAnimaton]} style={{backgroundColor: "transparent", color:"white"}}>
                 <form className={classes.form}>
                 <CardHeader className={classes.CardHeader}>
-                <h2 className={classes.title}>Sign-up Influencer</h2>
+                <h2 className={classes.title}>Sign-up as an Influencer</h2>
                   </CardHeader>
                   <CardBody>
 
@@ -262,13 +186,13 @@ var handleSubmitSignupCompany = async () => {
                       }}
                     />
 
-                    <CustomInput onChange={(e) => setSignUpUrlSocialNetworkInfluencer(e.target.value)} 
-                      labelText="URL Social Network "
+                    {/* <CustomInput onChange={(e) => setSignUpUrlSocialNetworkInfluencer(e.target.value)}  */}
+                      {/* labelText="URL Social Network "
                       id="Social Network"
                       formControlProps={{
                         fullWidth: true
                       }}
-                    />
+                    /> */}
 {/* 
                     <CustomInput onChange={(e) => setSignUpInstaInfluencer(e.target.value)} 
                       labelText="Instagram url"
@@ -297,19 +221,19 @@ var handleSubmitSignupCompany = async () => {
                   </CardBody>
                   
                   <CardFooter className={classes.cardFooter}>
-                    <Button onClick={() => handleSubmitSignupInfluencer()} simple color="primary" size="lg">
+                    <Button onClick={() => handleSubmitSignupInfluencer()} color="primary" size="lg">
                       CONNECTION
                     </Button>
-                  </CardFooter>
-                </form>
-              </Card>
-            </GridItem>
-          </GridContainer>
+                    </CardFooter>
+                  </form>
+                </Card>
+              </GridItem>
+            </GridContainer>
+          </div>
+
         </div>
-
       </div>
-    </div>
 
-    
-  );
-}
+
+    );
+  }
