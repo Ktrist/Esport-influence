@@ -56,38 +56,39 @@ export default function SelectCampagne(props) {
                     backgroundPosition: "top center"
                 }}
             >
-                <div className={classes.container}>
-                    <GridContainer justify="center">
-
-                        <GridItem xs={6} sm={6} md={6} style={{ display: "flex" }}>
-
-
-                            <Card className={classes[cardAnimaton]} style={{ backgroundColor: "transparent", color: "white" }}>
-                                <form className={classes.form}>
-                                    <CardHeader className={classes.CardHeader}>
+                <div className={classes.container}>                                       
+                              <CardHeader className={classes.CardHeader}>
                                         <h2 className={classes.title}>Compaign Selection</h2>
                                     </CardHeader>
-
-
+                                    <Card style={{display:"flex", flexDirection: 'column', marginBottom:'5px' ,justifyContent:'space-between', width: "20rem"}}>
+                                            <img
+                                                style={{height: "180px", width: "100%", display: "block"}}
+                                                className={classes.imgCardTop}
+                                                src="..."
+                                                alt="Card-img-cap"
+                                            />
                                     <CardBody>
-                                        <img
-                                            style={{ height: "180px", width: "100%", display: "block" }}
-                                            className={classes.imgCardTop}
-                                            src="assets/img/bg.jpg"
-                                            alt="Card-img-cap"
-                                        />
                                         <h4 className={classes.cardTitle}>Card title</h4>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button color="primary">Select</Button>
-
+                                        <Button color="primary">Select</Button>  
                                     </CardBody>
-
+                                    </Card>
+                                    <Card style={{display:"flex", flexDirection: 'column', marginBottom:'5px' ,justifyContent:'space-between', width: "20rem"}}>
+                                            <img
+                                                style={{height: "180px", width: "100%", display: "block"}}
+                                                className={classes.imgCardTop}
+                                                src="..."
+                                                alt="Card-img-cap"
+                                            />
+                                    <CardBody>
+                                        <h4 className={classes.cardTitle}>Card title</h4>
+                                        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <Button color="primary">Select</Button>  
+                                    </CardBody>
+                                    </Card>
                                     <CardFooter className={classes.cardFooter}>
-                                    </CardFooter>
-                                </form>
-                            </Card>
-                        </GridItem>
-                    </GridContainer>
+                                    </CardFooter>                    
+                    
                 </div>
 
             </div>
