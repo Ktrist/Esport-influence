@@ -24,7 +24,7 @@ ReactDOM.render(
       <Route path="/login-page" component={LoginPage} />
       <Route path="/sign-up/brand" component={SignUpBrand} />
       <Route path="/sign-up/influencer" component={SignUpInfluencer} />
-      <Route path="/select-campagne" component={SelectCampagne} />
+      {/* <Route path="/select-campagne" component={SelectCampagne} /> */}
       <Route path="/" component={Components} />
     </Switch>
   </Router>,
