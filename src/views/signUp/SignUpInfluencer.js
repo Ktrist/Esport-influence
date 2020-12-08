@@ -39,7 +39,9 @@ function SignUpInfluencer(props) {
   const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
   const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
   const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
-
+  const [listErrorsSignup, setErrorsSignup] = useState([])
+  const [userExists, setUserExists] = useState(false)
+  const [redirect, setRedirect] = useState(false)
 
   var handleSubmitSignupInfluencer = async () => {
     console.log("HELLO WORLD")
