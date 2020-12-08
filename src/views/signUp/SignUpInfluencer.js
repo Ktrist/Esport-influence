@@ -228,6 +228,7 @@ function SignUpInfluencer(props) {
             </GridItem>
           </GridContainer>
         </div>
+
       </div>
       {redirect ? <Redirect to="/select-campaign" /> : null }
     </div>
