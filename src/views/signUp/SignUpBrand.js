@@ -33,10 +33,7 @@ export default function SignUpPage(props) {
   const [signUpLastName, setSignUpLastName] = useState('')
   const [signUpPhone, setSignUpPhone] = useState('')
 
-  const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
-  const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
-  const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
-  const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
+
 
 
 
