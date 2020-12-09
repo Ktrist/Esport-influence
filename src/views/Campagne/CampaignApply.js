@@ -26,7 +26,7 @@ const useStyles = makeStyles(styles);
 
 
 export default function CampaignApply(props) {
-    const [redirect, setRedirect] = useState(false)
+    // const [redirect, setRedirect] = useState(false)
     const params = useParams();
     console.log("router", params.id)
 
