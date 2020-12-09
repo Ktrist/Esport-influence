@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link, Redirect} from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -35,11 +36,9 @@ const useStyles = makeStyles(styles);
   const [signUpLastName, setSignUpLastName] = useState('')
   const [signUpPhone, setSignUpPhone] = useState('')
 
-  const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
-  const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
-  const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
-  const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
-
+  const [listErrorsSignup, setErrorsSignup] = useState([])
+  const [userExists, setUserExists] = useState(false)
+  const [redirect, setRedirect] = useState(false)
 
 
   var handleSubmitSignupCompany = async () => {
@@ -52,17 +51,18 @@ const useStyles = makeStyles(styles);
     })
     console.log(data.body + "HELLO WORLD")
 
-    // const body = await data.json()
+    const body = await data.json()
 
-    // if(body.result == true){
-    //   props.addToken(body.token)
-    //   setUserExists(true)
-
-    // } else {
-    //   setErrorsSignup(body.error)
-    // }
+    if(body.result == true){
+      props.addToken(body.token)
+      setUserExists(true)
+      setRedirect(true)
+    } else {
+      setErrorsSignup(body.error)
+    }
   }
-
+ 
+  
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function () {
     setCardAnimation("");
@@ -188,6 +188,7 @@ const useStyles = makeStyles(styles);
           </GridContainer>
         </div>
       </div>
+      {redirect ? <Redirect to="/create-campaign" /> : null }
     </div>
 
 

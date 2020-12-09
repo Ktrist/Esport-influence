@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link, Redirect} from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -39,7 +40,9 @@ function SignUpInfluencer(props) {
   const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
   const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
   const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
-
+  const [listErrorsSignup, setErrorsSignup] = useState([])
+  const [userExists, setUserExists] = useState(false)
+  const [redirect, setRedirect] = useState(false)
 
   var handleSubmitSignupInfluencer = async () => {
     console.log("HELLO WORLD")
@@ -51,16 +54,18 @@ function SignUpInfluencer(props) {
     })
     console.log(data.body + "HELLO WORLD")
 
-    // const body = await data.json()
+    const body = await data.json()
 
-    // if(body.result == true){
-    //   props.addToken(body.token)
-    //   setUserExists(true)
-
-    // } else {
-    //   setErrorsSignup(body.error)
-    // }
+    if(body.result == true){
+      props.addToken(body.token)
+      setUserExists(true)
+      setRedirect(true)
+    } else {
+      setErrorsSignup(body.error)
+    }
   }
+ 
+  
 
 
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
@@ -95,8 +100,6 @@ function SignUpInfluencer(props) {
           <GridContainer justify="center">
 
             <GridItem xs={6} sm={6} md={6} style={{ display: "flex" }}>
-
-
               <Card className={classes[cardAnimaton]} style={{ backgroundColor: "transparent", color: "white" }}>
                 <form className={classes.form}>
                   <CardHeader className={classes.CardHeader}>
@@ -227,12 +230,13 @@ function SignUpInfluencer(props) {
         </div>
 
       </div>
+      {redirect ? <Redirect to="/select-campaign" /> : null }
     </div>
 
 
   );
-}
-
+  }
+                    
 function mapDispatchToProps(dispatch){
   return {
     addToken: function(token){

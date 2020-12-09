@@ -32,12 +32,10 @@ function CreateCampaign(props) {
 
     // GLOBAL STATE 
     const [nameCampaign, setNameCampaign] = useState('')
-    const [dateStart, setDateStart] = useState('')
     const [description, setDescription] = useState('')
     const [audience, setAudience] = useState('')
     const [uploadDoc, setUploadDoc] = useState('')
-
-    const [startDate, setStartDate] = useState(new Date());
+    const [dateStart, setStartDate] = useState(new Date());
 
     var handleSubmitCampaign = async () => {
 
@@ -105,7 +103,7 @@ function CreateCampaign(props) {
                                                 fullWidth: true
                                             }}
                                         /> */}
-                                        <DatePicker selected={dateStart} onChange={date => setStartDate(date), console.log(startDate)} />
+                                            <DatePicker selected={dateStart} onChange={date => setStartDate(date)} />
 
                                         <CustomInput inputProps={{ onChange: (e) => setDescription(e.target.value), }}
                                             labelText="Description"

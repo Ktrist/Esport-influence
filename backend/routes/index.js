@@ -172,7 +172,7 @@ router.post('/sign-in', async function (req, res, next) {
 router.post('/addcampaign', async function(req, res, next) {
   
   // We want to update our onGoingTicket for our user
-  var user = await userModel.findOne({token: "IdWUNGIlKDBAvTfPNkaQQj4QcCI38dAQ"})
+  var user = await userModel.findOne({token: "IT7ulXMSbTW5pcaJS7IB9mBp5HtbbSKY"})
   
    user.fk_campagne_owner.push({
     campaignName: req.body.nameCampaignFromFront,
