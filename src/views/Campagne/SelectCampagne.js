@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link, Redirect} from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -83,7 +84,7 @@ export default function SelectCampagne(props) {
                                     <CardBody>
                                         <h4 className={classes.cardTitle}>Card title</h4>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button color="primary">Select</Button>  
+                                        <Link to={"/campaign-apply/"+ "_id"}><Button color="primary">Select</Button></Link>  
                                     </CardBody>
                                     </Card>
                                     <CardFooter className={classes.cardFooter}>
