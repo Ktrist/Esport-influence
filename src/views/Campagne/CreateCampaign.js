@@ -98,14 +98,14 @@ function CreateCampaign(props) {
                                             }}
                                         />
 
-                                        <CustomInput inputProps={{ onChange: (e) => setDateStart(e.target.value), }}
+                                        {/* <CustomInput inputProps={{ onChange: (e) => setDateStart(e.target.value), }}
                                             labelText="Date begining"
                                             id="dateStart"
                                             formControlProps={{
                                                 fullWidth: true
                                             }}
-                                        />
-                                        <DatePicker selected={startdate} onChange={date => setStartDate(date)} />
+                                        /> */}
+                                        <DatePicker selected={dateStart} onChange={date => setStartDate(date), console.log(startDate)} />
 
                                         <CustomInput inputProps={{ onChange: (e) => setDescription(e.target.value), }}
                                             labelText="Description"
