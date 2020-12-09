@@ -21,6 +21,7 @@ import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 
 import SelectCampagne from "views/Campagne/SelectCampagne.js";
+import CampaignApply from "views/Campagne/CampaignApply.js";
 
 var hist = createBrowserHistory();
 
@@ -37,6 +38,7 @@ ReactDOM.render(
       <Route path="/sign-up/brand" component={SignUpBrand} />
       <Route path="/sign-up/influencer" component={SignUpInfluencer} />
       <Route path="/select-campaign" component={SelectCampagne} />
+      <Route path="/campaign-apply/:id" component={CampaignApply} />
       <Route path="/" component={Components} />
     </Switch>
   </Router>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, Redirect,useParams} from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -25,9 +25,10 @@ import image from "assets/img/signup.jpg";
 const useStyles = makeStyles(styles);
 
 
-export default function SelectCampagne(props) {
-
-
+export default function CampaignApply(props) {
+    const [redirect, setRedirect] = useState(false)
+    const params = useParams();
+    console.log("router", params.id)
 
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
     setTimeout(function () {
@@ -59,7 +60,7 @@ export default function SelectCampagne(props) {
             >
                 <div className={classes.container}>                                       
                               <CardHeader className={classes.CardHeader}>
-                                        <h2 className={classes.title}>Campaign Selection</h2>
+                                        <h2 className={classes.title}>Campaign Apply</h2>
                                     </CardHeader>
                                     <Card style={{display:"flex", flexDirection: 'column', marginBottom:'5px' ,justifyContent:'space-between', width: "20rem"}}>
                                             <img
@@ -71,20 +72,7 @@ export default function SelectCampagne(props) {
                                     <CardBody>
                                         <h4 className={classes.cardTitle}>Card title</h4>
                                         <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button color="primary">Select</Button>  
-                                    </CardBody>
-                                    </Card>
-                                    <Card style={{display:"flex", flexDirection: 'column', marginBottom:'5px' ,justifyContent:'space-between', width: "20rem"}}>
-                                            <img
-                                                style={{height: "180px", width: "100%", display: "block"}}
-                                                className={classes.imgCardTop}
-                                                src="..."
-                                                alt="Card-img-cap"
-                                            />
-                                    <CardBody>
-                                        <h4 className={classes.cardTitle}>Card title</h4>
-                                        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Link to={"/campaign-apply/"+ "_id"}><Button color="primary">Select</Button></Link>
+                                        <Button color="primary">Apply</Button>  
                                     </CardBody>
                                     </Card>
                                     <CardFooter className={classes.cardFooter}>
