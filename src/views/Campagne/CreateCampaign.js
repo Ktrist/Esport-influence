@@ -21,27 +21,31 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import CardHeader from "components/Card/CardHeader";
 
 import image from "assets/img/signup.jpg";
+import DatePicker from "react-datepicker";
 
-import {connect} from 'react-redux'
+import "react-datepicker/dist/react-datepicker.css";
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(styles);
 
 
- function CreateCampaign(props) {
+function CreateCampaign(props) {
 
-   // GLOBAL STATE 
-   const [nameCampaign, setNameCampaign] = useState('')
-   const [dateStart, setDateStart] = useState('')
-   const [description, setDescription] = useState('')
-   const [audience, setAudience] = useState('')
-   const [uploadDoc, setUploadDoc] = useState('')
+    // GLOBAL STATE 
+    const [nameCampaign, setNameCampaign] = useState('')
+    const [description, setDescription] = useState('')
+    const [audience, setAudience] = useState('')
+    const [uploadDoc, setUploadDoc] = useState('')
+    const [dateStart, setStartDate] = useState(new Date());
+    const [dateEnd, setEndDate] = useState(new Date());
+
 
     var handleSubmitCampaign = async () => {
 
         const data = await fetch('/addcampaign', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&descriptionFromFront=${description}&audienceFromFront=${audience}&uploadDocFromFront=${uploadDoc}`
+            body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceFromFront=${audience}&uploadDocFromFront=${uploadDoc}&token=${props.token}`
         })
 
         console.log(data.body + "HELLO add campaign")
@@ -87,7 +91,7 @@ const useStyles = makeStyles(styles);
                                     </CardHeader>
                                     <CardBody>
 
-                                        <CustomInput inputProps={{ onChange:(e)  => setNameCampaign(e.target.value), }}
+                                        <CustomInput inputProps={{ onChange: (e) => setNameCampaign(e.target.value), }}
                                             labelText="Campaign name"
                                             id="nameCampaign"
                                             formControlProps={{
@@ -95,15 +99,13 @@ const useStyles = makeStyles(styles);
                                             }}
                                         />
 
-                                        <CustomInput inputProps={{ onChange:(e) => setDateStart(e.target.value), }}
-                                            labelText="Date begining"
-                                            id="dateStart"
-                                            formControlProps={{
-                                                fullWidth: true
-                                            }}
-                                        />
+                                            {/* Penser à mettre au format FR et à créer des conditions pour ne pas pouvoir mettre anterieur.  */}
+                                            <DatePicker selected={dateStart} onChange={date => setStartDate(date)} />
 
-                                        <CustomInput  inputProps={{ onChange:(e) => setDescription(e.target.value), }}
+                                            <DatePicker selected={dateEnd} onChange={date => setEndDate(date)} />
+
+
+                                        <CustomInput inputProps={{ onChange: (e) => setDescription(e.target.value), }}
                                             labelText="Description"
                                             id="description"
                                             formControlProps={{
@@ -111,16 +113,16 @@ const useStyles = makeStyles(styles);
                                             }}
                                         />
 
-                                        <CustomInput inputProps={{ onChange:(e) => setAudience(e.target.value), }}
+                                        <CustomInput inputProps={{ onChange: (e) => setAudience(e.target.value), }}
                                             labelText="Audience criteria"
                                             id="audience"
                                             formControlProps={{
                                                 fullWidth: true
-                                            }}
+                                                                                }}
                                         />
 
 
-                                        <CustomInput inputProps={{ onChange:(e)  => setUploadDoc(e.target.value), }}
+                                        <CustomInput inputProps={{ onChange: (e) => setUploadDoc(e.target.value), }}
                                             labelText="Upload document"
                                             id="uploadDoc"
                                             formControlProps={{
@@ -146,21 +148,21 @@ const useStyles = makeStyles(styles);
     );
 }
 
-function mapStateToProps(state){
-    return {token: state.token}
-  }
+function mapStateToProps(state) {
+    return { token: state.token }
+}
 
-  function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     return {
-      addToCampaignList: function(campaign){
-        dispatch({type: 'addCampaign',
-          campaignAdded: campaign
-        })
-      }
+        addToCampaignList: function (campaign) {
+            dispatch({
+                type: 'addCampaign',
+                campaignAdded: campaign
+            })
+        }
     }
-  }
-  export default connect(
+}
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CreateCampaign)
-  
+)(CreateCampaign)
