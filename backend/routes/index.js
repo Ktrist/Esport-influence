@@ -172,11 +172,12 @@ router.post('/sign-in', async function (req, res, next) {
 router.post('/addcampaign', async function(req, res, next) {
   
   // We want to update our onGoingTicket for our user
-  var user = await userModel.findOne({token: "IT7ulXMSbTW5pcaJS7IB9mBp5HtbbSKY"})
+  var user = await userModel.findOne({token:req.body.token})
   
    user.fk_campagne_owner.push({
     campaignName: req.body.nameCampaignFromFront,
     dateStart: req.body.dateStartFromFront,
+    dateEnd: req.body.dateEndFromFront,
     description: req.body.descriptionFromFront,
     audienceCriteria: req.body.audienceFromFront,
     uploadedDoc: req.body.uploadDocFromFront
@@ -186,7 +187,7 @@ router.post('/addcampaign', async function(req, res, next) {
 
   console.log(userSaved)
 
-  res.json({token : userSaved.token})
+  res.json({userSaved})
   
 });
 module.exports = router;
