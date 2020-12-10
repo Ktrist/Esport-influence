@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {Link, Redirect,useParams} from 'react-router-dom'
+import { connect } from 'react-redux'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -29,6 +30,18 @@ export default function CampaignApply(props) {
     // const [redirect, setRedirect] = useState(false)
     const params = useParams();
     console.log("router", params.id)
+
+    // var handleApplyCampaign = async () => {
+
+    //     const data = await fetch('/apply-to-campaign', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //         body: `Brand_id=${props.Brand_id}&influenceur_id=${props.influenceur_id}
+    //     })
+
+    //     console.log(data.body + "HELLO add campaign")
+
+    // }
 
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
     setTimeout(function () {
@@ -86,3 +99,13 @@ export default function CampaignApply(props) {
 
     );
 }
+
+// function mapStateToProps(state) {
+//     return { token: state.token }
+// }
+
+
+//  connect(
+//     mapStateToProps,
+//     null
+// )(CampaignApply)

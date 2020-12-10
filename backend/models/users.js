@@ -2,19 +2,19 @@ const mongoose = require('mongoose')
 
 //Campagne
 
-const campagne = mongoose.Schema({
-    campaignName:String,
-    description:String,
-    dateStart:Date,
-    dateEnd:Date,
-    status:String,
-    audienceCriteria:String,
-    uploadedDoc:String,
-    public_id_doc:String,
-    id_influenceur_participant:String,
+// const campagne = mongoose.Schema({
+//     campaignName:String,
+//     description:String,
+//     dateStart:Date,
+//     dateEnd:Date,
+//     status:String,
+//     audienceCriteria:String,
+//     uploadedDoc:String,
+//     public_id_doc:String,
+//     id_influenceur_participant:String,
     
 
-})
+// })
 
 // User
 const userSchema = mongoose.Schema({
@@ -31,7 +31,8 @@ const userSchema = mongoose.Schema({
     numberFollower:Number,
     favoriteGame:String,
     urlSocialNetwork:String,
-    fk_campagne_owner:[campagne]
+    // brand_id:String,
+    campaign_id:{ type: mongoose.Schema.Types.ObjectId, ref: 'campaigns'}
 })
 
 const userModel = mongoose.model('users', userSchema)
