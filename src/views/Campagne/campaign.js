@@ -82,13 +82,13 @@ function Campaign(props) {
       <img
         style={{height: "180px", width: "100%", display: "block"}}
         className={classes.imgCardTop}
-        src='/generique.jpg'
+        src="..."
         alt="Card-img-cap"
       />
         <CardBody>
           <h4 className={classes.cardTitle}>{props.campaignName}</h4>
           <p>{props.campaignDesc}</p>
-          <Link to = {"/campaign-apply/"+i._id}><Button color="primary">Select Campaign</Button></Link>
+          <Link to = {`/campaign-apply/${props.campaignId}`}><Button color="primary">Select Campaign</Button></Link>
         </CardBody>
       </Card>
     </Col >
