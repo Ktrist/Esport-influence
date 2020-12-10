@@ -33,7 +33,7 @@ const [campaignList, setCampaignList] = useState([])
 useEffect(async () => {
     const response = await fetch('/addcampaign')
     const jsonResponse = await response.json()
-    setCampaignList(jsonResponse.campaign)
+    setCampaignList(jsonResponse.campaignListItem)
   }, [])
 
 //*** */
@@ -58,7 +58,7 @@ useEffect(async () => {
     // ]
 
     var campaignListItems = campaignList.map((campaign, i) => {
-        return (<Campaign key={i} campaignName={campaign.name} campaignDesc={campaign.desc} campaignImg={campaign.img} globalRating={campaign.note} globalCountRating={campaign.vote} />)
+        return (<Campaign key={i} campaignName={campaign.campaignName} campaignDesc={campaign.description} campaignImg={campaign.img} globalRating={campaign.note} globalCountRating={campaign.vote} />)
     })
 
 
