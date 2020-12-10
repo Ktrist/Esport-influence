@@ -1,0 +1,58 @@
+.MuiPickersUtilsProvider {
+    color: blue;
+}
+
+body {
+    color: rgb(221, 0, 0);
+}
+
+.dateColor {
+    color: "green"
+}
+
+.MuiInputBase-input {
+    color: white !important
+}
+
+.MuiInput-input {
+    color: white !important
+}
+
+.MuiInputBase-inputAdornedEnd {
+    color: white !important
+}
+
+.MuiInputLabel-animated {
+    color: grey !important
+}
+
+.MuiSvgIcon-root {
+    color: white !important
+}
+
+.MuiInputLabel-outlined {
+    margin-top: 15px
+}
+
+.MuiOutlinedInput-root{
+    width: 500px;
+    margin-top: 10px;
+}
+
+.Mui-OutlinedInput-multiline {
+    color: purple !important
+}
+
+#standard-select-currency-helper-text {
+    color: white !important
+}
+
+/* MuiFormControl-root MuiTextField-root */
+
+.MuiTextField-root {
+    margin-left: 100px
+}
+
+.size-subscribers{
+    margin-left: 300px
+}

@@ -27,6 +27,7 @@ import {Provider} from 'react-redux'
 
 import SelectCampagne from "views/Campagne/SelectCampagne.js";
 
+
 var hist = createBrowserHistory();
 
 const store = createStore(combineReducers({token, campaign}))
@@ -45,10 +46,11 @@ ReactDOM.render(
       <Route path="/mynetwork" component={MyNetwork}/>
       <Route path="/messaging" component={Messaging}/>
       <Route path="/login-messagerie" component={Login}/>
-      <Route path="/" component={Components} />
+      <Route path="/" component={LandingPage} />
     </Switch>
   </Router>
   </Provider>
 ,
   document.getElementById("root")
 );
+
