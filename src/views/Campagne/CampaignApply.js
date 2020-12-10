@@ -86,3 +86,7 @@ export default function CampaignApply(props) {
 
     );
 }
+
+function mapStateToProps(state) {
+    return { token: state.token }
+}

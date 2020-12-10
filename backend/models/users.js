@@ -13,7 +13,6 @@ const campagne = mongoose.Schema({
     public_id_doc:String,
     id_influenceur_participant:String,
     
-
 })
 
 // User
