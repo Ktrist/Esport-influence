@@ -82,7 +82,7 @@ function Campaign(props) {
       <img
         style={{height: "180px", width: "100%", display: "block"}}
         className={classes.imgCardTop}
-        src="..."
+        src='/generique.jpg'
         alt="Card-img-cap"
       />
         <CardBody>

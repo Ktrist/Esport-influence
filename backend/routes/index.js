@@ -191,4 +191,12 @@ router.post('/addcampaign', async function (req, res, next) {
   console.log('camp+user', campaignSave)
 });
 
+
+router.get('/addcampaign', async function(req, res, next) {
+
+  var campaignListItem = await campaignModel.find()
+
+  res.json({campaignListItem})
+});
+
 module.exports = router;
