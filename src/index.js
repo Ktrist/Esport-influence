@@ -13,16 +13,11 @@ import LoginPage from "views/LoginPage/LoginPage.js";
 import SignUpBrand from "views/signUp/SignUpBrand.js"
 import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
 import CreateCampaign from "views/Campagne/CreateCampaign.js"
-<<<<<<< HEAD
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-=======
 import MyNetwork from 'views/MessengerPage/Components/MyNetwork';
 import Messaging from 'views/MessengerPage/Components/Messaging';
 import Login from 'views/MessengerPage/Components/Login';
 
 import './views/MessengerPage/App.css'
->>>>>>> 3c9d40497d24262f4cfc746acb6f942e289dcff8
 
 import token from './reducers/token'
 import campaign from './reducers/campaign'

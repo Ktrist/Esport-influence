@@ -189,6 +189,13 @@ router.post('/addcampaign', async function(req, res, next) {
   console.log(userSaved)
 
   res.json({userSaved})
-  
+
+  router.get('/listcampaign', async function(req, res, next) {
+    var user = await userModel.find({})
+
+  })
+
+
 });
+
 module.exports = router;
