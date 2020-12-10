@@ -6,7 +6,7 @@ const encBase64 = require('crypto-js/enc-base64');
 var mongoose = require('mongoose');
 
 const userModel = require('../models/users');
-
+const campaignModel = require('../models/campaigns');
 
 /* GET home page. */
 
@@ -168,27 +168,42 @@ router.post('/sign-in', async function (req, res, next) {
 
 
 })
+router.post('/addcampaign', async function (req, res, next) {
 
-router.post('/addcampaign', async function(req, res, next) {
-  
-  // We want to update our onGoingTicket for our user
-  var user = await userModel.findOne({token:req.body.token})
-  
-   user.fk_campagne_owner.push({
+  var user = await userModel.findOne({ token: req.body.token })
+  var campaign = new campaignModel({
     campaignName: req.body.nameCampaignFromFront,
     dateStart: req.body.dateStartFromFront,
     dateEnd: req.body.dateEndFromFront,
-    status:'created',
+    status: 'created',
     description: req.body.descriptionFromFront,
     audienceCriteria: req.body.audienceFromFront,
-    uploadedDoc: req.body.uploadDocFromFront
+    uploadedDoc: req.body.uploadDocFromFront,
+    brand_id: user._id // id de la marque récupérer a la ligne 173 avec le token 
   })
+  var campaignSave = await campaign.save()
+  console.log("campaignSaved", campaignSave)
+  let insertId = await userModel.findOneAndUpdate({ token: req.body.token }, { campaign_id: campaignSave._id }) // ajouter la nouvelle id de la creation de campagne
 
-  var userSaved = await user.save()
+  console.log('insertId', insertId)
 
-  console.log(userSaved)
-
-  res.json({userSaved})
-  
+  res.json({ campaignSave })
+  console.log('camp+user', campaignSave)
 });
+
+
+router.post('/applycampaign', async function (req, res, next) {
+
+  var user = await userModel.findOne({ token: req.body.token })
+
+  let insertIdC = await campaignModel.findOneAndUpdate({ _id: req.params.id }, { influencer_id: user._id }) // ajouter la nouvelle id de la creation de campagne
+
+
+ 
+
+  res.json({  })
+  console.log('camp+user')
+});
+
+
 module.exports = router;
