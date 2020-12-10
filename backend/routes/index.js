@@ -206,4 +206,11 @@ router.post('/applycampaign', async function (req, res, next) {
 });
 
 
+router.get('/addcampaign', async function(req, res, next) {
+
+  var campaignListItem = await campaignModel.find()
+
+  res.json({campaignListItem})
+});
+
 module.exports = router;
