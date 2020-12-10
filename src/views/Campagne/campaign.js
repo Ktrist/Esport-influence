@@ -1,4 +1,5 @@
 import React, { useState }  from 'react';
+import {Link, Redirect,useParams} from 'react-router-dom'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -87,7 +88,7 @@ function Campaign(props) {
         <CardBody>
           <h4 className={classes.cardTitle}>{props.campaignName}</h4>
           <p>{props.campaignDesc}</p>
-          <Button color="primary">Select Campaign</Button>
+          <Link to = {"/campaign-apply/"+i._id}><Button color="primary">Select Campaign</Button></Link>
         </CardBody>
       </Card>
     </Col >
