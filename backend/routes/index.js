@@ -216,7 +216,7 @@ router.get('/get-influencer-request-list/', async function(req, res, next) {
   var returnCampaignDetail = await campaignModel.findOne({_id: brand._id })
 
 
-  console.log('campagnlistrequest', returnCampaignDetail)
+  console.log('campagnlistrequest', returnCampaignDetail, brand)
   
   res.json({returnCampaignDetail})
 });
