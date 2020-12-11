@@ -76,14 +76,10 @@ function LoginPage(props) {
     return <Redirect to='/select-campaign' />
 
   }
-
   
-
   var tabErrorsSignin = listErrorsSignIn.map((error,i) => {
     return(<p>{error}</p>)
   })
-
-
 
 
   return (
@@ -141,13 +137,11 @@ function LoginPage(props) {
                   </CardFooter>
                 </form>
               </Card>
+
             </GridItem>
           </GridContainer>
         </div>
       </div>
-{/* { body.role =='brand' ?  <Redirect to="/choiceinfluencer" /> : <Redirect to="/select-campaign" />} */}
-       {roleState ==='brand'? <Redirect to="/choiceinfluencer" /> : null  }
-       {roleState ==='influencer'? <Redirect to="/select-campaign" /> : null  }
 
 
     </div>

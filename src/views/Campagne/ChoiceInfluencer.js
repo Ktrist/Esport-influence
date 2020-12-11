@@ -58,7 +58,25 @@ function ChoiceInfluencer(props) {
   );
 }
 
-export default ChoiceInfluencer;
+function mapStateToProps(state) {
+    return { token: state.token }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addToCampaignList: function (campaign) {
+            dispatch({
+                type: 'addCampaign',
+                campaignAdded: campaign
+            })
+        }
+    }
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ChoiceInfluencer)
+
 
 
 
