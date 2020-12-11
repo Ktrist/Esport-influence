@@ -225,7 +225,7 @@ console.log(req.query)
 
   console.log('campagnlistrequest', returnCampaignDetail)
   
-  res.json({})
+  res.json({returnCampaignDetail})
 });
 
 
