@@ -32,6 +32,7 @@ import {Provider} from 'react-redux'
 import SelectCampagne from "views/Campagne/SelectCampagne.js";
 import CampaignApply from "views/Campagne/CampaignApply.js";
 
+
 var hist = createBrowserHistory();
 
 const store = createStore(combineReducers({token, campaign}))
@@ -52,10 +53,11 @@ ReactDOM.render(
       <Route path="/choiceinfluencer" exact component={ChoiceInfluencer}/>
       <Route path="/messaging" component={Messaging}/>
       <Route path="/login-messagerie" component={Login}/>
-      <Route path="/" component={Components} />
+      <Route path="/" component={LandingPage} />
     </Switch>
   </Router>
   </Provider>
 ,
   document.getElementById("root")
 );
+
