@@ -58,7 +58,7 @@ function LoginPage(props) {
     })
 
     const body = await data.json()
-
+console.log(body)
     setRoleState(body.user.role)
     
     if(body.result == true){

@@ -14,17 +14,16 @@ import { connect } from 'react-redux'
 
 
 function ChoiceInfluencer(props) {
-
-    const [requestList, setRequestList] = useState([])
+    const [returnCampaignDetail, setReturnCampaignDetail] = useState([])
 
     useEffect(() => {
         async function fetchData() {
-        const response = await fetch('/get-influencer-request-list')
+        const response = await fetch(`/get-influencer-request-list?brandToken=${props.token}`)
         const jsonResponse = await response.json()
-        setRequestList(jsonResponse.returnCampaignDetail)
+        setReturnCampaignDetail(jsonResponse.returnCampaignDetail)
     }
     fetchData()
-      }, [])
+      }, [props.token])
 
 
     const styles = {
@@ -46,8 +45,9 @@ function ChoiceInfluencer(props) {
         alt="Card-img-cap"
       />
         <CardBody>
-          <h4 className={classes.cardTitle}>{props.campaignName}</h4>
-          <p>{props.description}</p>
+          <h4 className={classes.cardTitle}>TT</h4>
+          <p>DD</p>
+
           <Button color="primary">Accepter</Button>
           <Button color="secondary">Refuser</Button>
 
