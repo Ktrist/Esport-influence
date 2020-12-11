@@ -19,7 +19,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
 import { influencerUsers } from "./Influencer-list";
 
-import './AppInfluence.css'
+// import './AppInfluence.css'
 
 
 export default function ProfilePage(props) {

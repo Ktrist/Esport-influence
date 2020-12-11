@@ -13,13 +13,16 @@ import LoginPage from "views/LoginPage/LoginPage.js";
 import SignUpBrand from "views/signUp/SignUpBrand.js"
 import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
 import CreateCampaign from "views/Campagne/CreateCampaign.js"
+import ChoiceInfluencer from "views/Campagne/ChoiceInfluencer.js"
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import MyNetwork from 'views/MessengerPage/Components/MyNetwork';
 import Messaging from 'views/MessengerPage/Components/Messaging';
 import Login from 'views/MessengerPage/Components/Login';
 import SelectInfluencer from 'views/SelectInfluencer/SelectInfluencer';
 
 import './views/MessengerPage/App.css'
-import './views/SelectInfluencer/App.css'
 
 import token from './reducers/token'
 import campaign from './reducers/campaign'
@@ -39,19 +42,18 @@ ReactDOM.render(
   <Provider store={store}>
   <Router history={hist}>
     <Switch>
-      <Route path="/landing-page" component={LandingPage} />
-      <Route path="/profile-page" component={ProfilePage} />
-      <Route path="/create-campaign" component={CreateCampaign} />
-      <Route path="/login-page" component={LoginPage} />
-      <Route path="/sign-up/brand" component={SignUpBrand} />
-      <Route path="/sign-up/influencer" component={SignUpInfluencer} />
-      <Route path="/select-campaign" component={SelectCampagne} />
-      <Route path="/campaign-apply/:id" component={CampaignApply} />
-      <Route path="/mynetwork" component={MyNetwork}/>
-      <Route path="/messaging" component={Messaging}/>
-      <Route path="/login-messagerie" component={Login}/>
-      <Route path="/select-influencer" component={SelectInfluencer}/>
-      <Route path="/" component={LandingPage} />
+      <Route path="/profile-page" exact component={ProfilePage} />
+      <Route path="/create-campaign" exact component={CreateCampaign} />
+      <Route path="/login-page" exact component={LoginPage} />
+      <Route path="/sign-up/brand" exact component={SignUpBrand} />
+      <Route path="/sign-up/influencer" exact component={SignUpInfluencer} />
+      <Route path="/select-campaign" exact component={SelectCampagne} />
+      <Route path="/select-influencer" exact component={SelectInfluencer} />
+      <Route path="/campaign-apply"  component={CampaignApply} />
+      <Route path="/mynetwork" exact component={MyNetwork}/>
+      <Route path="/messaging" exact component={Messaging}/>
+      <Route path="/login-messagerie" exact component={Login}/>
+      <Route path="/" exact component={LandingPage} />
     </Switch>
   </Router>
   </Provider>

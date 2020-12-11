@@ -9,12 +9,6 @@ const inboxSchema = mongoose.Schema({
 
 })
 
-const requestSchema = mongoose.Schema({
-    requestStatus:String,
-    user_id_sender:[userSchema],
-    user_id_receiver:[userSchema],
-
-})
 
 const inboxModel = mongoose.model('inbox', inboxSchema)
 
