@@ -50,7 +50,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
         setCampaignDetails(jsonResponse.returnCampaign)
     }
     getCampaign()
-      }, [params])
+      }, [params]) 
     
     
     const applyCampaign = async () => {

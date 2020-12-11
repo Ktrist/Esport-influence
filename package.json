@@ -5,7 +5,7 @@
   "private": true,
   "main": "src/index.js",
   "dependencies": {
-    "@date-io/date-fns": "^1.3.13",
+    "@date-io/date-fns": "^2.10.6",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",

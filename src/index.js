@@ -37,11 +37,59 @@ import CampaignApply from "views/Campagne/CampaignApply.js";
 var hist = createBrowserHistory();
 
 const store = createStore(combineReducers({token, campaign}))
+// const tokenLocal = localStorage.getItem('tokenLocal');
+// const role = localStorage.getItem('role')
+// const RenderRoute = () => {
+
+//   if(tokenLocal && role === "influencer") {
+//     return(
+//       <Switch>
+//                 <Route path="/login-page" exact component={LoginPage} />
+//         <Route path="/select-campaign" exact component={SelectCampagne} />
+//         <Route path="/campaign-apply/:id"  component={CampaignApply} />
+//         <Route path="/profile-page" exact component={ProfilePage} />
+//         <Route path="/sign-up/brand" exact component={SignUpBrand} />
+//         <Route path="/mynetwork" exact component={MyNetwork}/>
+//         <Route path="/messaging" exact component={Messaging}/>
+//         <Route path="/login-messagerie" exact component={Login}/>
+//          <Route path="/" exact component={LandingPage} />
+//         </Switch> 
+//         )}
+//         else if (tokenLocal && role === "brand") {
+//           return( 
+//             <Switch>
+//             <Route path="/choiceinfluencer" exact component={ChoiceInfluencer}/>
+//             <Route path="/login-page" exact component={LoginPage} />
+//             <Route path="/profile-page" exact component={ProfilePage} />
+//             <Route path="/sign-up/brand" exact component={SignUpBrand} />
+//             <Route path="/sign-up/influencer" exact component={SignUpInfluencer} />
+//             <Route path="/mynetwork" exact component={MyNetwork}/>
+//             <Route path="/messaging" exact component={Messaging}/>
+//             <Route path="/choiceinfluencer" exact component={ChoiceInfluencer}/>
+//             <Route path="/login-messagerie" exact component={Login}/>
+//             <Route path="/" exact component={LandingPage} />
+//             </Switch> 
+//              )} else  {
+  
+//               return(
+//                 <Switch>
+//                                   <Route path="/login-page" exact component={LoginPage} />
+
+                          {/* <Route path="/select-campaign" exact component={SelectCampagne} /> */}
+
+                  
+               {/* <Route path="/" exact component={LandingPage} /> */}
+                {/* <Route path="/login-page" exact component={LoginPage} /> */}
+            //     </Switch> 
+            //  )} 
+  
+// }
 
 ReactDOM.render(
   <Provider store={store}>
   <Router history={hist}>
-    <Switch>
+  {/* {RenderRoute()}  */}
+  <Switch>
       <Route path="/profile-page" exact component={ProfilePage} />
       <Route path="/create-campaign" exact component={CreateCampaign} />
       <Route path="/login-page" exact component={LoginPage} />
@@ -52,11 +100,12 @@ ReactDOM.render(
       <Route path="/campaign-apply"  component={CampaignApply} />
       <Route path="/mynetwork" exact component={MyNetwork}/>
       <Route path="/messaging" exact component={Messaging}/>
+      <Route path="/choiceinfluencer" exact component={ChoiceInfluencer}/>
       <Route path="/login-messagerie" exact component={Login}/>
       <Route path="/" exact component={LandingPage} />
     </Switch>
   </Router>
-  </Provider>
+  // </Provider>
 ,
   document.getElementById("root")
 );
