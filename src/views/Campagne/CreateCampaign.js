@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {Link, Redirect} from 'react-router-dom'
+import React, { useState, useRef } from "react";
+import { Link, Redirect } from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -40,305 +40,303 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 
 
+
+
+
 const defaultMaterialTheme = createMuiTheme({
-    palette: {
-      primary: purple,
-    },
-  });
+  palette: {
+    primary: purple,
+  },
+});
 
 const useStyles = makeStyles(styles);
 
 const themeStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'white',
       },
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '25ch',
+      '&:hover fieldset': {
+        borderColor: 'purple',
       },
-      '& label.Mui-focused': {
-        color: 'green',
+      '&.Mui-focused fieldset': {
+        borderColor: 'purple',
       },
-      '& .MuiInput-underline:after': {
-        borderBottomColor: 'green',
-      },
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: 'white',
-        },
-        '&:hover fieldset': {
-          borderColor: 'purple',
-        },
-        '&.Mui-focused fieldset': {
-          borderColor: 'purple',
-        },
-    }},
-    // input: {
-    //   display: 'show',
-    // },
-  }));
+    }
+  },
+  // input: {
+  //   display: 'show',
+  // },
+}));
+
+
 
 
 function CreateCampaign(props) {
 
-    // GLOBAL STATE 
-    const [nameCampaign, setNameCampaign] = useState('')
-    const [description, setDescription] = useState('Controlled')
-    const [audience, setAudience] = useState('')
-    const [uploadDoc, setUploadDoc] = useState('')
-    const [dateStart, setStartDate] = useState(new Date());
-    const [dateEnd, setEndDate] = useState(new Date());
+
+  // GLOBAL STATE 
+  const [nameCampaign, setNameCampaign] = useState('')
+  const [description, setDescription] = useState('Controlled')
+  const [audience, setAudience] = useState('')
+  const [uploadDoc, setUploadDoc] = useState('')
+  const [dateStart, setStartDate] = useState(new Date());
+  const [dateEnd, setEndDate] = useState(new Date());
 
 
-    var handleSubmitCampaign = async () => {
 
-        const data = await fetch('/addcampaign', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceFromFront=${audience}&uploadDocFromFront=${uploadDoc}&token=${props.token}`
-        })
+  var handleSubmitCampaign = async () => {
 
-        console.log(data.body + "HELLO add campaign")
+    const data = await fetch('/addcampaign', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceFromFront=${audience}&uploadDocFromFront=${uploadDoc}&token=${props.token}`
+    })
 
-    }
+    console.log(data.body + "HELLO add campaign")
 
-    const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-    setTimeout(function () {
-        setCardAnimation("");
-    }, 700);
-    const classes = useStyles();
-    const themeClasses = themeStyles();
-    const { ...rest } = props;
+  }
 
-    const minSubscribers = [
-        {
-          value: 'Number',
-          label: '0 - 500',
-        },
-        {
-          value: 'EUR',
-          label: '500 - 1000',
-        },
-        {
-          value: 'BTC',
-          label: '1000 - 5000 ',
-        },
-        {
-          value: 'JPY',
-          label: '10k+',
-        },
-      ];
+  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  setTimeout(function () {
+    setCardAnimation("");
+  }, 700);
+  const classes = useStyles();
+  const themeClasses = themeStyles();
+  const { ...rest } = props;
 
-      const maxSubscribers = [
-        {
-          value: 'Number',
-          label: '500 - 1000',
-        },
-        {
-          value: 'EUR',
-          label: '1000 - 5000',
-        },
-        {
-          value: 'BTC',
-          label: '5000 - 10000 ',
-        },
-        {
-          value: 'JPY',
-          label: '10k+',
-        },
-      ];
-    
-          return (
-        <div>
-            <Header
-                absolute
-                color="transparent"
-                brand="Esport-Influence"
-                rightLinks={<HeaderLinks />}
-                leftLinks={"/landing-page"}
-                fixed
-                changeColorOnScroll={{
-                    height: 100,
-                    color: "dark"
-                }}
-                {...rest}
-            />
-            <div
-                className={classes.pageHeader}
-                style={{
-                    backgroundImage: "url(" + image + ")",
-                    backgroundSize: "cover",
-                    backgroundPosition: "top center"
-                }}
-            >
-                <div className={classes.container}>
-                    <GridContainer justify="center">
-                        <GridItem xs={6} sm={6} md={6}>
-                            <Card className={classes[cardAnimaton]} style={{ backgroundColor: "transparent", color: "white" }}>
-                                <form className={classes.form}>
-                                    <CardHeader className={classes.CardHeader}>
-                                        <h2 className={classes.title}>Create your Campaign</h2>
-                                    </CardHeader>
-                                    <CardBody>
+  const minSubscribers = [
+    {
+      value: 'Number',
+      label: '0 - 500',
+    },
+    {
+      value: 'EUR',
+      label: '500 - 1000',
+    },
+    {
+      value: 'BTC',
+      label: '1000 - 5000 ',
+    },
+    {
+      value: 'JPY',
+      label: '10k+',
+    },
+  ];
 
-                                        <CustomInput inputProps={{ onChange: (e) => setNameCampaign(e.target.value), }}
-                                            labelText="Campaign name"
-                                            id="nameCampaign"
-                                            formControlProps={{
-                                                fullWidth: true
-                                            }}
-                                        />
+  const maxSubscribers = [
+    {
+      value: 'Number',
+      label: '500 - 1000',
+    },
+    {
+      value: 'EUR',
+      label: '1000 - 5000',
+    },
+    {
+      value: 'BTC',
+      label: '5000 - 10000 ',
+    },
+    {
+      value: 'JPY',
+      label: '10k+',
+    },
+  ];
 
-                                            {/* Penser à mettre au format FR et à créer des conditions pour ne pas pouvoir mettre anterieur.  */}
-                                            <div>
-                                            <MuiPickersUtilsProvider utils={DateFnsUtils} >
-                                                <Grid container justify="space-around">
-                                                <ThemeProvider theme={defaultMaterialTheme}>
-                                                    <KeyboardDatePicker
-                                                    
-                                                    variant="inline"
-                                                    format="MM/dd/yyyy"
-                                                    margin="normal"
-                                                    id="start-date"
-                                                    label="Start Date"
-                                                    value={dateStart}
-                                                    onChange={date => setStartDate(date)}
-                                                    KeyboardButtonProps={{
-                                                        'aria-label': 'change date',
-                                                    }}
-                                                    />
-                                                    </ThemeProvider>
+  console.log(uploadDoc);
 
-                                                    <ThemeProvider theme={defaultMaterialTheme}>
-                                                    <KeyboardDatePicker
-                                                    margin="normal"
-                                                    id="end-date"
-                                                    label="End Date"
-                                                    format="MM/dd/yyyy"
-                                                    value={dateEnd}
-                                                    onChange={date => setEndDate(date)}
-                                                    KeyboardButtonProps={{
-                                                        'aria-label': 'change date',
-                                                    }}
-                                                    />
-                                                    </ThemeProvider>
-                                                </Grid>
-                                                </MuiPickersUtilsProvider>
-                                                </div>
+  return (
+    <div>
+      <Header
+        absolute
+        color="transparent"
+        brand="Esport-Influence"
+        rightLinks={<HeaderLinks />}
+        leftLinks={"/landing-page"}
+        fixed
+        changeColorOnScroll={{
+          height: 100,
+          color: "dark"
+        }}
+        {...rest}
+      />
+      <div
+        className={classes.pageHeader}
+        style={{
+          backgroundImage: "url(" + image + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "top center"
+        }}
+      >
+        <div className={classes.container}>
+          <GridContainer justify="center">
+            <GridItem xs={6} sm={6} md={6}>
+              <Card className={classes[cardAnimaton]} style={{ backgroundColor: "transparent", color: "white" }}>
+                <form className={classes.form}>
+                  <CardHeader className={classes.CardHeader}>
+                    <h2 className={classes.title}>Create your Campaign</h2>
+                  </CardHeader>
+                  <CardBody>
 
+                    <CustomInput inputProps={{ onChange: (e) => setNameCampaign(e.target.value), }}
+                      labelText="Campaign name"
+                      id="nameCampaign"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
 
-                                        {/* <CustomInput inputProps={{ onChange: (e) => setDescription(e.target.value), }}
-                                            labelText="Description"
-                                            id="description"
-                                            formControlProps={{
-                                                fullWidth: true
-                                            }}
-                                        /> */}
+                    {/* Penser à mettre au format FR et à créer des conditions pour ne pas pouvoir mettre anterieur.  */}
+                    <div>
+                      <MuiPickersUtilsProvider utils={DateFnsUtils} >
+                        <Grid container justify="space-around">
+                          <ThemeProvider theme={defaultMaterialTheme}>
+                            <KeyboardDatePicker
 
-                                        <form className={themeClasses.root} noValidate autoComplete="off">
-                                            <TextField
-                                            id="outlined-multiline-static"
-                                            label="Description"
-                                            multiline
-                                            rows={4}
-                                            defaultValue="Describe your campaign"
-                                            variant="outlined"
-                                            />
-                                        </form>
+                              variant="inline"
+                              format="MM/dd/yyyy"
+                              margin="normal"
+                              id="start-date"
+                              label="Start Date"
+                              value={dateStart}
+                              onChange={date => setStartDate(date)}
+                              KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                              }}
+                            />
+                          </ThemeProvider>
 
+                          <ThemeProvider theme={defaultMaterialTheme}>
+                            <KeyboardDatePicker
+                              margin="normal"
+                              id="end-date"
+                              label="End Date"
+                              format="MM/dd/yyyy"
+                              value={dateEnd}
+                              onChange={date => setEndDate(date)}
+                              KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                              }}
+                            />
+                          </ThemeProvider>
+                        </Grid>
+                      </MuiPickersUtilsProvider>
+                    </div>
+                    <form className={themeClasses.root} noValidate autoComplete="off">
+                      <TextField
+                        onChange={(e) => setDescription(e.target.value)}
+                        id="outlined-multiline-static"
+                        label="Description"
+                        multiline
+                        rows={4}
+                        defaultValue="Describe your campaign"
+                        variant="outlined"
+                      />
+                    </form>
 
-                                        {/* <CustomInput inputProps={{ onChange: (e) => setAudience(e.target.value), }}
-                                            labelText="Audience criteria"
-                                            id="audience"
-                                            formControlProps={{
-                                                fullWidth: true
-                                                                                }}
-                                        /> */}
+                    <form noValidate autoComplete="off">
+                      <div style={{ paddingTop: '30px' }}>
+                        <TextField className="size-subscribers"
+                          id="standard-select-currency"
+                          select
+                          label="Subscribers min."
+                          value={audience}
+                          onChange={setAudience}
+                          helperText="Please select min/max subscribers"
+                        >
+                          {minSubscribers.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                              {option.label}
+                            </MenuItem>
+                          ))}
+                        </TextField>
+                        <TextField
+                          id="standard-select-currency-max"
+                          select
+                          label="Subscribers max."
+                          value={audience}
+                          onChange={setAudience}
+                          helperText="Please select your max. subscribers"
+                        >
+                          {maxSubscribers.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                              {option.label}
+                            </MenuItem>
+                          ))}
+                        </TextField>
+                      </div>
 
-                                        <form noValidate autoComplete="off">
-                                            <div style={{paddingTop:'30px'}}>
-                                                <TextField className="size-subscribers"
-                                                id="standard-select-currency"
-                                                select
-                                                label="Subscribers min."
-                                                value={audience}
-                                                onChange={setAudience}
-                                                helperText="Please select min/max subscribers"
-                                                >
-                                                {minSubscribers.map((option) => (
-                                                    <MenuItem key={option.value} value={option.value}>
-                                                    {option.label}
-                                                    </MenuItem>
-                                                ))}
-                                                </TextField>
-                                                <TextField
-                                                id="standard-select-currency-max"
-                                                select
-                                                label="Subscribers max."
-                                                value={audience}
-                                                onChange={setAudience}
-                                                helperText="Please select your max. subscribers"
-                                                >
-                                                {maxSubscribers.map((option) => (
-                                                    <MenuItem key={option.value} value={option.value}>
-                                                    {option.label}
-                                                    </MenuItem>
-                                                ))}
-                                                </TextField>
-                                            </div>
-                                        </form>
+                    </form>
 
-                                        <div className={classes.root} style={{marginTop: '80px'}}
-                                        >{"Share your campaign files"}
-                                        </div>
-                                        <div className={themeClasses.root} style={{marginBottom: '80px'}}>
-                                        <input
-                                        accept="image/*"
+                    <div className={classes.root} style={{ marginTop: '80px' }}
+                    >{"Share your campaign files"}
+                    </div>
 
-                                        // UPLOAD DOC
-                                        value={setUploadDoc}
-                                        className={themeClasses.input}
-                                        id="contained-button-file"
-                                        multiple
-                                        type="file"
-                                        />
-                                        </div>
+                    <div className={themeClasses.root} style={{ marginBottom: '80px' }}>
 
-                                    </CardBody>
+                      <input 
+                      onChange ={(e) => console.log(e.target)}
+                        accept="image/*"
+                        className={classes.input}
+                        style={{ display: 'none' }}
+                        id="raised-button-file"
+                        multiple
+                        type="file"
+                      />
+                      <label htmlFor="raised-button-file">
+                        <Button variant="raised" component="span" className={classes.button}>
+                          Upload
+                          </Button>
+                      </label>
+                    </div>
+                  </CardBody>
 
-                                    <CardFooter className={classes.cardFooter}>
-                                        <Button onClick={() => handleSubmitCampaign()} color="primary" size="lg">
-                                            Confirm
-                                        </Button>
-                                    </CardFooter>
-                                </form>
-                            </Card>
-                        </GridItem>
-                    </GridContainer>
-                </div>
-            </div>
+                  <CardFooter className={classes.cardFooter}>
+                    <Button onClick={() => handleSubmitCampaign()} color="primary" size="lg">
+                      Confirm
+                      </Button>
+                  </CardFooter>
+                </form>
+              </Card>
+            </GridItem>
+          </GridContainer>
         </div>
+      </div>
+    </div>
 
 
-    );
+  );
 }
 
 function mapStateToProps(state) {
-    return { token: state.token }
+  return { token: state.token }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        addToCampaignList: function (campaign) {
-            dispatch({
-                type: 'addCampaign',
-                campaignAdded: campaign
-            })
-        }
+  return {
+    addToCampaignList: function (campaign) {
+      dispatch({
+        type: 'addCampaign',
+        campaignAdded: campaign
+      })
     }
+  }
 }
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(CreateCampaign)

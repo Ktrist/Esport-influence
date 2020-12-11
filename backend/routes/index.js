@@ -5,6 +5,7 @@ const SHA256 = require('crypto-js/sha256');
 const encBase64 = require('crypto-js/enc-base64');
 var mongoose = require('mongoose');
 
+
 const userModel = require('../models/users');
 const campaignModel = require('../models/campaigns');
 
@@ -189,6 +190,34 @@ router.post('/addcampaign', async function (req, res, next) {
 
   res.json({ campaignSave })
   console.log('camp+user', campaignSave)
+
+  
+});
+
+router.get('/get-campaign-details/:id', async function(req, res, next) {
+
+  var returnCampaign = await campaignModel.findOne({_id: req.params.id })
+  console.log('params', req.params)
+  res.json({returnCampaign})
+});
+
+router.post('/campaign-apply', async function(req, res, next) {
+  console.log('req', req.body)
+  var influencer = await userModel.findOne({ token: req.body.token })
+  console.log('influ', influencer)
+  let updatedCampaign = await campaignModel.findOneAndUpdate({ _id: req.body.id }, { influencer_id: influencer._id, status:"waiting" })
+  res.json({updatedCampaign})
+});
+
+
+router.post('/applycampaign', async function (req, res, next) {
+
+  var user = await userModel.findOne({ token: req.body.token })
+
+  let insertIdC = await campaignModel.findOneAndUpdate({ _id: req.params.id }, { influencer_id: user._id }) // ajouter la nouvelle id de la creation de campagne
+
+  res.json({  })
+  console.log('camp+user')
 });
 
 
@@ -198,5 +227,7 @@ router.get('/addcampaign', async function(req, res, next) {
 
   res.json({campaignListItem})
 });
+
+
 
 module.exports = router;

@@ -29,7 +29,6 @@ export default function HeaderLinks(props) {
         <Button
           href="/sign-up/brand"
           color="primary"
-          target="_blank"
           border
           className={classes.navLink}
         >
@@ -41,7 +40,6 @@ export default function HeaderLinks(props) {
         <Button
           href="/sign-up/influencer"
           color="primary"
-          target="_blank"
           border
           className={classes.navLink}
         >
@@ -53,7 +51,6 @@ export default function HeaderLinks(props) {
         <Button 
           href="/login-page"
           color="primary"
-          target="_blank"
           className={classes.navLink}
         >
           <PersonIcon className={classes.icons} /> Login

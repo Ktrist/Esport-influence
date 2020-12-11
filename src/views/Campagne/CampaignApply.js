@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Link, Redirect,useParams} from 'react-router-dom'
 import { connect } from 'react-redux'
 // @material-ui/core components
@@ -16,96 +16,86 @@ import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import {Col} from 'reactstrap';
+
 
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import CardHeader from "components/Card/CardHeader";
+
+
 
 import image from "assets/img/signup.jpg";
 
 const useStyles = makeStyles(styles);
 
 
-export default function CampaignApply(props) {
-    // const [redirect, setRedirect] = useState(false)
+ function CampaignApply(props) {
+    const [campaignDetails, setCampaignDetails] = useState([])
     const params = useParams();
-    console.log("router", params.id)
+    console.log("props.token", props.token)
 
-    // var handleApplyCampaign = async () => {
+    useEffect(() => {
+        async function getCampaign() {
+        const response = await fetch('/get-campaign-details/'+params.id)
+        const jsonResponse = await response.json()
+        console.log('jsonR',jsonResponse)
+        setCampaignDetails(jsonResponse.returnCampaign)
+    }
+    getCampaign()
+      }, [params])
+    
+    
+    const applyCampaign = async () => {
 
-    //     const data = await fetch('/apply-to-campaign', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //         body: `Brand_id=${props.Brand_id}&influenceur_id=${props.influenceur_id}
-    //     })
+        const data = await fetch('/campaign-apply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `id=${params.id}&token=${props.token}`
+        })
 
-    //     console.log(data.body + "HELLO add campaign")
+        console.log(data.body + "HELLO add campaign")
 
-    // }
+    }
+    
+  
 
-    const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-    setTimeout(function () {
-        setCardAnimation("");
-    }, 700);
+
+
+    // const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+    // setTimeout(function () {
+    //     setCardAnimation("");
+    // }, 700);
     const classes = useStyles();
-    const { ...rest } = props;
-    return (
-        <div>
-            <Header
-                absolute
-                color="transparent"
-                brand="Esport-Influence"
-                rightLinks={<HeaderLinks />}
-                fixed
-                changeColorOnScroll={{
-                    height: 100,
-                    color: "dark"
-                }}
-                {...rest}
-            />
-            <div
-                className={classes.pageHeader}
-                style={{
-                    backgroundImage: "url(" + image + ")",
-                    backgroundSize: "cover",
-                    backgroundPosition: "top center"
-                }}
-            >
-                <div className={classes.container}>                                       
-                              <CardHeader className={classes.CardHeader}>
-                                        <h2 className={classes.title}>Campaign Apply</h2>
-                                    </CardHeader>
-                                    <Card style={{display:"flex", flexDirection: 'column', marginBottom:'5px' ,justifyContent:'space-between', width: "20rem"}}>
-                                            <img
-                                                style={{height: "180px", width: "100%", display: "block"}}
-                                                className={classes.imgCardTop}
-                                                src="..."
-                                                alt="Card-img-cap"
-                                            />
-                                    <CardBody>
-                                        <h4 className={classes.cardTitle}>Card title</h4>
-                                        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <Button color="primary">Apply</Button>  
-                                    </CardBody>
-                                    </Card>
-                                    <CardFooter className={classes.cardFooter}>
-                                    </CardFooter>                    
-                    
-                </div>
-
-            </div>
-        </div>
+    // const { ...rest } = props;
+    const campaignReturn = (
+        <Col xs="12" lg="6" xl="4" key={params.id}>
+        <Card style={{ width: "20rem" }}>
+        <img
+          style={{height: "180px", width: "100%", display: "block"}}
+          className={classes.imgCardTop}
+          src="..."
+          alt="Card-img-cap"
+        />
+          <CardBody>
+            <h4 className={classes.cardTitle}>{campaignDetails.campaignName}</h4>
+            <p>{campaignDetails.description}</p>
+            <Button onClick={() =>applyCampaign()} color="primary">Apply Campaign</Button>
+          </CardBody>
+        </Card>
+      </Col >
+    )
+    return campaignDetails ? campaignReturn : <p>Loading</p>
+    }
+    
 
 
-    );
+function mapStateToProps(state) {
+    return { token: state.token }
 }
 
-// function mapStateToProps(state) {
-//     return { token: state.token }
-// }
 
-
-//  connect(
-//     mapStateToProps,
-//     null
-// )(CampaignApply)
+ export default connect(
+    mapStateToProps,
+    null
+)(CampaignApply)

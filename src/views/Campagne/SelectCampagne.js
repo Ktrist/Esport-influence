@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import {Link, Redirect} from 'react-router-dom'
+import Button from "components/CustomButtons/Button.js";
 import { Row } from 'reactstrap'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -28,15 +30,18 @@ function SelectCampagne(props) {
 
 const [campaignList, setCampaignList] = useState([])
 
-// TEST DATA BDD
 
-useEffect(async () => {
+
+useEffect(() => {
+    async function fetchData() {
     const response = await fetch('/addcampaign')
     const jsonResponse = await response.json()
     setCampaignList(jsonResponse.campaignListItem)
+}
+fetchData()
   }, [])
 
-//*** */
+
 
 
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
@@ -48,11 +53,12 @@ useEffect(async () => {
 
 
     var campaignListItems = campaignList.map((campaign, i) => {
-        return (<Campaign key={i} campaignName={campaign.campaignName} campaignDesc={campaign.description} campaignImg={campaign.img} globalRating={campaign.note} globalCountRating={campaign.vote} />)
+        return (<Campaign key={i} campaignId={campaign._id} campaignName={campaign.campaignName} campaignDesc={campaign.description} campaignImg={campaign.img} globalRating={campaign.note} globalCountRating={campaign.vote} />)
     })
 
     return (
         <div>
+            
             <Header
                 absolute
                 color="transparent"
@@ -74,12 +80,13 @@ useEffect(async () => {
                 }}
             >
                 <div className={classes.container}>
-
+               
                     <Row>
                         {campaignListItems}
                     </Row>
                 </div>  
             </div>
+            {/* <Redirect to="/campaign-apply/:id" />  */}
         </div>
 
 
