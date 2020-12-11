@@ -14,18 +14,17 @@ import { connect } from 'react-redux'
 
 
 function ChoiceInfluencer(props) {
+    const [returnCampaignDetail, setReturnCampaignDetail] = useState([])
 
-    const [requestList, setRequestList] = useState([])
-  
     useEffect(() => {
         async function fetchData() {
-        const response = await fetch('/get-influencer-request-list')
+        const response = await fetch(`/get-influencer-request-list?brandToken=${props.token}`)
         const jsonResponse = await response.json()
-        setRequestList(jsonResponse.returnCampaignDetail)
+        setReturnCampaignDetail(jsonResponse.returnCampaignDetail)
     }
   
     fetchData()
-      }, [])
+      }, [props.token])
 
 
     const styles = {
@@ -47,8 +46,9 @@ function ChoiceInfluencer(props) {
         alt="Card-img-cap"
       />
         <CardBody>
-          <h4 className={classes.cardTitle}>{props.campaignName}</h4>
-          <p>{props.description}</p>
+          <h4 className={classes.cardTitle}>TT</h4>
+          <p>DD</p>
+
           <Button color="primary">Accepter</Button>
           <Button color="secondary">Refuser</Button>
 
@@ -60,12 +60,22 @@ function ChoiceInfluencer(props) {
 }
 
 function mapStateToProps(state) {
-  return { token: state.token }
+    return { token: state.token }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        addToCampaignList: function (campaign) {
+            dispatch({
+                type: 'addCampaign',
+                campaignAdded: campaign
+            })
+        }
+    }
+}
 export default connect(
-  mapStateToProps,
-  null
+    mapStateToProps,
+    mapDispatchToProps
 )(ChoiceInfluencer)
 
 

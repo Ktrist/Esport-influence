@@ -210,18 +210,22 @@ router.post('/campaign-apply', async function(req, res, next) {
 });
 
 
-router.get('/get-influencer-request-list/', async function(req, res, next) {
+router.get('/get-influencer-request-list', async function(req, res, next) {
 
-  var brand = await userModel.findOne({ token: req.body.token })
+  var brand = await userModel.findOne({ token: req.query.brandToken })
 
-  // var brandId = brand._id 
-
-  var returnCampaignDetail = await campaignModel.findOne({_id: brand._id })
+console.log(req.query)
 
 
-  console.log('campagnlistrequest', returnCampaignDetail, brand)
+  // // var brandId = brand._id 
+  // console.log(brand)
+
+  var returnCampaignDetail = await campaignModel.findOne({brand_id: brand.id })
+
+
+  console.log('campagnlistrequest', returnCampaignDetail)
   
-  res.json({returnCampaignDetail})
+  res.json({})
 });
 
 

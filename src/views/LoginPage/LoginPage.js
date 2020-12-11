@@ -58,7 +58,7 @@ function LoginPage(props) {
     })
 
     const body = await data.json()
-
+console.log(body)
     setRoleState(body.user.role)
     
     if(body.result == true){
@@ -76,14 +76,10 @@ function LoginPage(props) {
     return <Redirect to='/select-campaign' />
 
   }
-
   
-
   var tabErrorsSignin = listErrorsSignIn.map((error,i) => {
     return(<p>{error}</p>)
   })
-
-
 
 
   return (
@@ -141,10 +137,16 @@ function LoginPage(props) {
                   </CardFooter>
                 </form>
               </Card>
+
             </GridItem>
           </GridContainer>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c09401e9e72b98ebde14af9e176ecac7045b584e
     </div>
   );
 }
