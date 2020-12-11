@@ -207,20 +207,6 @@ router.post('/campaign-apply', async function(req, res, next) {
 });
 
 
-router.post('/applycampaign', async function (req, res, next) {
-
-  var user = await userModel.findOne({ token: req.body.token })
-
-  let insertIdC = await campaignModel.findOneAndUpdate({ _id: req.params.id }, { influencer_id: user._id }) // ajouter la nouvelle id de la creation de campagne
-
-
- 
-
-  res.json({  })
-  console.log('camp+user')
-});
-
-
 router.get('/addcampaign', async function(req, res, next) {
 
   var campaignListItem = await campaignModel.find()
