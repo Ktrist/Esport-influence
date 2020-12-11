@@ -13,6 +13,11 @@ import LoginPage from "views/LoginPage/LoginPage.js";
 import SignUpBrand from "views/signUp/SignUpBrand.js"
 import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
 import CreateCampaign from "views/Campagne/CreateCampaign.js"
+<<<<<<< HEAD
+=======
+import ChoiceInfluencer from "views/Campagne/ChoiceInfluencer.js"
+
+>>>>>>> 4d69a2aa5186c35211e23a1839f542461e813f26
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MyNetwork from 'views/MessengerPage/Components/MyNetwork';
@@ -30,6 +35,7 @@ import {Provider} from 'react-redux'
 import SelectCampagne from "views/Campagne/SelectCampagne.js";
 import CampaignApply from "views/Campagne/CampaignApply.js";
 
+
 var hist = createBrowserHistory();
 
 const store = createStore(combineReducers({token, campaign}))
@@ -43,16 +49,18 @@ ReactDOM.render(
       <Route path="/create-campaign" component={CreateCampaign} />
       <Route path="/login-page" component={LoginPage} />
       <Route path="/sign-up/brand" component={SignUpBrand} />
-      <Route path="/sign-up/influencer" component={SignUpInfluencer} />
-      <Route path="/select-campaign" component={SelectCampagne} />
-      <Route path="/campaign-apply/:id" component={CampaignApply} />
-      <Route path="/mynetwork" component={MyNetwork}/>
+      <Route path="/sign-up/influencer" exact component={SignUpInfluencer} />
+      <Route path="/select-campaign" exact component={SelectCampagne} />
+      <Route path="/campaign-apply/:id" exact component={CampaignApply} />
+      <Route path="/mynetwork" exact component={MyNetwork}/>
+      <Route path="/choiceinfluencer" exact component={ChoiceInfluencer}/>
       <Route path="/messaging" component={Messaging}/>
       <Route path="/login-messagerie" component={Login}/>
-      <Route path="/" component={Components} />
+      <Route path="/" component={LandingPage} />
     </Switch>
   </Router>
   </Provider>
 ,
   document.getElementById("root")
 );
+
