@@ -30,8 +30,6 @@ function SelectCampagne(props) {
 
 const [campaignList, setCampaignList] = useState([])
 
-
-
 useEffect(() => {
     async function fetchData() {
     const response = await fetch('/addcampaign')

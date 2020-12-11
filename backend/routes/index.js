@@ -131,6 +131,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
 
 router.post('/sign-in', async function (req, res, next) {
 
+
   var result = false
   var user = null
   var error = []
@@ -143,10 +144,11 @@ router.post('/sign-in', async function (req, res, next) {
   }
 
   if (error.length == 0) {
-    const user = await userModel.findOne({
+    user = await userModel.findOne({
       email: req.body.emailFromFront,
     })
 
+console.log("log-user", user)
 
     if (user) {
       const passwordEncrypt = SHA256(req.body.passwordFromFront + user.salt).toString(encBase64)
@@ -164,6 +166,7 @@ router.post('/sign-in', async function (req, res, next) {
     }
   }
 
+  console.log("back", user, result)
 
   res.json({ result, user, error, token })
 
@@ -210,14 +213,22 @@ router.post('/campaign-apply', async function(req, res, next) {
 });
 
 
-router.post('/applycampaign', async function (req, res, next) {
+router.get('/get-influencer-request-list', async function(req, res, next) {
 
-  var user = await userModel.findOne({ token: req.body.token })
+  var brand = await userModel.findOne({ token: req.query.brandToken })
 
-  let insertIdC = await campaignModel.findOneAndUpdate({ _id: req.params.id }, { influencer_id: user._id }) // ajouter la nouvelle id de la creation de campagne
+console.log(req.query)
 
-  res.json({  })
-  console.log('camp+user')
+
+  // // var brandId = brand._id 
+  // console.log(brand)
+
+  var returnCampaignDetail = await campaignModel.findOne({brand_id: brand.id })
+
+
+  console.log('campagnlistrequest', returnCampaignDetail)
+  
+  res.json({returnCampaignDetail})
 });
 
 
