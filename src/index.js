@@ -16,8 +16,10 @@ import CreateCampaign from "views/Campagne/CreateCampaign.js"
 import MyNetwork from 'views/MessengerPage/Components/MyNetwork';
 import Messaging from 'views/MessengerPage/Components/Messaging';
 import Login from 'views/MessengerPage/Components/Login';
+import SelectInfluencer from 'views/SelectInfluencer/SelectInfluencer';
 
 import './views/MessengerPage/App.css'
+import './views/SelectInfluencer/App.css'
 
 import token from './reducers/token'
 import campaign from './reducers/campaign'
@@ -48,6 +50,7 @@ ReactDOM.render(
       <Route path="/mynetwork" component={MyNetwork}/>
       <Route path="/messaging" component={Messaging}/>
       <Route path="/login-messagerie" component={Login}/>
+      <Route path="/select-influencer" component={SelectInfluencer}/>
       <Route path="/" component={LandingPage} />
     </Switch>
   </Router>
