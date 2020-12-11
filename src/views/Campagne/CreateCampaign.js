@@ -295,6 +295,9 @@ function CreateCampaign(props) {
                                         <div className={themeClasses.root} style={{marginBottom: '80px'}}>
                                         <input
                                         accept="image/*"
+
+                                        // UPLOAD DOC
+                                        value={setUploadDoc}
                                         className={themeClasses.input}
                                         id="contained-button-file"
                                         multiple
