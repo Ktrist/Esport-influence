@@ -34,34 +34,10 @@ function LoginPage(props) {
   const [signInPassword, setSignInPassword] = useState('')
   const [userExists, setUserExists] = useState(false)
   const [redirect, setRedirect] = useState(false)
-  const [listErrorsSignIn, setErrorsSignIn] = useState([])
   const [roleState, setRoleState]= useState('')
+  const [listErrorsSignIn, setErrorsSignIn] = useState([])
 
-
-  var handleSubmitSignIn = async () => {
-
-    const data = await fetch('/sign-in', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`
-
-    })
-
-    const body = await data.json()
-
-    console.log(data.body + "HELLO WORLD")
-
-    if(body.result == true){
-      props.addToken(body.token)
-      // window.localStorage.setItem("tokenLocal", body.token)
-      // window.localStorage.setItem("role",body.role)
-      setUserExists(true)
-      setRoleState(body.role)
-      // console.log("michel", body, body.role)
-    } else {
-      setErrorsSignIn(body.error)
-    }
-  }
+ 
  
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
@@ -72,6 +48,44 @@ function LoginPage(props) {
 
   const classes = useStyles();
   const { ...rest } = props;
+
+  var handleSubmitSignIn = async () => {
+ 
+    const data = await fetch('/sign-in', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`
+    })
+
+    const body = await data.json()
+
+    setRoleState(body.user.role)
+    
+    if(body.result == true){
+      props.addToken(body.token)
+      setUserExists(true)
+      
+    }  else {
+      setErrorsSignIn(body.error)
+    }
+  }
+
+  if(roleState == 'brand'){
+    return <Redirect to='/choiceinfluencer' />
+  } else if (roleState == 'influenceur'){
+    return <Redirect to='/select-campaign' />
+
+  }
+
+  
+
+  var tabErrorsSignin = listErrorsSignIn.map((error,i) => {
+    return(<p>{error}</p>)
+  })
+
+
+
+
   return (
     <div>
       <Header
