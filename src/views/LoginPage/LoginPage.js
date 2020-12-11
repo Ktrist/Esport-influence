@@ -145,11 +145,6 @@ function LoginPage(props) {
           </GridContainer>
         </div>
       </div>
-{/* { body.role =='brand' ?  <Redirect to="/choiceinfluencer" /> : <Redirect to="/select-campaign" />} */}
-       {roleState ==='brand'? <Redirect to="/choiceinfluencer" /> : null  }
-       {roleState ==='influencer'? <Redirect to="/select-campaign" /> : null  }
-
-
     </div>
   );
 }

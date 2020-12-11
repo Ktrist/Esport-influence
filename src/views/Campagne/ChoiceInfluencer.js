@@ -16,13 +16,14 @@ import { connect } from 'react-redux'
 function ChoiceInfluencer(props) {
 
     const [requestList, setRequestList] = useState([])
-
+  
     useEffect(() => {
         async function fetchData() {
         const response = await fetch('/get-influencer-request-list')
         const jsonResponse = await response.json()
         setRequestList(jsonResponse.returnCampaignDetail)
     }
+  
     fetchData()
       }, [])
 
@@ -58,7 +59,15 @@ function ChoiceInfluencer(props) {
   );
 }
 
-export default ChoiceInfluencer;
+function mapStateToProps(state) {
+  return { token: state.token }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(ChoiceInfluencer)
+
 
 
 
