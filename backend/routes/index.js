@@ -130,6 +130,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
 
 router.post('/sign-in', async function (req, res, next) {
 
+
   var result = false
   var user = null
   var error = []
@@ -142,10 +143,11 @@ router.post('/sign-in', async function (req, res, next) {
   }
 
   if (error.length == 0) {
-    const user = await userModel.findOne({
+    user = await userModel.findOne({
       email: req.body.emailFromFront,
     })
 
+console.log("log-user", user)
 
     if (user) {
       const passwordEncrypt = SHA256(req.body.passwordFromFront + user.salt).toString(encBase64)
