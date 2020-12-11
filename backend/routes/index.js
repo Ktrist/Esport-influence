@@ -207,6 +207,21 @@ router.post('/campaign-apply', async function(req, res, next) {
 });
 
 
+router.get('/get-influencer-request-list/', async function(req, res, next) {
+
+  var brand = await userModel.findOne({ token: req.body.token })
+
+  // var brandId = brand._id 
+
+  var returnCampaignDetail = await campaignModel.findOne({_id: brand._id })
+
+
+  console.log('campagnlistrequest', returnCampaignDetail, brand)
+  
+  res.json({returnCampaignDetail})
+});
+
+
 router.get('/addcampaign', async function(req, res, next) {
 
   var campaignListItem = await campaignModel.find()
