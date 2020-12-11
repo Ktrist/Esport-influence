@@ -1,4 +1,5 @@
 import React from "react";
+import {Link, Redirect,useParams} from 'react-router-dom'
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -53,6 +54,7 @@ export default function LandingPage(props) {
                Let Esport-Influence support you and bring your Influence Marketing to a next Level.
               </h4>
               <br />
+              <Link to = "/campaign-apply/5fd1f423b54952068b9a4d8b"><Button color="primary">Select Campaign</Button></Link>
               <Button
                 color="primary"
                 size="lg"
