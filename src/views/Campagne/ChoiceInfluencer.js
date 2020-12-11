@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -10,9 +10,22 @@ import {Col} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
 
+import { connect } from 'react-redux'
 
 
 function ChoiceInfluencer(props) {
+
+    const [requestList, setRequestList] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+        const response = await fetch('/get-influencer-request-list')
+        const jsonResponse = await response.json()
+        setRequestList(jsonResponse.returnCampaignDetail)
+    }
+    fetchData()
+      }, [])
+
 
     const styles = {
         ...imagesStyles,
@@ -34,7 +47,7 @@ function ChoiceInfluencer(props) {
       />
         <CardBody>
           <h4 className={classes.cardTitle}>{props.campaignName}</h4>
-          <p>{props.campaignDesc}</p>
+          <p>{props.description}</p>
           <Button color="primary">Accepter</Button>
           <Button color="secondary">Refuser</Button>
 
