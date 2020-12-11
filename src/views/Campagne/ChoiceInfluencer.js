@@ -14,18 +14,21 @@ import { connect } from 'react-redux'
 
 
 function ChoiceInfluencer(props) {
-    const [returnCampaignDetail, setReturnCampaignDetail] = useState([])
+    const [returnCampaignDetailList, setReturnCampaignDetailList] = useState([])
 
     useEffect(() => {
         async function fetchData() {
         const response = await fetch(`/get-influencer-request-list?brandToken=${props.token}`)
         const jsonResponse = await response.json()
-        setReturnCampaignDetail(jsonResponse.returnCampaignDetail)
+        console.log('jsonR',jsonResponse)
+
+        setReturnCampaignDetailList(jsonResponse.returnCampaignDetail)
     }
   
     fetchData()
       }, [props.token])
 
+      console.log(returnCampaignDetailList)
 
     const styles = {
         ...imagesStyles,
@@ -35,9 +38,9 @@ function ChoiceInfluencer(props) {
       const useStyles = makeStyles(styles);
       const classes = useStyles();
       
-
-  return (
-    <Col xs="12" lg="6" xl="4">
+      const requestReturn = (
+      
+      <Col xs="12" lg="6" xl="4"  key={props.token}>
       <Card style={{ width: "20rem" }}>
       <img
         style={{height: "180px", width: "100%", display: "block"}}
@@ -46,7 +49,7 @@ function ChoiceInfluencer(props) {
         alt="Card-img-cap"
       />
         <CardBody>
-          <h4 className={classes.cardTitle}>TT</h4>
+          <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
           <p>DD</p>
 
           <Button color="primary">Accepter</Button>
@@ -54,11 +57,12 @@ function ChoiceInfluencer(props) {
 
         </CardBody>
       </Card>
-    </Col >
+    </Col >)
+   
+  return returnCampaignDetailList ? requestReturn : <p>Loading</p>
 
-  );
 }
-
+      
 function mapStateToProps(state) {
     return { token: state.token }
 }

@@ -142,11 +142,8 @@ console.log(body)
           </GridContainer>
         </div>
       </div>
-<<<<<<< HEAD
-=======
 
 
->>>>>>> c09401e9e72b98ebde14af9e176ecac7045b584e
     </div>
   );
 }
