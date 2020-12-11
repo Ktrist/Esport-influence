@@ -43,7 +43,7 @@ const useStyles = makeStyles(styles);
         setCampaignDetails(jsonResponse.returnCampaign)
     }
     getCampaign()
-      }, [params])
+      }, [params]) 
     
     
     const applyCampaign = async () => {

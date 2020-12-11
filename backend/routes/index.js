@@ -163,6 +163,7 @@ router.post('/sign-in', async function (req, res, next) {
     }
   }
 
+  console.log("back", user, result)
 
   res.json({ result, user, error, token })
 
