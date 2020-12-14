@@ -56,3 +56,27 @@ body {
 .size-subscribers{
     margin-left: 300px
 }
+
+.MuiTypography-body2 {
+    color: white;
+}
+
+.MuiTypography-root {
+    color: white;
+}
+
+.MuiTypography-colorTextSecondary {
+    color: white !important;
+}
+
+.MuiGrid-container {
+    flex-wrap: nowrap !important;
+}
+
+.makeStyles-title-20 {
+    color: white !important;
+}
+
+p {
+    color: white;
+}

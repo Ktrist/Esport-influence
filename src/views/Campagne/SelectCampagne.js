@@ -30,9 +30,6 @@ function SelectCampagne(props) {
 
 const [campaignList, setCampaignList] = useState([])
 
-
-// // TEST DATA BDD
-
 useEffect(() => {
     async function fetchData() {
     const response = await fetch('/addcampaign')
@@ -42,7 +39,7 @@ useEffect(() => {
 fetchData()
   }, [])
 
-//*** */
+
 
 
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
@@ -52,13 +49,10 @@ fetchData()
     const classes = useStyles();
     const { ...rest } = props;
 
-    // TEST MOVIE pour insertion du tableau en dur
-
 
     var campaignListItems = campaignList.map((campaign, i) => {
         return (<Campaign key={i} campaignId={campaign._id} campaignName={campaign.campaignName} campaignDesc={campaign.description} campaignImg={campaign.img} globalRating={campaign.note} globalCountRating={campaign.vote} />)
     })
-
 
     return (
         <div>
