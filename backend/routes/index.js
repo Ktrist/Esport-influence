@@ -267,7 +267,7 @@ console.log(brand)
 
 router.get('/addcampaign', async function(req, res, next) {
 
-  var campaignListItem = await campaignModel.find()
+  var campaignListItem = await campaignModel.find({status : "refuse", status:"created" } )
 
   res.json({campaignListItem})
 });

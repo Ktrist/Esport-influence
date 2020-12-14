@@ -107,7 +107,8 @@ function CreateCampaign(props) {
       body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceFromFront=${audience}&uploadDocFromFront=${uploadDoc}&token=${props.token}`
     })
 
-    console.log(data.body + "HELLO add campaign")
+    const body = await data.json()
+    console.log(data.body + "ajout campagne")
 
   }
 

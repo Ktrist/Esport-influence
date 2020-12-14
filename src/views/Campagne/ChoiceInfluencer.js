@@ -32,7 +32,8 @@ function ChoiceInfluencer(props) {
     fetchData()
       }, [props.token])
 
-      console.log(returnInfluenceur)
+      console.log("infos campagne", returnCampaignDetailList);
+
 
       const updateStatusAcc = async () => {
 
@@ -79,7 +80,11 @@ function ChoiceInfluencer(props) {
       />
         <CardBody>
           <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
-          {/* <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4> */}
+          <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4>
+
+          <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
+          <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
+          <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
 
           <p>HH</p>
 
@@ -90,7 +95,7 @@ function ChoiceInfluencer(props) {
       </Card>
     </Col >)
    
-  return returnCampaignDetailList ? requestReturn : <p>Loading</p>
+  return returnCampaignDetailList ? requestReturn : <p>No request</p>
 
 }
       
