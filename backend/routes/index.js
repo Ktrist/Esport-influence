@@ -209,6 +209,7 @@ router.post('/campaign-apply', async function(req, res, next) {
   var influencer = await userModel.findOne({ token: req.body.token })
   console.log('influ', influencer)
   let updatedCampaign = await campaignModel.findOneAndUpdate({ _id: req.body.id }, { influencer_id: influencer._id, status:"waiting" })
+  console.log("_id", req.body.id )
   res.json({updatedCampaign})
 });
 
