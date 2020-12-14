@@ -179,7 +179,7 @@ router.post('/addcampaign', async function (req, res, next) {
     campaignName: req.body.nameCampaignFromFront,
     dateStart: req.body.dateStartFromFront,
     dateEnd: req.body.dateEndFromFront,
-    status: 'created',
+    status: 'Created',
     description: req.body.descriptionFromFront,
     audienceCriteria: req.body.audienceFromFront,
     uploadedDoc: req.body.uploadDocFromFront,
@@ -209,7 +209,7 @@ router.post('/campaign-apply', async function(req, res, next) {
   console.log('req', req.body)
   var influencer = await userModel.findOne({ token: req.body.token })
   console.log('influ', influencer)
-  let updatedCampaign = await campaignModel.findOneAndUpdate({ _id: req.body.id }, { influencer_id: influencer._id, status:"waiting" })
+  let updatedCampaign = await campaignModel.findOneAndUpdate({ _id: req.body.id }, { influencer_id: influencer._id, status:"Waiting" })
   console.log("_id", req.body.id )
   res.json({updatedCampaign})
 });
@@ -238,7 +238,7 @@ console.log(brand)
   // // var brandId = brand._id 
   // console.log(brand)
 
-  var update = await campaignModel.findOneAndUpdate({brand_id: brand.id }, { status:"accept" })
+  var update = await campaignModel.findOneAndUpdate({brand_id: brand.id }, { status:"Accepted" })
   console.log(update)
 
   res.json({update})
@@ -253,7 +253,7 @@ console.log(brand)
   // // var brandId = brand._id 
   // console.log(brand)
 
-  var update = await campaignModel.findOneAndUpdate({brand_id: brand.id }, { status:"refuse" })
+  var update = await campaignModel.findOneAndUpdate({brand_id: brand.id }, { status:"Refused" })
   console.log(update)
 
   res.json({update})

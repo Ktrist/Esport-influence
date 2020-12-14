@@ -16,7 +16,7 @@ import { connect } from 'react-redux'
 function ChoiceInfluencer(props) {
     const [returnCampaignDetailList, setReturnCampaignDetailList] = useState([])
     const [returnInfluenceur, setReturnInfluenceur] = useState([])
-
+    const [influencerSatusList, setInfluencerSatusList] = useState([])
 
 
     useEffect(() => {
@@ -58,7 +58,23 @@ function ChoiceInfluencer(props) {
         console.log(data.body + "update status Refuser")
 
     }
+  //   var statusList = returnCampaignDetailList.map((ChoiceInfluencer,i) => {
+  //     var result = influencerSatusList.find(element => element.status == ChoiceInfluencer.status)
+  //     var status = "Refused"
+  //     if (result != "Refused") {
+  //         status = "Accepted"
+  //       }    
+  //     return (<resquestReturn key={i}  campaignName={returnCampaignDetailList.campaignName}/>)
+  // })
 
+  // var movieList = moviesData.map((movie, i) => {
+  //   var result = moviesWishList.find(element => element.name == movie.name)
+  //   var isSee = false
+  //   if (result != undefined) {
+  //     isSee = true
+  //   }
+  //   return (<Movie key={i} movieSee={isSee} handleClickDeleteMovieParent={handleClickDeleteMovie} handleClickAddMovieParent={handleClickAddMovie} movieName={movie.title} movieDesc={movie.overview} movieImg={'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path} globalRating={movie.vote_average} globalCountRating={movie.vote_count} />)
+  // })
 
     const styles = {
         ...imagesStyles,
@@ -79,8 +95,8 @@ function ChoiceInfluencer(props) {
         alt="Card-img-cap"
       />
         <CardBody>
+          {/* <h4 className={classes.cardTitle}>{status}</h4> */}
           <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
-          {/* <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4> */}
 
           <p>HH</p>
 
