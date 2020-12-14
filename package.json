@@ -6,6 +6,10 @@
   "main": "src/index.js",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
+<<<<<<< HEAD
+=======
+    "@date-io/moment": "^2.10.6",
+>>>>>>> 098a6a2f39a3a269e991c98d00a9b2d465010fb5
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
