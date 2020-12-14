@@ -20,6 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNetwork from 'views/MessengerPage/Components/MyNetwork';
 import Messaging from 'views/MessengerPage/Components/Messaging';
 import Login from 'views/MessengerPage/Components/Login';
+import SelectInfluencer from 'views/SelectInfluencer/SelectInfluencer';
 
 import './views/MessengerPage/App.css'
 
@@ -95,7 +96,8 @@ ReactDOM.render(
       <Route path="/sign-up/brand" exact component={SignUpBrand} />
       <Route path="/sign-up/influencer" exact component={SignUpInfluencer} />
       <Route path="/select-campaign" exact component={SelectCampagne} />
-      <Route path="/campaign-apply/:id"  component={CampaignApply} />
+      <Route path="/select-influencer" exact component={SelectInfluencer} />
+      <Route path="/campaign-apply"  component={CampaignApply} />
       <Route path="/mynetwork" exact component={MyNetwork}/>
       <Route path="/messaging" exact component={Messaging}/>
       <Route path="/choiceinfluencer" exact component={ChoiceInfluencer}/>

@@ -5,6 +5,7 @@ const SHA256 = require('crypto-js/sha256');
 const encBase64 = require('crypto-js/enc-base64');
 var mongoose = require('mongoose');
 
+
 const userModel = require('../models/users');
 const campaignModel = require('../models/campaigns');
 
@@ -192,6 +193,8 @@ router.post('/addcampaign', async function (req, res, next) {
 
   res.json({ campaignSave })
   console.log('camp+user', campaignSave)
+
+  
 });
 
 router.get('/get-campaign-details/:id', async function(req, res, next) {
@@ -239,5 +242,7 @@ router.get('/addcampaign', async function(req, res, next) {
 
   res.json({campaignListItem})
 });
+
+
 
 module.exports = router;
