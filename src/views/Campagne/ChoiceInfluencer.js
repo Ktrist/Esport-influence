@@ -19,6 +19,10 @@ function ChoiceInfluencer(props) {
     const [returnCampaignDetailList, setReturnCampaignDetailList] = useState([])
     const [returnInfluenceur, setReturnInfluenceur] = useState([])
     const [updateStatus, setUpdateStatus] = useState ('')
+    const [updateStatusAccept, setUpdateStatusAccept] = useState ('')
+    const [updateStatusRefused, setUpdateStatusRefused] = useState ('')
+
+
 
 
 
@@ -46,7 +50,8 @@ function ChoiceInfluencer(props) {
             body: `token=${props.token}`
             
         })
-          
+
+        
         console.log(data.body + "update status Accepter")
 
     }
@@ -125,6 +130,10 @@ function ChoiceInfluencer(props) {
        return <h4 className={classes.cardTitle}>NO REQUEST</h4>
 
       } 
+
+      
+
+
 
       
     //   const requestReturn = (
