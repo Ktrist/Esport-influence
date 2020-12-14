@@ -32,7 +32,32 @@ function ChoiceInfluencer(props) {
     fetchData()
       }, [props.token])
 
-      console.log(returnCampaignDetailList)
+      console.log(returnInfluenceur)
+
+      const updateStatusAcc = async () => {
+
+        const data = await fetch('/update-request-acc', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `token=${props.token}`
+        })
+
+        console.log(data.body + "update status Accepter")
+
+    }
+
+    const updateStatusRef = async () => {
+
+        const data = await fetch('/update-request-ref', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `token=${props.token}`
+        })
+
+        console.log(data.body + "update status Refuser")
+
+    }
+
 
     const styles = {
         ...imagesStyles,
@@ -58,8 +83,8 @@ function ChoiceInfluencer(props) {
 
           <p>HH</p>
 
-          <Button color="primary">Accepter</Button>
-          <Button color="secondary">Refuser</Button>
+          <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
+          <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
 
         </CardBody>
       </Card>
