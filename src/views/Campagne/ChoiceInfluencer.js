@@ -24,7 +24,7 @@ function ChoiceInfluencer(props) {
 
         setReturnCampaignDetailList(jsonResponse.returnCampaignDetail)
     }
-  
+   
     fetchData()
       }, [props.token])
 
