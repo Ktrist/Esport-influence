@@ -222,10 +222,14 @@ console.log(req.query)
 
   var returnCampaignDetail = await campaignModel.findOne({brand_id: brand.id })
 
+  var influenceur = await userModel.findOne({ id : brand.influencer_id })
 
-  console.log('campagnlistrequest', returnCampaignDetail)
-  
-  res.json({returnCampaignDetail})
+
+  // var influenceur = await campaignModel.findOne({influencer_id: influencer.id})
+
+  // console.log('campagnlistrequest', returnCampaignDetail, influenceur)
+  console.log("influenceurnn", influenceur)
+  res.json({returnCampaignDetail, influenceur})
 });
 
 
