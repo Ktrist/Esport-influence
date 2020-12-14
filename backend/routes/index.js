@@ -5,9 +5,38 @@ const SHA256 = require('crypto-js/sha256');
 const encBase64 = require('crypto-js/enc-base64');
 var mongoose = require('mongoose');
 
+// UPLOAD DOC
+// const multer = require('multer'),
+// const uuidv4 = require('uuid/v4'),
+// const DIR = './public/';
+
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//       cb(null, DIR);
+//   },
+//   filename: (req, file, cb) => {
+//       const fileName = file.originalname.toLowerCase().split(' ').join('-');
+//       cb(null, uuidv4() + '-' + fileName)
+//   }
+// });
+// var upload = multer({
+//   storage: storage,
+//   fileFilter: (req, file, cb) => {
+//       if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+//           cb(null, true);
+//       } else {
+//           cb(null, false);
+//           return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+//       }
+//   }
+// });
+
+
 
 const userModel = require('../models/users');
 const campaignModel = require('../models/campaigns');
+
+
 
 /* GET home page. */
 
@@ -173,7 +202,6 @@ console.log("log-user", user)
 
 })
 router.post('/addcampaign', async function (req, res, next) {
-
   var user = await userModel.findOne({ token: req.body.token })
   var campaign = new campaignModel({
     campaignName: req.body.nameCampaignFromFront,
@@ -183,6 +211,8 @@ router.post('/addcampaign', async function (req, res, next) {
     description: req.body.descriptionFromFront,
     audienceCriteria: req.body.audienceFromFront,
     uploadedDoc: req.body.uploadDocFromFront,
+
+
     brand_id: user._id // id de la marque récupérer a la ligne 173 avec le token 
   })
   var campaignSave = await campaign.save()
@@ -261,7 +291,7 @@ console.log(brand)
 
 router.get('/addcampaign', async function(req, res, next) {
 
-  var campaignListItem = await campaignModel.find()
+  var campaignListItem = await campaignModel.find({status : "refuse", status:"created" } )
 
   res.json({campaignListItem})
 });

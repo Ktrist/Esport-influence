@@ -13,10 +13,18 @@ import {faStar} from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 
 
+
+
 function ChoiceInfluencer(props) {
     const [returnCampaignDetailList, setReturnCampaignDetailList] = useState([])
     const [returnInfluenceur, setReturnInfluenceur] = useState([])
-    const [influencerSatusList, setInfluencerSatusList] = useState([])
+    const [updateStatus, setUpdateStatus] = useState ('')
+    const [updateStatusAccept, setUpdateStatusAccept] = useState ('')
+    const [updateStatusRefused, setUpdateStatusRefused] = useState ('')
+
+
+
+
 
 
     useEffect(() => {
@@ -33,16 +41,18 @@ function ChoiceInfluencer(props) {
     fetchData()
       }, [props.token])
 
-      console.log(returnInfluenceur)
+      console.log("infos campagne", returnCampaignDetailList);
+
 
       const updateStatusAcc = async () => {
-
         const data = await fetch('/update-request-acc', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `token=${props.token}`
+            
         })
 
+        
         console.log(data.body + "update status Accepter")
 
     }
@@ -58,23 +68,15 @@ function ChoiceInfluencer(props) {
         console.log(data.body + "update status Refuser")
 
     }
-  //   var statusList = returnCampaignDetailList.map((ChoiceInfluencer,i) => {
-  //     var result = influencerSatusList.find(element => element.status == ChoiceInfluencer.status)
-  //     var status = "Refused"
-  //     if (result != "Refused") {
-  //         status = "Accepted"
-  //       }    
-  //     return (<resquestReturn key={i}  campaignName={returnCampaignDetailList.campaignName}/>)
-  // })
 
-  // var movieList = moviesData.map((movie, i) => {
-  //   var result = moviesWishList.find(element => element.name == movie.name)
-  //   var isSee = false
-  //   if (result != undefined) {
-  //     isSee = true
-  //   }
-  //   return (<Movie key={i} movieSee={isSee} handleClickDeleteMovieParent={handleClickDeleteMovie} handleClickAddMovieParent={handleClickAddMovie} movieName={movie.title} movieDesc={movie.overview} movieImg={'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path} globalRating={movie.vote_average} globalCountRating={movie.vote_count} />)
-  // })
+    if(status == 'accept '){
+   
+        return <Redirect to='/choiceinfluencer' />
+      } else if (status == 'waiting '){
+
+        return <Redirect to='/select-campaign' />
+    
+      }
 
     const styles = {
         ...imagesStyles,
@@ -83,33 +85,98 @@ function ChoiceInfluencer(props) {
       
       const useStyles = makeStyles(styles);
       const classes = useStyles();
+
+      if(returnCampaignDetailList.status == 'waiting'){
+        return <Col xs="12" lg="6" xl="4"  key={props.token}>
+        <Card style={{ width: "20rem" }}>
+        <img
+          style={{height: "180px", width: "100%", display: "block"}}
+          className={classes.imgCardTop}
+          src='/generique.jpg'
+          alt="Card-img-cap"
+        />
+          <CardBody>
+            <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
+            <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4>
+            <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
+            <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
+            <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
+  
+            <p>HH</p>
+            
+            <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
+            <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
+  
+          </CardBody>
+        </Card>
+      </Col >
+      } else if (returnCampaignDetailList.status == 'accept'){
+        return <Col xs="12" lg="6" xl="4"  key={props.token}>
+        <Card style={{ width: "20rem" }}>
+        <img
+          style={{height: "180px", width: "100%", display: "block"}}
+          className={classes.imgCardTop}
+          src='/generique.jpg'
+          alt="Card-img-cap"
+        />
+          <CardBody>
+            <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
+  
+            <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
+            <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
+            <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
+
+           
+            <h4 className={classes.cardTitle}>LINK TO MESSAGE</h4>
+
+            <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4>
+  
+          </CardBody>
+        </Card>
+      </Col >
+    
+      } else {
+       return <h4 className={classes.cardTitle}>NO REQUEST</h4>
+
+      } 
+
       
-      const requestReturn = (
+
+
+
       
-      <Col xs="12" lg="6" xl="4"  key={props.token}>
-      <Card style={{ width: "20rem" }}>
-      <img
-        style={{height: "180px", width: "100%", display: "block"}}
-        className={classes.imgCardTop}
-        src='/generique.jpg'
-        alt="Card-img-cap"
-      />
-        <CardBody>
-          {/* <h4 className={classes.cardTitle}>{status}</h4> */}
-          <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
+    //   const requestReturn = (
+      
+    //   <Col xs="12" lg="6" xl="4"  key={props.token}>
+    //   <Card style={{ width: "20rem" }}>
+    //   <img
+    //     style={{height: "180px", width: "100%", display: "block"}}
+    //     className={classes.imgCardTop}
+    //     src='/generique.jpg'
+    //     alt="Card-img-cap"
+    //   />
+    //     <CardBody>
+    //       <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
+    //       <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4>
 
-          <p>HH</p>
+    //       <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
+    //       <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
+    //       <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
 
-          <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
-          <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
+    //       <p>HH</p>
 
-        </CardBody>
-      </Card>
-    </Col >)
+    //       <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
+    //       <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
+
+    //     </CardBody>
+    //   </Card>
+    // </Col >)
+
    
-  return returnCampaignDetailList ? requestReturn : <p>Loading</p>
+  // return returnCampaignDetailList ? requestReturn : <p>No request</p>
 
 }
+
       
 function mapStateToProps(state) {
     return { token: state.token }
