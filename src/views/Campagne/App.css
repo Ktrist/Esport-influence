@@ -62,7 +62,8 @@ body {
 }
 
 .MuiTypography-root {
-    color: white;
+    color: white !important;
+    font-size: "3Opx" !important;
 }
 
 .MuiTypography-colorTextSecondary {
@@ -78,5 +79,29 @@ body {
 }
 
 p {
-    color: white;
+    color: white !important;
+}
+
+.MuiTypography-subtitle1 {
+    font-size: "3Opx" !important;
+}
+
+.MuiFormControl-marginNormal {
+    margin-left: "30px" !important;
+}
+
+.makeStyles-card-79 {
+    background: #6f676705 !important;
+}
+
+.MuiPaper-root {
+    background-color: black !important;
+}
+
+.MuiPickersCalendarHeader-iconButton{
+    background-color: black !important;
+}
+
+.MuiListItem-button{
+    background-color: white !important;
 }

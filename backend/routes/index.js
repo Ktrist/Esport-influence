@@ -181,7 +181,8 @@ router.post('/addcampaign', async function (req, res, next) {
     dateEnd: req.body.dateEndFromFront,
     status: 'created',
     description: req.body.descriptionFromFront,
-    audienceCriteria: req.body.audienceFromFront,
+    audienceCriteriaMin: req.body.audienceMinFromFront,
+    audienceCriteriaMax: req.body.audienceMaxFromFront,
     uploadedDoc: req.body.uploadDocFromFront,
     brand_id: user._id // id de la marque récupérer a la ligne 173 avec le token 
   })
