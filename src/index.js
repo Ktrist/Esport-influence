@@ -42,7 +42,7 @@ const store = createStore(combineReducers({token, campaign}))
 // const role = localStorage.getItem('role')
 // const RenderRoute = () => {
 
-//   if(tokenLocal && role === "influencer") {
+//   if(tokenLocal && role === "influenceur") {
 //     return(
 //       <Switch>
 //                 <Route path="/login-page" exact component={LoginPage} />
@@ -74,7 +74,7 @@ const store = createStore(combineReducers({token, campaign}))
   
 //               return(
 //                 <Switch>
-//                                   <Route path="/login-page" exact component={LoginPage} />
+// //                                   <Route path="/login-page" exact component={LoginPage} />
 
                           {/* <Route path="/select-campaign" exact component={SelectCampagne} /> */}
 
@@ -82,7 +82,7 @@ const store = createStore(combineReducers({token, campaign}))
                {/* <Route path="/" exact component={LandingPage} /> */}
                 {/* <Route path="/login-page" exact component={LoginPage} /> */}
             //     </Switch> 
-            //  )} 
+//              )} 
   
 // }
 

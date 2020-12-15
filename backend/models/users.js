@@ -32,7 +32,7 @@ const userSchema = mongoose.Schema({
     favoriteGame:String,
     urlSocialNetwork:String,
     // brand_id:String,
-    campaign_id:{ type: mongoose.Schema.Types.ObjectId, ref: 'campaigns'}
+    campaign_id:[{ type: mongoose.Schema.Types.ObjectId, ref: 'campaigns'}]
 })
 
 const userModel = mongoose.model('users', userSchema)

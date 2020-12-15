@@ -94,7 +94,7 @@ function CreateCampaign(props) {
   const [uploadDoc, setUploadDoc] = useState('')
   const [dateStart, setStartDate] = useState(new Date());
   const [dateEnd, setEndDate] = useState(new Date());
-
+  const [redirect, setRedirect] = useState(false)
 
 
   var handleSubmitCampaign = async () => {
@@ -104,10 +104,18 @@ function CreateCampaign(props) {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceMinFromFront=${audienceMin}&audienceMaxFromFront=${audienceMax}&uploadDocFromFront=${uploadDoc}&token=${props.token}`
     })
-
+   
     console.log(data.body + "HELLO add campaign")
+    const body = await data.json()
 
+    if(body.campaignSave){
+      props.addToCampaignList(body.token)
+      setRedirect(true)
+      // console.log('boy.rcampaignSave', body.campaignSave)
+    } else { setRedirect(false)
+    }
   }
+  
 
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function () {
@@ -164,6 +172,7 @@ function CreateCampaign(props) {
   };
 
   console.log(uploadDoc);
+  console.log("redirect", redirect);
 
   return (
     <div>
@@ -300,6 +309,8 @@ function CreateCampaign(props) {
 
                     <div className={themeClasses.root} style={{ marginBottom: '80px' }}>
 
+                 
+
                       <input 
                       onChange ={(e) => console.log(e.target)}
                         accept="image/*"
@@ -328,6 +339,7 @@ function CreateCampaign(props) {
           </GridContainer>
         </div>
       </div>
+      {redirect ? <Redirect to="/choiceinfluencer" /> : null }
     </div>
 
 

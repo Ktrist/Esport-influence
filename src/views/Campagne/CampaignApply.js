@@ -166,7 +166,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
       />
       <Parallax small filter image={require("assets/img/signup.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div style={{background: 'black'}}>
+        <div style={{background: 'black'}} key={params.id}>
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={6} key={params.id}>
