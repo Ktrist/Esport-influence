@@ -113,7 +113,7 @@ function CreateCampaign(props) {
     if(body.campaignSave){
       props.addToCampaignList(body.token)
       setRedirect(true)
-      console.log('boy.result', body.campaignSave)
+      // console.log('boy.rcampaignSave', body.campaignSave)
     } else { setRedirect(false)
     }
   }

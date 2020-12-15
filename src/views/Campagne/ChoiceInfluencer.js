@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
 
 import { connect } from 'react-redux'
+import { createAwait } from 'typescript';
 
 
 
@@ -18,10 +19,7 @@ import { connect } from 'react-redux'
 function ChoiceInfluencer(props) {
     const [returnCampaignDetailList, setReturnCampaignDetailList] = useState([])
     const [returnInfluenceur, setReturnInfluenceur] = useState([])
-    const [updateStatus, setUpdateStatus] = useState ('')
-    const [updateStatusAccept, setUpdateStatusAccept] = useState ('')
-    const [updateStatusRefused, setUpdateStatusRefused] = useState ('')
-
+ 
 
 
 
@@ -45,19 +43,32 @@ function ChoiceInfluencer(props) {
 
 
       const updateStatusAcc = async () => {
+
+
+        var UpdateStatusAccepted = {...returnCampaignDetailList}
+        UpdateStatusAccepted.status = 'accept'
+        console.log(UpdateStatusAccepted)
+
+        setReturnCampaignDetailList(UpdateStatusAccepted)
+
+
         const data = await fetch('/update-request-acc', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `token=${props.token}`
-            
         })
-
-        
-        console.log(data.body + "update status Accepter")
-
+       
+       
     }
 
     const updateStatusRef = async () => {
+
+
+      var UpdateStatusRefused = {...returnCampaignDetailList}
+      UpdateStatusRefused.status = 'refused'
+      console.log(UpdateStatusRefused)
+
+      setReturnCampaignDetailList(UpdateStatusRefused)
 
         const data = await fetch('/update-request-ref', {
             method: 'POST',
@@ -65,7 +76,6 @@ function ChoiceInfluencer(props) {
             body: `token=${props.token}`
         })
 
-        console.log(data.body + "update status Refuser")
 
     }
 
@@ -86,7 +96,7 @@ function ChoiceInfluencer(props) {
       const useStyles = makeStyles(styles);
       const classes = useStyles();
 
-      if(returnCampaignDetailList.status == 'waiting'){
+     if(returnCampaignDetailList.status == 'waiting'){
         return <Col xs="12" lg="6" xl="4"  key={props.token}>
         <Card style={{ width: "20rem" }}>
         <img
@@ -144,7 +154,7 @@ function ChoiceInfluencer(props) {
 
 
 
-      
+
     //   const requestReturn = (
       
     //   <Col xs="12" lg="6" xl="4"  key={props.token}>
