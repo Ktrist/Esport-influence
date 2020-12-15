@@ -88,7 +88,7 @@ function Campaign(props) {
         <CardBody>
           <h4 className={classes.cardTitle}>{props.campaignName}</h4>
           <p>{props.campaignDesc}</p>
-          <Link to = {`/campaign-apply/${props.campaignId}`}><Button color="primary">Select Campaign</Button></Link>
+          <Link to = {`/campaign-apply/${props.campaignId}`} target="_blank"><Button color="primary">Select Campaign</Button></Link>
         </CardBody>
       </Card>
     </Col >
