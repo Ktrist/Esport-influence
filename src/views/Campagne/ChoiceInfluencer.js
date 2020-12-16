@@ -10,7 +10,7 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import Grid from '@material-ui/core/Grid';
 import GridContainer from "components/Grid/GridContainer.js";
 import ButtonBase from '@material-ui/core/ButtonBase';
-
+import {Link, Redirect} from 'react-router-dom'
 import image from "assets/img/signup.jpg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -111,6 +111,7 @@ function ChoiceInfluencer(props) {
 
     return (
       <div>
+        
         <Header
           absolute
           color="transparent"
@@ -175,7 +176,8 @@ function ChoiceInfluencer(props) {
 
                       <Button onClick={() => updateStatusAcc()} color="primary">Accept</Button>
                       <Button onClick={() => updateStatusRef()} color="primary">Refuse</Button>
-
+                      <Link to = {`/mycampaign`}><Button color="primary">My Campaign</Button></Link>
+                      <Link to = {`/create-campaign`}><Button color="primary">Create Campaign</Button></Link>
                     </div>
 
                   </div>

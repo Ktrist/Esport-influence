@@ -75,6 +75,7 @@ router.post('/sign-up/brand', async function (req, res, next) {
 
     var salt = uid2(32)
     var newUser = new userModel({
+      company: req.body.companyFromFront,
       firstName: req.body.firstNameFromFront,
       lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
@@ -83,10 +84,10 @@ router.post('/sign-up/brand', async function (req, res, next) {
       salt: salt,
       phone: req.body.phoneFromFront,
       role: "brand",
-      entreprise: req.body.companyFromFront,
+      
 
     })
-    console.log('fName', req.body.firstNameFromFront,)
+    console.log('company', req.body.companyFromFront)
 
     saveUser = await newUser.save()
 
@@ -132,6 +133,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
 
     var salt = uid2(32)
     var newUser = new userModel({
+      userName: req.body.userNameFromFront,
       firstName: req.body.firstNameFromFront,
       lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
@@ -140,12 +142,11 @@ router.post('/sign-up/influencer', async function (req, res, next) {
       salt: salt,
       phone: req.body.phoneFromFront,
       role: "influenceur",
-      pseudo: req.body.userNameFromFront,
       numberFollower: req.body.numberFollowerFromFront,
       favoriteGame: req.body.favoriteGameFromFront,
       urlSocialNetwork: req.body.urlSocialNetworkFromFront,
     })
-    console.log('fName', req.body.firstNameFromFront,)
+    console.log('userName', req.body.userNameFromFront,)
 
     saveUser = await newUser.save()
 

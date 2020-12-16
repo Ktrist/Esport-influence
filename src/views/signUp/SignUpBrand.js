@@ -47,7 +47,7 @@ const useStyles = makeStyles(styles);
     const data = await fetch('/sign-up/brand', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `CompanyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}`
+      body: `companyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}`
     })
     console.log(data.body + "HELLO WORLD")
 
