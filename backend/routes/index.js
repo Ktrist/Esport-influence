@@ -75,6 +75,7 @@ router.post('/sign-up/brand', async function (req, res, next) {
 
     var salt = uid2(32)
     var newUser = new userModel({
+      company: req.body.companyFromFront,
       firstName: req.body.firstNameFromFront,
       lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
@@ -83,10 +84,10 @@ router.post('/sign-up/brand', async function (req, res, next) {
       salt: salt,
       phone: req.body.phoneFromFront,
       role: "brand",
-      entreprise: req.body.companyFromFront,
+      
 
     })
-    console.log('fName', req.body.firstNameFromFront,)
+    console.log('company', req.body.companyFromFront)
 
     saveUser = await newUser.save()
 
@@ -132,6 +133,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
 
     var salt = uid2(32)
     var newUser = new userModel({
+      userName: req.body.userNameFromFront,
       firstName: req.body.firstNameFromFront,
       lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
@@ -140,12 +142,11 @@ router.post('/sign-up/influencer', async function (req, res, next) {
       salt: salt,
       phone: req.body.phoneFromFront,
       role: "influenceur",
-      pseudo: req.body.userNameFromFront,
       numberFollower: req.body.numberFollowerFromFront,
       favoriteGame: req.body.favoriteGameFromFront,
       urlSocialNetwork: req.body.urlSocialNetworkFromFront,
     })
-    console.log('fName', req.body.firstNameFromFront,)
+    console.log('userName', req.body.userNameFromFront,)
 
     saveUser = await newUser.save()
 
@@ -169,7 +170,7 @@ router.post('/sign-in', async function (req, res, next) {
   if (req.body.emailFromFront == ''
     || req.body.passwordFromFront == ''
   ) {
-    error.push('Empty')
+    error.push('Empty Field')
   }
 
   if (error.length == 0) {
@@ -202,6 +203,17 @@ router.post('/sign-in', async function (req, res, next) {
 
 })
 router.post('/addcampaign', async function (req, res, next) {
+
+  var error = []
+
+  if (req.body.nameCampaignFromFront == ''
+  || req.body.descriptionFromFront == ''
+  || req.body.audienceMinFromFront == ''
+  || req.body.audienceMaxFromFront == ''
+) {
+  error.push('Empty Field')
+  res.json({ error })
+}else{
   var user = await userModel.findOne({ token: req.body.token })
   var campaign = new campaignModel({
     campaignName: req.body.nameCampaignFromFront,
@@ -212,8 +224,6 @@ router.post('/addcampaign', async function (req, res, next) {
     audienceCriteriaMin: req.body.audienceMinFromFront,
     audienceCriteriaMax: req.body.audienceMaxFromFront,
     uploadedDoc: req.body.uploadDocFromFront,
-
-
     brand_id: user._id // id de la marque récupérer a la ligne 173 avec le token 
   })
   var campaignSave = await campaign.save()
@@ -223,9 +233,9 @@ router.post('/addcampaign', async function (req, res, next) {
   console.log('insertId', insertId)
 
   res.json({ campaignSave })
-  console.log('camp+user', campaignSave)
-
-
+  console.log('camp+user', error)
+} 
+  
 });
 
 router.get('/get-campaign-details/:id', async function (req, res, next) {

@@ -96,7 +96,7 @@ function CreateCampaign(props) {
   const [dateStart, setStartDate] = useState(new Date());
   const [dateEnd, setEndDate] = useState(new Date());
   const [redirect, setRedirect] = useState(false)
-
+  const [listErrorsCreateCampaign, setlistErrorsCreateCampaign] = useState([])
 
   var handleSubmitCampaign = async () => {
 
@@ -114,9 +114,13 @@ function CreateCampaign(props) {
       setRedirect(true)
       // console.log('boy.rcampaignSave', body.campaignSave)
     } else { setRedirect(false)
+      setlistErrorsCreateCampaign(body.error)
     }
   }
-  
+  var tabErrorsCreateCampaign = listErrorsCreateCampaign.map((error,i) => {
+    return(<p>{error}</p>)
+    console.log('tabError',tabErrorsCreateCampaign )
+  })
 
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function () {
@@ -325,12 +329,13 @@ function CreateCampaign(props) {
                       <label htmlFor="raised-button-file">
                         <Button variant="raised" component="span" className={classes.button}>
                           Upload
-                          </Button>
+                        </Button>
                       </label>
                     </div>
                   </CardBody>
-
+                  {tabErrorsCreateCampaign}
                   <CardFooter className={classes.cardFooter}>
+                  
                     <Button onClick={() => handleSubmitCampaign()} color="primary" size="lg">
                       Confirm
                       </Button>
@@ -342,6 +347,7 @@ function CreateCampaign(props) {
         </div>
       </div>
       {redirect ? <Redirect to="/choiceinfluencer" /> : null }
+      { tabErrorsCreateCampaign.length >0 ?  tabErrorsCreateCampaign : null }
     </div>
 
 

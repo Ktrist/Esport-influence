@@ -51,7 +51,7 @@ function SignUpBrand(props) {
     const data = await fetch('/sign-up/brand', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `CompanyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}`
+      body: `companyFromFront=${signUpCompany}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}`
     })
     console.log(data.body + "HELLO WORLD")
 
@@ -65,8 +65,11 @@ function SignUpBrand(props) {
       setErrorsSignup(body.error)
     }
   }
-
-
+  var tabErrorsSignup = listErrorsSignup.map((error,i) => {
+    return(<p>{error}</p>)
+  })
+ 
+  
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function () {
     setCardAnimation("");
@@ -183,7 +186,7 @@ function SignUpBrand(props) {
 
 
                     />
-
+                    {tabErrorsSignup}
                   </CardBody>
 
                   <CardFooter className={classes.cardFooter}>
