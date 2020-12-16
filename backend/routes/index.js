@@ -212,8 +212,6 @@ router.post('/addcampaign', async function (req, res, next) {
     audienceCriteriaMin: req.body.audienceMinFromFront,
     audienceCriteriaMax: req.body.audienceMaxFromFront,
     uploadedDoc: req.body.uploadDocFromFront,
-
-
     brand_id: user._id // id de la marque récupérer a la ligne 173 avec le token 
   })
   var campaignSave = await campaign.save()
