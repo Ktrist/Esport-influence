@@ -13,8 +13,15 @@ import {faStar} from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { createAwait } from 'typescript';
 import RequestList from './RequestList';
+import Header from "components/Header/Header.js";
+import HeaderLinks from "components/Header/HeaderLinks.js";
 import HeaderLinksInfluencer from "components/Header/HeaderLinksInfluencer.js";
 
+
+import image from "assets/img/signup.jpg";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "views/MessengerPage/App.css"
 
 
 
@@ -46,18 +53,70 @@ function RequestInfluencer(props) {
         return (<RequestList key={i} campaignName={mycampaign.campaignName} campaignStatus={mycampaign.status}/>)
     })
 
-    const styles = {
-        ...imagesStyles,
-        cardTitle,
-      };
-      
-      const useStyles = makeStyles(styles);
+    const useStyles = makeStyles({
+        root: {
+          maxWidth: 345,
+          marginLeft: 30,
+          border: "1mm ridge black"
+        },
+        media: {
+          height: 140,
+        },
+      });
+
       const classes = useStyles();
+      const { ...rest } = props;
 
       if(returnCampaignDetailList.status == 'Waiting' || 'Accepted'|| 'Refused'){
-        return <Row>
+        return<div>
+        <Header
+          color="transparent"
+          brand="Esport-Influence"
+          rightLinks={<HeaderLinksInfluencer />}
+          fixed
+          changeColorOnScroll={{
+            height: 200,
+            color: "dark"
+          }}
+          {...rest}
+        />
+        <div
+          className={classes.pageHeader}
+          style={{
+            backgroundImage: "url(" + image + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "top center",
+            minHeight: '100vh',
+          }}
+          >
+
+        <div className="users" key={props.token}>
+
+            <div className="current-user-container" style={{marginTop: "125px", marginRight:"950px"}}>
+
+                <div>
+
+                    <picture className="current-user-picture">
+                    <img alt={"influencer"} src={""} />
+                    </picture>
+
+                    <div className="current-user-info">
+
+                        <h5>Firstname Influencer:</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <Row>
         {returnRequestList}
-    </Row>
+        </Row>
+        </div> 
+        </div>
+
       }  else {
        return <h4 className={classes.cardTitle}>NO REQUEST</h4>
 

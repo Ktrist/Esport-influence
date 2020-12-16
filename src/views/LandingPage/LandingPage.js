@@ -47,11 +47,10 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Start Your Esport Adventure with us</h1>
+              <h1 className={classes.title}>Start your eSport<br />  adventure now</h1>
               <h4>
-               Every brands wants to know how to understand a new market. 
-               Esport-Influence is the leader of Influence Marketing in the Gaming Sector. 
-               Let Esport-Influence support you and bring your Influence Marketing to a next Level.
+               We are the leader of Influence Marketing in the Gaming Sector.<br /> 
+               Let eSport-Influence support you and bring your Influence Marketing to the next level!
               </h4>
               <br />
               <Button
