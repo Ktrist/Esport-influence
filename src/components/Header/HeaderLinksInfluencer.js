@@ -20,24 +20,25 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinksBrand(props) {
+export default function HeaderLinksInfluencer(props) {
     const classes = useStyles();
     return (
         <List className={classes.list}>
-            
-            <ListItem className={classes.listItem}><Link to = {`/profile-brand`} ><Button color="primary">My profile</Button></Link>
+
+<ListItem className={classes.listItem}><Link to = {`/profile-influencer`} ><Button color="primary">My profile </Button></Link>
             </ListItem>
-            <ListItem className={classes.listItem}><Link to = {`/create-campaign`} ><Button color="primary">Add campaign</Button></Link>
-            </ListItem>
-            <ListItem className={classes.listItem}><Link to = {`/mycampaign`} ><Button color="primary">My campaigns</Button></Link>
+            <ListItem className={classes.listItem}><Link to = {`/select-campaign`} ><Button color="primary">Select Campaign </Button></Link>
             </ListItem>
 
-            <ListItem className={classes.listItem}><Link to = {`/choiceinfluencer`} ><Button color="primary">Requests received</Button></Link>
+            <ListItem className={classes.listItem}>
+            <Link to = {`/request-influencer-list`} ><Button color="primary">Request Sent </Button></Link>
+
             </ListItem>
-            
-            <ListItem className={classes.listItem}><Link to = {`/`} ><Button color="primary">Log-out</Button></Link>
+
+            <ListItem className={classes.listItem}>
+                <Link to = {`/`} ><Button color="primary">Log-out </Button></Link>
+
             </ListItem>
-            
 
         </List>
     );

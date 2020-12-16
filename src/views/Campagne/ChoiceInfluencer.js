@@ -2,6 +2,8 @@ import React, { useState, useEffect}  from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 // core components
 import Button from "components/CustomButtons/Button.js";
@@ -160,6 +162,7 @@ function ChoiceInfluencer(props) {
               <div className="current-user-info">
 
               <h3>Campaign Name: {returnCampaignDetailList.campaignName}</h3>
+              <Link to = {`/mycampaign`} ><Button color="secondary">Mes campagnes </Button></Link>
 
               </div>
               </div>

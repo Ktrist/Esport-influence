@@ -35,6 +35,7 @@ import { purple } from "@material-ui/core/colors";
 import TextField from '@material-ui/core/TextField';
 
 import MenuItem from '@material-ui/core/MenuItem';
+import HeaderLinksBrand from "components/Header/HeaderLinksBrand";
 
 
 
@@ -180,7 +181,7 @@ function CreateCampaign(props) {
         absolute
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksBrand />}
         fixed
         changeColorOnScroll={{
           height: 100,

@@ -8,6 +8,8 @@ import { cardTitle } from "assets/jss/material-kit-react.js";
 import { Col } from 'reactstrap';
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksBrand from "components/Header/HeaderLinksBrand.js";
+
 import { Row } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -69,7 +71,7 @@ function MyCampaign(props) {
                 absolute
                 color="transparent"
                 brand="Esport-Influence"
-                rightLinks={<HeaderLinks />}
+                rightLinks={<HeaderLinksBrand />}
                 fixed
                 changeColorOnScroll={{
                     height: 100,

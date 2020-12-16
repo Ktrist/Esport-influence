@@ -19,6 +19,7 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import HeaderLinksBrand from "components/Header/HeaderLinksBrand";
 
 
 import profile from "assets/img/coca-logo.png";
@@ -48,7 +49,7 @@ export default function ProfilePage(props) {
       <Header
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksBrand />}
         fixed
         changeColorOnScroll={{
           height: 200,
