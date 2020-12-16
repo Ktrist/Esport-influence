@@ -1,13 +1,10 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect}  from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import { Col } from 'reactstrap';
 
 import { connect } from 'react-redux'
 
 // core components
 import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Grid from '@material-ui/core/Grid';
@@ -52,7 +49,7 @@ function ChoiceInfluencer(props) {
 
 
         var UpdateStatusAccepted = {...returnCampaignDetailList}
-        UpdateStatusAccepted.status = 'accept'
+        UpdateStatusAccepted.status = 'Accepted'
         console.log(UpdateStatusAccepted)
 
         setReturnCampaignDetailList(UpdateStatusAccepted)
@@ -71,7 +68,7 @@ function ChoiceInfluencer(props) {
 
 
       var UpdateStatusRefused = {...returnCampaignDetailList}
-      UpdateStatusRefused.status = 'refused'
+      UpdateStatusRefused.status = 'Refused'
       console.log(UpdateStatusRefused)
 
       setReturnCampaignDetailList(UpdateStatusRefused)
@@ -122,7 +119,7 @@ function ChoiceInfluencer(props) {
       const classes = useStyles();
       const { ...rest } = props;
 
-     if(returnCampaignDetailList.status == 'waiting'){
+     if(returnCampaignDetailList.status == 'Waiting'){
 
         return(
         <div>
@@ -143,7 +140,8 @@ function ChoiceInfluencer(props) {
             style={{
               backgroundImage: "url(" + image + ")",
               backgroundSize: "cover",
-              backgroundPosition: "top center"
+              backgroundPosition: "top center",
+              minHeight: '100vh',
             }}
             >
           
@@ -188,7 +186,7 @@ function ChoiceInfluencer(props) {
                 <div className="user-action">
 
                 <Button onClick={() =>updateStatusAcc()} color="primary">Accept</Button>
-                <Button onClick={() =>updateStatusRef()}  color="secondary">Refuse</Button> 
+                <Button onClick={() =>updateStatusRef()}  color="primary">Refuse</Button> 
 
                 </div>
 
@@ -250,92 +248,201 @@ function ChoiceInfluencer(props) {
             </div>
           
           </div>
-
-
-        {/* Eléments à intégrer
-        
-        <Col xs="12" lg="6" xl="4"  key={props.token}> */}
-        
-
-{/* 
-            <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
-            <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4> */}
-            {/* <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
-            <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
-            <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
-            
-            <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
-            <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button> */}
-  
-{/* 
-      </Col >  */}
-      </div> 
+        </div> 
       </div>
         )
-      } else if (returnCampaignDetailList.status == 'accept'){
-        return <Col xs="12" lg="6" xl="4"  key={props.token}>
-        <Card style={{ width: "20rem" }}>
-        <img
-          style={{height: "180px", width: "100%", display: "block"}}
-          className={classes.imgCardTop}
-          src='/generique.jpg'
-          alt="Card-img-cap"
+
+      } else if (returnCampaignDetailList.status == 'Accepted'){
+
+        return<div>
+        <Header
+        absolute
+        color="transparent"
+        brand="Esport-Influence"
+        rightLinks={<HeaderLinks />}
+        fixed
+        changeColorOnScroll={{
+            height: 100,
+            color: "dark"
+        }}
+        {...rest}
         />
-          <CardBody>
-            <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
-  
-            <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
-            <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
-            <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
+        <div
+          className={classes.pageHeader}
+          style={{
+            backgroundImage: "url(" + image + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "top center",
+            minHeight: '100vh',
+          }}
+          >
+        
+        <div className="users" key={props.token}>
 
-           
-            <h4 className={classes.cardTitle}>LINK TO MESSAGE</h4>
-
-            <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4>
+          <div className="current-user-container" style={{marginTop: "85px"}}>
   
-          </CardBody>
-        </Card>
-      </Col >
+            <div>
+      
+              <picture className="current-user-picture">
+              <img alt={"brand"} src={"https://dwglogo.com/wp-content/uploads/2016/03/1500px_Coca_Cola_logo.png"} />
+              </picture>
+
+            <div className="current-user-info">
+
+            <h3>Campaign Name: {returnCampaignDetailList.campaignName}</h3>
+
+            </div>
+            </div>
+
+          </div>
+
+          <div className="users-container" style={{marginTop: "280px"}}>
+          
+          <ul>
+  
+              <li className="user">
+              <picture className="user-picture">
+              <img src={""} alt={""} />
+              </picture>
+
+              <div className="user-info-container">
+
+              <div className="user-info">
+
+                  <h4>Firstname Influencer: {returnInfluenceur.firstName}</h4>
+                  <p>Status: {returnCampaignDetailList.status}</p>
+                  <p>Followers: {returnInfluenceur.numberFollower}</p>
+
+              </div>
+
+              </div>
+  
+              </li>
+
+              <div className={classes.description}>
+            <p>
+            {returnInfluenceur.description}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
+            </p>
+          </div>
+
+          <div>
+          <div>
+                      <GridContainer justify="left">
+                              <Grid item>
+                                <ButtonBase className={gridClasses.image} style={{marginLeft: "30px"}}>
+                                  <img className={gridClasses.img} src={"https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/twitch-512.png"} width='45%' /><h3>Twitch</h3>
+                                </ButtonBase>
+                              </Grid>
+                      </GridContainer>
+                      
+                      <GridContainer justify="left" style={{marginTop: '15px'}}>
+                              <Grid item>
+                                  <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/Counter-Strike:%20Global%20Offensive-285x380.jpg"} width='35%'/>
+                              </Grid>
+                              <Grid item>
+                                  <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends-285x380.jpg"} width='35%'/>
+                              </Grid>
+                              <Grid item>
+                                  <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/FIFA%2021-285x380.jpg"} width='35%'/>
+                              </Grid>
+                      </GridContainer>
+
+                      <GridContainer justify="left">
+                              <Grid item>
+                                <ButtonBase className={gridClasses.image} style={{marginLeft: "45px", marginTop: "20px"}}>
+                                  <img className={gridClasses.img} src={"https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png"} width='45%'/><h3>YouTube</h3>
+                                </ButtonBase>
+                              </Grid>
+                      </GridContainer>
+                      
+                      <GridContainer justify="left" style={{marginTop: '15px'}}>
+                              <Grid item>
+                                  <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-285x380.jpg"} width='35%'/>
+                              </Grid>
+                              <Grid item>
+                                  <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/FIFA%2021-285x380.jpg"} width='35%'/>
+                              </Grid>
+                      </GridContainer>
+
+                      </div>
+          </div>
+
+          </ul>
+
+          </div>
+        
+        </div>
+      </div> 
+    </div>
+
     
       } else {
-       return <h4 className={classes.cardTitle}>NO REQUEST</h4>
+       return <div>
+       <Header
+       absolute
+       color="transparent"
+       brand="Esport-Influence"
+       rightLinks={<HeaderLinks />}
+       fixed
+       changeColorOnScroll={{
+           height: 100,
+           color: "dark"
+       }}
+       {...rest}
+       />
+       <div
+         className={classes.pageHeader}
+         style={{
+           backgroundImage: "url(" + image + ")",
+           backgroundSize: "cover",
+           backgroundPosition: "top center",
+           minHeight: '100vh',
+         }}
+         >
+       
+       <div className="users" key={props.token}>
+
+         <div className="current-user-container" style={{marginTop: "85px"}}>
+ 
+           <div>
+     
+             <picture className="current-user-picture">
+             <img alt={"brand"} src={"https://dwglogo.com/wp-content/uploads/2016/03/1500px_Coca_Cola_logo.png"} />
+             </picture>
+
+           <div className="current-user-info">
+
+           <h3>Campaign Name: {returnCampaignDetailList.campaignName}</h3>
+
+           </div>
+           </div>
+
+         </div>
+
+         <div className="users-container" style={{marginTop: "280px"}}>
+         
+         <ul>
+ 
+             <li className="user">
+
+             <div className="user-info-container">
+
+             <h3>No request</h3>
+
+             </div>
+ 
+             </li>
+
+         </ul>
+
+         </div>
+       
+       </div>
+     </div> 
+   </div>
 
       } 
-
-      
-
-
-
-
-    //   const requestReturn = (
-      
-    //   <Col xs="12" lg="6" xl="4"  key={props.token}>
-    //   <Card style={{ width: "20rem" }}>
-    //   <img
-    //     style={{height: "180px", width: "100%", display: "block"}}
-    //     className={classes.imgCardTop}
-    //     src='/generique.jpg'
-    //     alt="Card-img-cap"
-    //   />
-    //     <CardBody>
-    //       <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
-    //       <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4>
-
-    //       <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
-    //       <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
-    //       <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
-
-    //       <p>HH</p>
-
-    //       <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
-    //       <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
-
-    //     </CardBody>
-    //   </Card>
-    // </Col >)
-
-   
-  // return returnCampaignDetailList ? requestReturn : <p>No request</p>
 
 }
 

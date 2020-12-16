@@ -15,6 +15,7 @@ import SignUpBrand from "views/signUp/SignUpBrand.js"
 import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
 import CreateCampaign from "views/Campagne/CreateCampaign.js"
 import ChoiceInfluencer from "views/Campagne/ChoiceInfluencer.js"
+import RequestInfluencer from "views/Campagne/RequestInfluencer.js"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -33,7 +34,7 @@ import {Provider} from 'react-redux'
 
 import SelectCampagne from "views/Campagne/SelectCampagne.js";
 import CampaignApply from "views/Campagne/CampaignApply.js";
-
+import MyCampaign from "views/Campagne/MyCampaign.js";
 
 var hist = createBrowserHistory();
 
@@ -98,11 +99,14 @@ ReactDOM.render(
       <Route path="/sign-up/brand" exact component={SignUpBrand} />
       <Route path="/sign-up/influencer" exact component={SignUpInfluencer} />
       <Route path="/select-campaign" exact component={SelectCampagne} />
+      <Route path="/mycampaign" exact component={MyCampaign} />
       <Route path="/select-influencer" exact component={SelectInfluencer} />
       <Route path="/campaign-apply/:id"  component={CampaignApply} />
       <Route path="/mynetwork" exact component={MyNetwork}/>
       <Route path="/messaging" exact component={Messaging}/>
       <Route path="/choiceinfluencer" exact component={ChoiceInfluencer}/>
+      <Route path="/request-influencer-list" exact component={RequestInfluencer}/>
+
       <Route path="/login-messagerie" exact component={Login}/>
       <Route path="/" exact component={LandingPage} />
     </Switch>

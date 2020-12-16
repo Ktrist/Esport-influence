@@ -229,11 +229,19 @@ router.post('/addcampaign', async function (req, res, next) {
 });
 
 router.get('/get-campaign-details/:id', async function(req, res, next) {
-
   var returnCampaign = await campaignModel.findOne({_id: req.params.id })
   console.log('params', req.params, returnCampaign )
   
   res.json({returnCampaign})
+});
+
+router.get('/mycampaign', async function(req, res, next) {
+  console.log('req', req.query)
+  var company = await userModel.findOne({ token: req.query.companyToken })
+  var myCampaign = await campaignModel.find({brand_id: company._id })
+  console.log('myCampaign', myCampaign,company)
+  
+  res.json({myCampaign, company})
 });
 
 router.post('/campaign-apply', async function(req, res, next) {
@@ -290,13 +298,26 @@ console.log(brand)
   res.json({update})
 });
 
-router.get('/addcampaign', async function(req, res, next) {
+router.get('/get-campaign', async function(req, res, next) {
 
-  var campaignListItem = await campaignModel.find({status : "refuse", status:"created" } )
+  var campaignListItem = await campaignModel.find({ status:"Created" } )
 
   res.json({campaignListItem})
 });
 
+router.get('/get-request-list-influencer', async function(req, res, next) {
 
+  var influencer = await userModel.findOne({ token: req.query.influencerToken })
+
+console.log(req.query)
+
+  var returnCampaignDetail = await campaignModel.findOne({influencer_id: influencer.id })
+
+  var brand = await userModel.findOne({ _id : returnCampaignDetail.brand_id })
+
+  console.log("request List New Page", brand)
+
+  res.json({returnCampaignDetail, brand})
+});
 
 module.exports = router;

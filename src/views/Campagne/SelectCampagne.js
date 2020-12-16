@@ -32,8 +32,9 @@ const [campaignList, setCampaignList] = useState([])
 
 useEffect(() => {
     async function fetchData() {
-    const response = await fetch('/addcampaign')
+    const response = await fetch('/get-campaign')
     const jsonResponse = await response.json()
+    console.log('jsonResponse', jsonResponse)
     setCampaignList(jsonResponse.campaignListItem)
 }
 fetchData()
@@ -68,6 +69,7 @@ fetchData()
                     color: "dark"
                 }}
                 {...rest}
+                
             />
             <div
                 className={classes.pageHeader}
@@ -80,6 +82,8 @@ fetchData()
                 <div className={classes.container}>
                
                     <Row>
+                    <Link to = {`/request-influencer-list`} ><Button color="secondary">List request INfluencer </Button></Link>
+
                         {campaignListItems}
                     </Row>
                 </div>  
