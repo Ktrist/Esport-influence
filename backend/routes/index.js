@@ -298,5 +298,25 @@ router.get('/addcampaign', async function(req, res, next) {
 });
 
 
+router.get('/influencerdetails', async function(req, res, next) {
+  console.log('KIRIRIRI', req.query);
+
+  var influencerProfil= await userModel.findOne({token: req.query.influencerToken})
+
+  console.log('HELLO WORLD', influencerProfil);
+
+  res.json({influencerProfil})
+});
+
+router.get('/branddetails', async function(req, res, next) {
+  console.log('KIRIRIRI', req.query);
+
+  var BrandProfil= await userModel.findOne({token: req.query.brandToken })
+
+  console.log('HELLO WORLD', BrandProfil);
+
+  res.json({BrandProfil})
+});
+
 
 module.exports = router;

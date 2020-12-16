@@ -21,62 +21,10 @@ const useStyles = makeStyles({
   },
 });
 
-
 function Campaign(props) {
 
-  // const [watchMovie, setWatchMovie] = useState(0);
-  // const [selected, setSelected] = useState(false);
-  // const [myRatingMovie, setMyRatingMovie] = useState(0);
   const classes = useStyles();
 
-
-  // var likeClick = () => {
-  //   setSelected(true);
-
-  // }
-
-  // var watchClick = () => {
-  //   setWatchMovie(watchMovie + 1);
-  //   console.log("click détécté");
-  // }
-
-
-  // ETOILE AVIS PERSO
-
-  // var starsClick = (rating) => {
-  //   if (rating < 0) {
-  //     rating = 0
-  //   }
-  //   if (rating >= 5) {
-  //     rating = 5
-  //   }
-  //   setMyRatingMovie(rating)
-  // }
-
-  // var tabRating = []
-  // for (var i = 0; i < 5; i++) {
-  //   var color = {}
-  //   if (i < myRatingMovie) {
-  //     color = { color: '#f1c40f' }
-  //   }
-  //   tabRating.push(<FontAwesomeIcon style={color} icon={faStar} />)
-  // }
-
-  // var tabGlobalRating = []
-
-  // for (var i = 0; i < 5; i++) {
-  //   var color = {}
-  //   if (i < tabGlobalRating) {
-  //     color = { color: '#f1c40f' }
-  //   }
-
-  //   tabGlobalRating.push(<FontAwesomeIcon style={color} icon={faStar} />)
-  // }
-
-  // var colorHeart = { cursor: 'pointer' }
-  // if (selected === true) {
-  //   colorHeart = { color: "#e74c3c", cursor: 'pointer' };
-  // }
 
 
   return (

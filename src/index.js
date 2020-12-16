@@ -91,7 +91,7 @@ ReactDOM.render(
   <Router history={hist}>
   {/* {RenderRoute()}  */}
   <Switch>
-      <Route path="/profile-influencer" exact component={ProfileInfluencer} />
+      <Route path="/profile-influencer"  component={ProfileInfluencer} />
       <Route path="/profile-brand" exact component={ProfileBrand} />
       <Route path="/create-campaign" exact component={CreateCampaign} />
       <Route path="/login-page" exact component={LoginPage} />

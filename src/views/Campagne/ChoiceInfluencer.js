@@ -79,14 +79,10 @@ function ChoiceInfluencer(props) {
 
     }
 
-    if(status == 'accept '){
    
-        return <Redirect to='/choiceinfluencer' />
-      } else if (status == 'waiting '){
-
-        return <Redirect to='/select-campaign' />
     
-      }
+
+   
 
     const styles = {
         ...imagesStyles,
@@ -116,6 +112,7 @@ function ChoiceInfluencer(props) {
             
             <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
             <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
+
   
           </CardBody>
         </Card>

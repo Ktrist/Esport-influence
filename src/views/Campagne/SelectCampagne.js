@@ -27,6 +27,8 @@ const useStyles = makeStyles(styles);
 
 function SelectCampagne(props) {
 
+    console.log("Select", props.token)
+
 
 const [campaignList, setCampaignList] = useState([])
 

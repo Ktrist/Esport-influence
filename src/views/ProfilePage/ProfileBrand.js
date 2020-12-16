@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -20,6 +20,7 @@ import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
+import { connect } from 'react-redux'
 
 import profile from "assets/img/coca-logo.png";
 
@@ -30,7 +31,25 @@ import "../ProfilePage/App.css"
 
 
 
-export default function ProfilePage(props) {
+function ProfileBrandPage(props) {
+
+
+
+
+  console.log('TOKEN BABY', props)
+
+  const [companyDetails, setCompanyDetails] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/branddetails?brandToken=${props.token}`)
+      const jsonResponse = await response.json()
+
+      setCompanyDetails(jsonResponse.BrandProfil)
+    }
+    fetchData()
+  }, [])
+
   const useStyles = makeStyles(styles);
   const classes = useStyles();
   const { ...rest } = props;
@@ -67,7 +86,7 @@ export default function ProfilePage(props) {
                     <img src={profile} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>Coca-Cola Company</h3>
+                    <h3 className={classes.title}>{companyDetails.firstName}</h3>
                   </div>
                   <div>
                     <Button justIcon link className={classes.margin5}>
@@ -218,3 +237,13 @@ export default function ProfilePage(props) {
   );
 
 }
+
+
+function mapStateToProps(state) {
+  return { token: state.token }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(ProfileBrandPage)
