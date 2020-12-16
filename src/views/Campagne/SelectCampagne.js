@@ -12,7 +12,7 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
-import image from "assets/img/signup.jpg";
+import image from "assets/img/Test15.jpg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux'
 
@@ -82,6 +82,8 @@ fetchData()
                 <div className={classes.container}>
                
                     <Row>
+                    <Link to = {`/request-influencer-list`} ><Button color="secondary">List request INfluencer </Button></Link>
+
                         {campaignListItems}
                     </Row>
                 </div>  

@@ -303,6 +303,20 @@ router.get('/get-campaign', async function(req, res, next) {
   res.json({campaignListItem})
 });
 
+router.get('/get-request-list-influencer', async function(req, res, next) {
 
+  console.log("REQ QUERY",req.query)
+
+  var influencer = await userModel.findOne({ token: req.query.influencerToken })
+
+
+  var returnCampaignDetail = await campaignModel.find({influencer_id: influencer.id })
+
+  var brand = await userModel.findOne({ _id : returnCampaignDetail.brand_id })
+
+  console.log("request List New Page", brand)
+
+  res.json({returnCampaignDetail, brand})
+});
 
 module.exports = router;

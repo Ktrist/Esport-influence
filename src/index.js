@@ -15,6 +15,7 @@ import SignUpBrand from "views/signUp/SignUpBrand.js"
 import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
 import CreateCampaign from "views/Campagne/CreateCampaign.js"
 import ChoiceInfluencer from "views/Campagne/ChoiceInfluencer.js"
+import RequestInfluencer from "views/Campagne/RequestInfluencer.js"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -38,6 +39,9 @@ import MyCampaign from "views/Campagne/MyCampaign.js";
 var hist = createBrowserHistory();
 
 const store = createStore(combineReducers({ token, campaign }))
+
+// LOCAL STORAGE NE PAS EFFACER SVP 
+
 // const tokenLocal = localStorage.getItem('tokenLocal');
 // const role = localStorage.getItem('role')
 // const RenderRoute = () => {
@@ -45,7 +49,7 @@ const store = createStore(combineReducers({ token, campaign }))
 //   if(tokenLocal && role === "influenceur") {
 //     return(
 //       <Switch>
-//                 <Route path="/login-page" exact component={LoginPage} />
+//         <Route path="/login-page" exact component={LoginPage} />
 //         <Route path="/select-campaign" exact component={SelectCampagne} />
 //         <Route path="/campaign-apply/:id"  component={CampaignApply} />
 //         <Route path="/profile-page" exact component={ProfilePage} />
@@ -108,7 +112,7 @@ ReactDOM.render(
         <Route path="/" exact component={LandingPage} />
       </Switch>
     </Router>
-  // </Provider>
+   </Provider>
   ,
   document.getElementById("root")
 );
