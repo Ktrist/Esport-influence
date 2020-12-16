@@ -108,7 +108,9 @@ console.log(body)
                   <CardBody>
                   <CustomInput
                       inputProps={{
-                        onChange: (e) => setSignInEmail(e.target.value)
+                        onChange: (e) => setSignInEmail(e.target.value),
+                        type:'email'
+
                       }}
                       labelText="Email*"
                       id="Email"

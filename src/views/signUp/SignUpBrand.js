@@ -145,13 +145,14 @@ function SignUpBrand(props) {
                     <CustomInput
                       inputProps={{
                         onChange: (e) => setSignUpEmail(e.target.value),
+                        type:'email'
                       }}
+                      
                       labelText="Email*"
                       id="email"
-                      type="email"
 
                       formControlProps={{
-                        fullWidth: true
+                        fullWidth: true,
                       }}
                     />
 
@@ -181,14 +182,13 @@ function SignUpBrand(props) {
                         fullWidth: true
                       }}
 
-
                     />
 
                   </CardBody>
-
+                 
                   <CardFooter className={classes.cardFooter}>
-                    <Button onClick={() => handleSubmitSignupCompany()} simple color="primary" size="lg">
-                      CONNECTION
+                    <Button onClick={() => handleSubmitSignupCompany()} variant="contained"  color="primary" size="lg">
+                    CONNEXION
                     </Button>
                   </CardFooter>
                 </form>

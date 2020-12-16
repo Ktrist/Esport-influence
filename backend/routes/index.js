@@ -307,7 +307,7 @@ router.get('/get-campaign', async function (req, res, next) {
 
 
 router.get('/influencerdetails', async function (req, res, next) {
-  console.log('KIRIRIRI', req.query);
+  console.log("REQ QUERY", req.query);
 
   var influencerProfil = await userModel.findOne({ token: req.query.influencerToken })
 
@@ -334,7 +334,7 @@ router.get('/get-request-list-influencer', async function (req, res, next) {
 });
 
 router.get('/branddetails', async function (req, res, next) {
-  console.log('KIRIRIRI', req.query);
+  console.log("REQ QUERY", req.query);
 
   var brandProfil = await userModel.findOne({ token: req.query.brandToken })
 

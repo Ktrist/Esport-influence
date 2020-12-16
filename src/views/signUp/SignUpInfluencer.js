@@ -159,8 +159,9 @@ function SignUpInfluencer(props) {
                       <CustomInput
                       inputProps={{
                         onChange: (e) => setSignUpEmail(e.target.value),
+                        type:'email'
+
                       }}
-                      type= 'email'
                       labelText="Email*"
                       id="email"
                       formControlProps={{
@@ -219,8 +220,8 @@ function SignUpInfluencer(props) {
                   </CardBody>
 
                   <CardFooter className={classes.cardFooter}>
-                    <Button onClick={() => handleSubmitSignupInfluencer()} simple color="primary" size="lg">
-                      CONNECTION
+                    <Button onClick={() => handleSubmitSignupInfluencer()} variant="contained" color="primary" size="lg">
+                    CONNEXION
                     </Button>
                   </CardFooter>
                 </form>
