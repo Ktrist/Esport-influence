@@ -8,7 +8,8 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 // pages for this product
 import Components from "views/Components/Components.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
-import ProfilePage from "views/ProfilePage/ProfilePage.js";
+import ProfileInfluencer from "views/ProfilePage/ProfileInfluencer.js";
+import ProfileBrand from "views/ProfilePage/ProfileBrand.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
 import SignUpBrand from "views/signUp/SignUpBrand.js"
 import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
@@ -90,7 +91,8 @@ ReactDOM.render(
   <Router history={hist}>
   {/* {RenderRoute()}  */}
   <Switch>
-      <Route path="/profile-page" exact component={ProfilePage} />
+      <Route path="/profile-influencer" exact component={ProfileInfluencer} />
+      <Route path="/profile-brand" exact component={ProfileBrand} />
       <Route path="/create-campaign" exact component={CreateCampaign} />
       <Route path="/login-page" exact component={LoginPage} />
       <Route path="/sign-up/brand" exact component={SignUpBrand} />

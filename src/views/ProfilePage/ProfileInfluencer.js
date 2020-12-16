@@ -3,13 +3,10 @@ import React, {useState} from "react";
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // @material-ui/icons
 import InfoIcon from '@material-ui/icons/Info';
 import Favorite from "@material-ui/icons/Favorite";
-import Check from "@material-ui/icons/Check";
 import WorkIcon from '@material-ui/icons/Work';
 
 // core components
@@ -23,17 +20,12 @@ import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
-// import styles from "assets/jss/material-kit-react/customCheckboxRadioSwitch.js";
 
 import profile from "assets/img/faces/christian.jpg";
 
-import work1 from "assets/img/examples/olu-eletu.jpg";
-import work2 from "assets/img/examples/clem-onojeghuo.jpg";
-import work3 from "assets/img/examples/cynthia-del-rio.jpg";
-import work4 from "assets/img/examples/mariya-georgieva.jpg";
-import work5 from "assets/img/examples/clem-onojegaw.jpg";
-
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
+
+import "../ProfilePage/App.css"
 
 
 
@@ -48,12 +40,6 @@ export default function ProfilePage(props) {
     classes.imgFluid
   );
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
-
-  function CheckboxRadioSwitch(){
-    const [checked, setChecked] = useState([24, 22]);
-    const newChecked = [...checked];
-    setChecked(newChecked);
-    };
 
   
   
@@ -82,7 +68,8 @@ export default function ProfilePage(props) {
                   </div>
                   <div className={classes.name}>
                     <h3 className={classes.title}>Vincent Gomes</h3>
-                    <h6>Fifa 20 Influencer</h6>
+                  </div>
+                  <div>
                     <Button justIcon link className={classes.margin5}>
                       <i className={"fab fa-twitter"} />
                     </Button>
@@ -100,9 +87,9 @@ export default function ProfilePage(props) {
               </GridItem>
             </GridContainer>
             <div className={classes.description}>
-              <p>
+              <h8>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-              </p>
+              </h8>
             </div>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
@@ -114,47 +101,48 @@ export default function ProfilePage(props) {
                       tabButton: "Infos",
                       tabIcon: InfoIcon,
                       tabContent: (
-
-                        <GridContainer justify="center">
-                          <GridItem xs={12} sm={12} md={6}>
+                      
+                        
+                        <GridContainer justify="center" direction="column">
+                          <GridItem xs={12}> 
                             <CustomInput
                               labelText="First Name"
-                              id="float"
-                              formControlProps={{
-                                fullWidth: true
-                              }}
+                              id=""
                             />
                           </GridItem>
-                          <GridItem xs={12} sm={12} md={6}>
+                          <GridItem xs={12}>
                             <CustomInput
                               labelText="Last Name"
                               id="float"
-                              formControlProps={{
-                                fullWidth: true
-                              }}
                             />
                           </GridItem>
 
-                          <GridItem xs={12} sm={6} md={6}>
+                          <GridItem xs={12}>
                             <CustomInput
                               labelText="Phone Number"
                               id="float"
-                              formControlProps={{
-                                fullWidth: true
-                              }}
                             />
                           </GridItem>
 
-                          <GridItem xs={12} sm={6} md={6}>
+                          <GridItem xs={12}>
                             <CustomInput
                               labelText="Email"
                               id="float"
-                              formControlProps={{
-                                fullWidth: true
-                              }}
                             />
                           </GridItem>
+
+                          <GridItem xs={12}>
+                            <CustomInput
+                              labelText="Password"
+                              id="float"
+                            />
+                          </GridItem>
+
+                          
                         </GridContainer>
+
+                        
+                        
 
                       )
                     },
@@ -162,36 +150,35 @@ export default function ProfilePage(props) {
                       tabButton: "My Last Campaign",
                       tabIcon: WorkIcon,
                       tabContent: (
-                        <GridContainer justify="center">
-                          <GridItem xs={12} sm={12} md={4}>
+                        <GridContainer justify="center" direction="column">
+                          <GridItem xs={12}>
                             <img
-                              alt="..."
-                              src={work1}
+                              alt="Campaign1"
+                              src={"https://static1-fr.millenium.gg/articles/1/36/76/71/@/1376523-100786693-2721571934743621-147347026412044288-o-article_m-1.jpg"}
                               className={navImageClasses}
                             />
-                            <img
-                              alt="..."
-                              src={work2}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={work3}
-                              className={navImageClasses}
-                            />
+
                           </GridItem>
-                          <GridItem xs={12} sm={12} md={4}>
+                        
+
+                          <GridItem xs={12}>
                             <img
-                              alt="..."
-                              src={work4}
+                              alt="Campaign2"
+                              src={"https://www.stevenagefc.com/siteassets/image/burger-king-stevenage-challenge/stevenage-pr.jpg/Large"}
                               className={navImageClasses}
                             />
-                            <img
-                              alt="..."
-                              src={work5}
-                              className={navImageClasses}
-                            />
+
                           </GridItem>
+
+                          <GridItem xs={12}>
+                            <img
+                              alt="Campaign3"
+                              src={"https://images.contentstack.io/v3/assets/bltad9188aa9a70543a/bltf5e67a12a9bcabc8/5f6be4ec5e85ad4dee1914be/20200923_Axe_Worlds_1600x900.jpg?width=3200&height=1800"}
+                              className={navImageClasses}
+                            />
+
+                          </GridItem>
+                          
                         </GridContainer>
                       )
                     },
@@ -199,36 +186,58 @@ export default function ProfilePage(props) {
                       tabButton: "Favorite Game",
                       tabIcon: Favorite,
                       tabContent: (
-                        <GridContainer justify="center">
-                          <GridItem xs={12} sm={12} md={4}>
-                            <FormControlLabel
-                              control={
-                                <Checkbox
-                                onClick={() => CheckboxRadioSwitch()}
-                                  checkedIcon={<Check className={classes.checkedIcon} />}
-                                  icon={<Check className={classes.uncheckedIcon} />}
-                                  classes={{ checked: classes.checked }}
-                                />
-                              }
-                              classes={{ label: classes.label }}
-                              label="League of Legends"
+                        <GridContainer justify="center" style={{marginTop:"50px"}}>
+                          <GridItem xs={12} lg={6}>
+                            <img
+                              alt="game1"
+                              src={"https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends-285x380.jpg"}
+                              className={navImageClasses}
                             />
-                          </GridItem>
-                          <GridItem xs={12} sm={12} md={4}>
-                          <FormControlLabel
-                              control={
-                                <Checkbox
+                            <h7>League of Legends</h7>
 
-                                onClick={() => CheckboxRadioSwitch()}
-                                  checkedIcon={<Check className={classes.checkedIcon} />}
-                                  icon={<Check className={classes.uncheckedIcon} />}
-                                  classes={{ checked: classes.checked }}
-                                />
-                              }
-                              classes={{ label: classes.label }}
-                              label="Fifa 2020"
-                            />
                           </GridItem>
+                        
+
+                          <GridItem xs={12} lg={6}>
+                            <img
+                              alt="game2"
+                              src={"https://static-cdn.jtvnw.net/ttv-boxart/Call%20of%20Duty:%20Warzone-285x380.jpg"}
+                              className={navImageClasses}
+                            />
+                            <h7>Call of Duty: Warzone</h7>
+
+                          </GridItem>
+
+                          <GridItem xs={12} lg={6}>
+                            <img
+                              alt="game3"
+                              src={"https://static-cdn.jtvnw.net/ttv-boxart/FIFA%2021-285x380.jpg"}
+                              className={navImageClasses}
+                            />
+                            <h7>Fifa 21</h7>
+
+                          </GridItem>
+
+                          <GridItem xs={12} lg={6}>
+                            <img
+                              alt="game4"
+                              src={"https://static-cdn.jtvnw.net/ttv-boxart/Rocket%20League-285x380.jpg"}
+                              className={navImageClasses}
+                            />
+                            <h7>Rocket League</h7>
+
+                          </GridItem>
+
+                          <GridItem xs={12} lg={6}>
+                            <img
+                              alt="game5"
+                              src={"https://static-cdn.jtvnw.net/ttv-boxart/NBA%202K21-285x380.jpg"}
+                              className={navImageClasses}
+                            />
+                            <h7>NBA 2K21</h7>
+
+                          </GridItem>
+
                         </GridContainer>
                       )
                     }

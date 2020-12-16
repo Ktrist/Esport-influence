@@ -36,9 +36,6 @@ import TextField from '@material-ui/core/TextField';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-
-
 
 
 
@@ -92,7 +89,8 @@ function CreateCampaign(props) {
   // GLOBAL STATE 
   const [nameCampaign, setNameCampaign] = useState('')
   const [description, setDescription] = useState('Controlled')
-  const [audience, setAudience] = useState('')
+  const [audienceMin, setAudienceMin] = React.useState('')
+  const [audienceMax, setAudienceMax] = React.useState('')
   const [uploadDoc, setUploadDoc] = useState('')
   const [dateStart, setStartDate] = useState(new Date());
   const [dateEnd, setEndDate] = useState(new Date());
@@ -104,7 +102,7 @@ function CreateCampaign(props) {
     const data = await fetch('/addcampaign', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `nameCampaignFromFront=${nameCampaign} // &dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceFromFront=${audience}&uploadDocFromFront=${uploadDoc}&token=${props.token}`
+      body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceMinFromFront=${audienceMin}&audienceMaxFromFront=${audienceMax}&uploadDocFromFront=${uploadDoc}&token=${props.token}`
     })
    
     console.log(data.body + "HELLO add campaign")
@@ -129,42 +127,51 @@ function CreateCampaign(props) {
 
   const minSubscribers = [
     {
-      value: 'Number',
+      value: 'Number1',
       label: '0 - 500',
     },
     {
-      value: 'EUR',
+      value: 'Number2',
       label: '500 - 1000',
     },
     {
-      value: 'BTC',
+      value: 'Number3',
       label: '1000 - 5000 ',
     },
     {
-      value: 'JPY',
+      value: 'Number4',
       label: '10k+',
     },
   ];
 
   const maxSubscribers = [
     {
-      value: 'Number',
+      value: 'Number1',
       label: '500 - 1000',
     },
     {
-      value: 'EUR',
+      value: 'Number2',
       label: '1000 - 5000',
     },
     {
-      value: 'BTC',
+      value: 'Number3',
       label: '5000 - 10000 ',
     },
     {
-      value: 'JPY',
+      value: 'Number4',
       label: '10k+',
     },
   ];
 
+  const handleChangeAudienceMin = (event) => {
+    setAudienceMin(event.target.value);
+  };
+
+  const handleChangeAudienceMax = (event) => {
+    setAudienceMax(event.target.value);
+  };
+
+  console.log(uploadDoc);
   console.log("redirect", redirect);
 
   return (
@@ -174,7 +181,6 @@ function CreateCampaign(props) {
         color="transparent"
         brand="Esport-Influence"
         rightLinks={<HeaderLinks />}
-        leftLinks={"/landing-page"}
         fixed
         changeColorOnScroll={{
           height: 100,
@@ -212,7 +218,7 @@ function CreateCampaign(props) {
                     <div>
                       <MuiPickersUtilsProvider utils={DateFnsUtils} >
                         <Grid container justify="space-around">
-                          <ThemeProvider theme={defaultMaterialTheme}>
+                          <ThemeProvider  theme={defaultMaterialTheme}>
                             <KeyboardDatePicker
 
                               variant="inline"
@@ -256,15 +262,17 @@ function CreateCampaign(props) {
                       />
                     </form>
 
-                    <form noValidate autoComplete="off">
-                      <div style={{ paddingTop: '30px' }}>
+                    <div style={{ paddingTop: '30px' }}>
+                    <Grid container justify="space-around">
+                      <form noValidate autoComplete="off">
                         <TextField className="size-subscribers"
                           id="standard-select-currency"
                           select
                           label="Subscribers min."
-                          value={audience}
-                          onChange={setAudience}
-                          helperText="Please select min/max subscribers"
+                          value={audienceMin}
+                          onChange={handleChangeAudienceMin}
+                          helperText="Please select min. subscribers"
+                          margin="Normal"
                         >
                           {minSubscribers.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
@@ -272,13 +280,16 @@ function CreateCampaign(props) {
                             </MenuItem>
                           ))}
                         </TextField>
+
+                        <div>
                         <TextField
-                          id="standard-select-currency-max"
+                          id="standard-select-currency"
                           select
                           label="Subscribers max."
-                          value={audience}
-                          onChange={setAudience}
-                          helperText="Please select your max. subscribers"
+                          value={audienceMax}
+                          onChange={handleChangeAudienceMax}
+                          helperText="Please select max. subscribers"
+                          margin= "Normal"
                         >
                           {maxSubscribers.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
@@ -286,9 +297,11 @@ function CreateCampaign(props) {
                             </MenuItem>
                           ))}
                         </TextField>
-                      </div>
-
-                    </form>
+                        </div>
+               
+                      </form>
+                      </Grid>
+                    </div>
 
                     <div className={classes.root} style={{ marginTop: '80px' }}
                     >{"Share your campaign files"}

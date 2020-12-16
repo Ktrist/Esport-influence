@@ -209,7 +209,8 @@ router.post('/addcampaign', async function (req, res, next) {
     dateEnd: req.body.dateEndFromFront,
     status: 'Created',
     description: req.body.descriptionFromFront,
-    audienceCriteria: req.body.audienceFromFront,
+    audienceCriteriaMin: req.body.audienceMinFromFront,
+    audienceCriteriaMax: req.body.audienceMaxFromFront,
     uploadedDoc: req.body.uploadDocFromFront,
 
 
