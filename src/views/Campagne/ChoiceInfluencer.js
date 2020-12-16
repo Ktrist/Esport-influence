@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import Button from "components/CustomButtons/Button.js";
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksBrand from "components/Header/HeaderLinksBrand.js";
+
 import Grid from '@material-ui/core/Grid';
 import GridContainer from "components/Grid/GridContainer.js";
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -127,7 +129,7 @@ function ChoiceInfluencer(props) {
           absolute
           color="transparent"
           brand="Esport-Influence"
-          rightLinks={<HeaderLinks />}
+          rightLinks={<HeaderLinksBrand />}
           fixed
           changeColorOnScroll={{
               height: 100,
@@ -259,7 +261,7 @@ function ChoiceInfluencer(props) {
         absolute
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksBrand />}
         fixed
         changeColorOnScroll={{
             height: 100,
@@ -383,7 +385,7 @@ function ChoiceInfluencer(props) {
        absolute
        color="transparent"
        brand="Esport-Influence"
-       rightLinks={<HeaderLinks />}
+       rightLinks={<HeaderLinksBrand />}
        fixed
        changeColorOnScroll={{
            height: 100,
