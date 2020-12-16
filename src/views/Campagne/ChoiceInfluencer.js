@@ -47,7 +47,7 @@ function ChoiceInfluencer(props) {
 
 
         var UpdateStatusAccepted = {...returnCampaignDetailList}
-        UpdateStatusAccepted.status = 'accept'
+        UpdateStatusAccepted.status = 'Accepted'
         console.log(UpdateStatusAccepted)
 
         setReturnCampaignDetailList(UpdateStatusAccepted)
@@ -66,7 +66,7 @@ function ChoiceInfluencer(props) {
 
 
       var UpdateStatusRefused = {...returnCampaignDetailList}
-      UpdateStatusRefused.status = 'refused'
+      UpdateStatusRefused.status = 'Refused'
       console.log(UpdateStatusRefused)
 
       setReturnCampaignDetailList(UpdateStatusRefused)
@@ -115,7 +115,7 @@ function ChoiceInfluencer(props) {
           </CardBody>
         </Card>
       </Col >
-      } else if (returnCampaignDetailList.status == 'Accepeted'){
+      } else if (returnCampaignDetailList.status == 'Accepted'){
         return <Col xs="12" lg="6" xl="4"  key={props.token}>
         <Card style={{ width: "20rem" }}>
         <img

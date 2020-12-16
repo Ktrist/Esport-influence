@@ -53,7 +53,7 @@ function RequestInfluencer(props) {
       const useStyles = makeStyles(styles);
       const classes = useStyles();
 
-      if(returnCampaignDetailList.status == 'waiting' || 'accept'|| 'refuse'){
+      if(returnCampaignDetailList.status == 'Waiting' || 'Accepted'|| 'Refused'){
         return <Row>
         {returnRequestList}
     </Row>
