@@ -13,7 +13,7 @@ const campaignSchema = mongoose.Schema({
     public_id_doc:String,
     influencer_id:String, 
     brand_id:String,
-    // campagne_id:String,
+
 
 })
 

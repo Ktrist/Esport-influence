@@ -32,8 +32,9 @@ const [campaignList, setCampaignList] = useState([])
 
 useEffect(() => {
     async function fetchData() {
-    const response = await fetch('/addcampaign')
+    const response = await fetch('/get-campaign')
     const jsonResponse = await response.json()
+    console.log('jsonResponse', jsonResponse)
     setCampaignList(jsonResponse.campaignListItem)
 }
 fetchData()
@@ -68,6 +69,7 @@ fetchData()
                     color: "dark"
                 }}
                 {...rest}
+                
             />
             <div
                 className={classes.pageHeader}

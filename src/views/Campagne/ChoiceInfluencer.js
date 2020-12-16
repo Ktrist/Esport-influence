@@ -1,4 +1,5 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect}  from 'react';
+import {Link, Redirect} from 'react-router-dom'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -79,14 +80,7 @@ function ChoiceInfluencer(props) {
 
     }
 
-    if(status == 'accept '){
    
-        return <Redirect to='/choiceinfluencer' />
-      } else if (status == 'waiting '){
-
-        return <Redirect to='/select-campaign' />
-    
-      }
 
     const styles = {
         ...imagesStyles,
@@ -96,7 +90,7 @@ function ChoiceInfluencer(props) {
       const useStyles = makeStyles(styles);
       const classes = useStyles();
 
-     if(returnCampaignDetailList.status == 'waiting'){
+     if(returnCampaignDetailList.status == 'Waiting'){
         return <Col xs="12" lg="6" xl="4"  key={props.token}>
         <Card style={{ width: "20rem" }}>
         <img
@@ -116,11 +110,12 @@ function ChoiceInfluencer(props) {
             
             <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
             <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
-  
+            <Link to = {`/mycampaign`}><Button color="primary">My Campaign</Button></Link>
+            <Link to = {`/create-campaign`}><Button color="primary">Create New Campaign</Button></Link>
           </CardBody>
         </Card>
       </Col >
-      } else if (returnCampaignDetailList.status == 'accept'){
+      } else if (returnCampaignDetailList.status == 'Accepeted'){
         return <Col xs="12" lg="6" xl="4"  key={props.token}>
         <Card style={{ width: "20rem" }}>
         <img
