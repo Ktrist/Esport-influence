@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -19,19 +21,42 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import TextField from '@material-ui/core/TextField';
+import HeaderLinksInfluencer from "components/Header/HeaderLinksInfluencer";
 
 
 import profile from "assets/img/faces/christian.jpg";
-
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
+import { connect } from 'react-redux'
 
 import "../ProfilePage/App.css"
 
 
 
 
-export default function ProfilePage(props) {
+function ProfilePage(props) {
+
   const useStyles = makeStyles(styles);
+
+  console.log('TOKEN BABY', props)
+
+  const [influencerDetails, setInfluencerDetails] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/influencerdetails?influencerToken=${props.token}`)
+      const jsonResponse = await response.json()
+
+      setInfluencerDetails(jsonResponse.influencerProfil)
+    }
+    fetchData()
+  }, [])
+
+
+
+
+
+
   const classes = useStyles();
   const { ...rest } = props;
   const imageClasses = classNames(
@@ -41,9 +66,10 @@ export default function ProfilePage(props) {
   );
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
 
-  
-  
+
+
   return (
+
     <div>
       <Header
         color="transparent"
@@ -56,6 +82,8 @@ export default function ProfilePage(props) {
         }}
         {...rest}
       />
+
+
       <Parallax small filter image={require("assets/img/signup.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div>
@@ -67,7 +95,7 @@ export default function ProfilePage(props) {
                     <img src={profile} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>Vincent Gomes</h3>
+                    <h3 className={classes.title}>{influencerDetails.firstName}</h3>
                   </div>
                   <div>
                     <Button justIcon link className={classes.margin5}>
@@ -79,9 +107,11 @@ export default function ProfilePage(props) {
                     <Button justIcon link className={classes.margin5}>
                       <i className={"fab fa-facebook"} />
                     </Button>
-                    <Button justIcon link className={classes.margin5}>
-                      <i className={"fab fa-twitch"} />
-                    </Button>
+                    <Link to="https://www.twitch.tv/remir95">
+                      <Button justIcon link className={classes.margin5}>
+                        <i className={"fab fa-twitch"} />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </GridItem>
@@ -100,49 +130,38 @@ export default function ProfilePage(props) {
                     {
                       tabButton: "Infos",
                       tabIcon: InfoIcon,
-                      tabContent: (
-                      
-                        
+                      tabContent:(
+
                         <GridContainer justify="center" direction="column">
-                          <GridItem xs={12}> 
-                            <CustomInput
-                              labelText="First Name"
-                              id=""
-                            />
+                          <GridItem xs={12}>
+                          <TextField color="primary"  label={influencerDetails.firstName}/>
                           </GridItem>
                           <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Last Name"
-                              id="float"
-                            />
+                          <TextField color="primary" disabled id="standard-disabled" label={influencerDetails.lastName}/>
                           </GridItem>
 
                           <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Phone Number"
-                              id="float"
-                            />
+                          <TextField color="primary" disabled id="standard-disabled" label={influencerDetails.phone}/>
+
                           </GridItem>
 
                           <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Email"
-                              id="float"
-                            />
+                          <TextField color="primary" disabled id="standard-disabled" label={influencerDetails.email}/>
                           </GridItem>
 
+
                           <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Password"
-                              id="float"
-                            />
+                          <TextField color="primary" disabled id="standard-disabled" label={influencerDetails.numberFollower}/>
+                          </GridItem>
+                          <GridItem xs={12}>
+                          <TextField color="primary" disabled id="standard-disabled" label={influencerDetails.favoriteGame}/>
                           </GridItem>
 
                           
+
                         </GridContainer>
 
-                        
-                        
+
 
                       )
                     },
@@ -159,7 +178,7 @@ export default function ProfilePage(props) {
                             />
 
                           </GridItem>
-                        
+
 
                           <GridItem xs={12}>
                             <img
@@ -178,7 +197,7 @@ export default function ProfilePage(props) {
                             />
 
                           </GridItem>
-                          
+
                         </GridContainer>
                       )
                     },
@@ -186,7 +205,7 @@ export default function ProfilePage(props) {
                       tabButton: "Favorite Game",
                       tabIcon: Favorite,
                       tabContent: (
-                        <GridContainer justify="center" style={{marginTop:"50px"}}>
+                        <GridContainer justify="center" style={{ marginTop: "50px" }}>
                           <GridItem xs={12} lg={6}>
                             <img
                               alt="game1"
@@ -196,7 +215,7 @@ export default function ProfilePage(props) {
                             <h7>League of Legends</h7>
 
                           </GridItem>
-                        
+
 
                           <GridItem xs={12} lg={6}>
                             <img
@@ -250,6 +269,16 @@ export default function ProfilePage(props) {
       </div>
       <Footer />
     </div>
+
   );
 
 }
+
+function mapStateToProps(state) {
+  return { token: state.token }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(ProfilePage)

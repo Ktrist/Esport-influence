@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 // core components
 import Button from "components/CustomButtons/Button.js";
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksBrand from "components/Header/HeaderLinksBrand.js";
+
 import Grid from '@material-ui/core/Grid';
 import GridContainer from "components/Grid/GridContainer.js";
 import ButtonBase from '@material-ui/core/ButtonBase';
-import {Link, Redirect} from 'react-router-dom'
+
 import image from "assets/img/signup.jpg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -116,7 +120,7 @@ function ChoiceInfluencer(props) {
           absolute
           color="transparent"
           brand="Esport-Influence"
-          rightLinks={<HeaderLinks />}
+          rightLinks={<HeaderLinksBrand />}
           fixed
           changeColorOnScroll={{
             height: 100,
@@ -176,8 +180,6 @@ function ChoiceInfluencer(props) {
 
                       <Button onClick={() => updateStatusAcc()} color="primary">Accept</Button>
                       <Button onClick={() => updateStatusRef()} color="primary">Refuse</Button>
-                      <Link to = {`/mycampaign`}><Button color="primary">My Campaign</Button></Link>
-                      <Link to = {`/create-campaign`}><Button color="primary">Create Campaign</Button></Link>
                     </div>
 
                   </div>
@@ -249,7 +251,7 @@ function ChoiceInfluencer(props) {
         absolute
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksBrand />}
         fixed
         changeColorOnScroll={{
           height: 100,
@@ -373,7 +375,7 @@ function ChoiceInfluencer(props) {
         absolute
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksBrand />}
         fixed
         changeColorOnScroll={{
           height: 100,

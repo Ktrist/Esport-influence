@@ -119,11 +119,12 @@ function LoginPage(props) {
                 
                     <CustomInput
                       inputProps={{
-                        onChange: (e) => setSignInPassword(e.target.value)
+                        onChange: (e) => setSignInPassword(e.target.value),
+                        type:"password"
+
                       }}
-                      labelText="password"
+                      labelText="password*"
                       id="password"
-                      type="password"
                       formControlProps={{
                         fullWidth: true
                       }}

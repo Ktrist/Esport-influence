@@ -25,6 +25,19 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
 
+<ListItem className={classes.listItem}>
+<Link to="/profile-influencer">    
+<Button 
+          color="primary"
+          border
+          className={classes.navLink}
+        >
+          <PersonAddIcon className={classes.icons} /> Profil
+        </Button>
+        </Link>  
+      </ListItem>
+
+
       <ListItem className={classes.listItem}>
         <Button
           href="/sign-up/brand"

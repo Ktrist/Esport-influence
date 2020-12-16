@@ -35,6 +35,7 @@ import { purple } from "@material-ui/core/colors";
 import TextField from '@material-ui/core/TextField';
 
 import MenuItem from '@material-ui/core/MenuItem';
+import HeaderLinksBrand from "components/Header/HeaderLinksBrand";
 
 
 
@@ -131,49 +132,51 @@ function CreateCampaign(props) {
 
   const minSubscribers = [
     {
-      value: 'Number1',
+      value: '0 - 500',
       label: '0 - 500',
     },
     {
-      value: 'Number2',
-      label: '500 - 1000',
+      value: '500 - 1000',
+      label: '500 - 1000',  
     },
     {
-      value: 'Number3',
+      value: '1000 - 5000 ',
       label: '1000 - 5000 ',
     },
     {
-      value: 'Number4',
+      value: '10k+',
       label: '10k+',
     },
   ];
 
   const maxSubscribers = [
     {
-      value: 'Number1',
+      value: '500 - 1000',
       label: '500 - 1000',
     },
     {
-      value: 'Number2',
+      value: '1000 - 5000',
       label: '1000 - 5000',
     },
     {
-      value: 'Number3',
+      value: '5000 - 10000',
       label: '5000 - 10000 ',
     },
     {
-      value: 'Number4',
+      value: '10k+',
       label: '10k+',
     },
   ];
+
 
   const handleChangeAudienceMin = (event) => {
     setAudienceMin(event.target.value);
   };
 
-  const handleChangeAudienceMax = (event) => {
+  const handleChangeAudienceMax = (event) => { 
     setAudienceMax(event.target.value);
   };
+
 
   console.log(uploadDoc);
   console.log("redirect", redirect);
@@ -184,7 +187,7 @@ function CreateCampaign(props) {
         absolute
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksBrand />}
         fixed
         changeColorOnScroll={{
           height: 100,
@@ -258,10 +261,9 @@ function CreateCampaign(props) {
                       <TextField
                         onChange={(e) => setDescription(e.target.value)}
                         id="outlined-multiline-static"
-                        label="Description"
+                        label="Describe your campaign"
                         multiline
                         rows={4}
-                        defaultValue="Describe your campaign"
                         variant="outlined"
                       />
                     </form>

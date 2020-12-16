@@ -19,6 +19,7 @@ import { connect } from 'react-redux'
 // TEST MOVIE pour insertion du tableau
 
 import Campaign from '../Campagne/campaign'
+import HeaderLinksInfluencer from "components/Header/HeaderLinksInfluencer";
 
 // FIN DES IMPORTS DE TEST
 
@@ -26,6 +27,8 @@ import Campaign from '../Campagne/campaign'
 const useStyles = makeStyles(styles);
 
 function SelectCampagne(props) {
+
+    console.log("Select", props.token)
 
 
 const [campaignList, setCampaignList] = useState([])
@@ -62,7 +65,7 @@ fetchData()
                 absolute
                 color="transparent"
                 brand="Esport-Influence"
-                rightLinks={<HeaderLinks />}
+                rightLinks={<HeaderLinksInfluencer />}
                 fixed
                 changeColorOnScroll={{
                     height: 100,
@@ -82,8 +85,6 @@ fetchData()
                 <div className={classes.container}>
                
                     <Row>
-                    <Link to = {`/request-influencer-list`} ><Button color="secondary">List request INfluencer </Button></Link>
-
                         {campaignListItems}
                     </Row>
                 </div>  

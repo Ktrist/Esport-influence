@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link, Redirect} from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -22,7 +22,7 @@ import CardHeader from "components/Card/CardHeader";
 
 import image from "assets/img/signup.jpg";
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 
 const useStyles = makeStyles(styles);
@@ -56,7 +56,7 @@ function SignUpInfluencer(props) {
 
     const body = await data.json()
 
-    if(body.result == true){
+    if (body.result == true) {
       props.addToken(body.token)
       setUserExists(true)
       setRedirect(true)
@@ -145,30 +145,30 @@ function SignUpInfluencer(props) {
                       }}
                     />
 
-                      <CustomInput
-                      inputProps={{
-                        onChange: (e) => setSignUpPassword(e.target.value),
-                      }}
-                        labelText= "Password*"
-                        id="password"
-                      
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-
                     <CustomInput
                       inputProps={{
-                        onChange: (e) => setSignUpEmail(e.target.value)
+                        onChange: (e) => setSignUpPassword(e.target.value),
+                        type: 'password'
                       }}
-                      labelText="Email*"
-                      id="email"
+                      labelText="Password*"
+                      id="password"
 
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
+                      <CustomInput
+                      inputProps={{
+                        onChange: (e) => setSignUpEmail(e.target.value),
+                      }}
+                      type= 'email'
+                      labelText="Email*"
+                      id="email"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
 
                     <CustomInput
                       inputProps={{
@@ -186,7 +186,7 @@ function SignUpInfluencer(props) {
                       inputProps={{
                         onChange: (e) => setSignUpFollowerInfluencer(e.target.value),
                       }}
-                      labelText="Number of followers*"
+                      labelText="Number of followers* ( Number only)"
                       id="followers"
 
                       formControlProps={{
@@ -232,17 +232,17 @@ function SignUpInfluencer(props) {
         </div>
 
       </div>
-      {redirect ? <Redirect to="/select-campaign" /> : null }
+      {redirect ? <Redirect to="/select-campaign" /> : null}
     </div>
 
 
   );
-  }
-                    
-function mapDispatchToProps(dispatch){
+}
+
+function mapDispatchToProps(dispatch) {
   return {
-    addToken: function(token){
-      dispatch({type: 'addToken', token: token})
+    addToken: function (token) {
+      dispatch({ type: 'addToken', token: token })
     }
   }
 }

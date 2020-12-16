@@ -28,7 +28,7 @@ import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
-
+import HeaderLinksInfluencer from "components/Header/HeaderLinksInfluencer.js";
 
 import brandLogo from "assets/img/coca-logo.png";
 import Image from 'assets/img/campagn-apply.png';
@@ -105,6 +105,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
     const backgroundGridStyles = {
       paperContainer: {
           backgroundImage: `url(${Image})`,
+          
       },
     }
 
@@ -156,7 +157,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
       <Header
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksInfluencer />}
         fixed
         changeColorOnScroll={{
           height: 200,
@@ -166,7 +167,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
       />
       <Parallax small filter image={require("assets/img/signup.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div style={{background: 'black'}} key={params.id}>
+        <div style={{background: 'white'}} key={params.id}>
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={6} key={params.id}>
