@@ -8,7 +8,8 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 // pages for this product
 import Components from "views/Components/Components.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
-import ProfilePage from "views/ProfilePage/ProfilePage.js";
+import ProfileInfluencer from "views/ProfilePage/ProfileInfluencer.js";
+import ProfileBrand from "views/ProfilePage/ProfileBrand.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
 import SignUpBrand from "views/signUp/SignUpBrand.js"
 import SignUpInfluencer from "views/signUp/SignUpInfluencer.js"
@@ -33,7 +34,7 @@ import {Provider} from 'react-redux'
 
 import SelectCampagne from "views/Campagne/SelectCampagne.js";
 import CampaignApply from "views/Campagne/CampaignApply.js";
-
+import MyCampaign from "views/Campagne/MyCampaign.js";
 
 var hist = createBrowserHistory();
 
@@ -42,7 +43,7 @@ const store = createStore(combineReducers({token, campaign}))
 // const role = localStorage.getItem('role')
 // const RenderRoute = () => {
 
-//   if(tokenLocal && role === "influencer") {
+//   if(tokenLocal && role === "influenceur") {
 //     return(
 //       <Switch>
 //                 <Route path="/login-page" exact component={LoginPage} />
@@ -74,7 +75,7 @@ const store = createStore(combineReducers({token, campaign}))
   
 //               return(
 //                 <Switch>
-//                                   <Route path="/login-page" exact component={LoginPage} />
+// //                                   <Route path="/login-page" exact component={LoginPage} />
 
                           {/* <Route path="/select-campaign" exact component={SelectCampagne} /> */}
 
@@ -82,7 +83,7 @@ const store = createStore(combineReducers({token, campaign}))
                {/* <Route path="/" exact component={LandingPage} /> */}
                 {/* <Route path="/login-page" exact component={LoginPage} /> */}
             //     </Switch> 
-            //  )} 
+//              )} 
   
 // }
 
@@ -91,12 +92,14 @@ ReactDOM.render(
   <Router history={hist}>
   {/* {RenderRoute()}  */}
   <Switch>
-      <Route path="/profile-page" exact component={ProfilePage} />
+      <Route path="/profile-influencer" exact component={ProfileInfluencer} />
+      <Route path="/profile-brand" exact component={ProfileBrand} />
       <Route path="/create-campaign" exact component={CreateCampaign} />
       <Route path="/login-page" exact component={LoginPage} />
       <Route path="/sign-up/brand" exact component={SignUpBrand} />
       <Route path="/sign-up/influencer" exact component={SignUpInfluencer} />
       <Route path="/select-campaign" exact component={SelectCampagne} />
+      <Route path="/mycampaign" exact component={MyCampaign} />
       <Route path="/select-influencer" exact component={SelectInfluencer} />
       <Route path="/campaign-apply/:id"  component={CampaignApply} />
       <Route path="/mynetwork" exact component={MyNetwork}/>

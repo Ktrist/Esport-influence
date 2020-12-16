@@ -18,7 +18,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 
 // @material-ui/icons
 import InfoIcon from '@material-ui/icons/Info';
-import GradeIcon from '@material-ui/icons/Grade';
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 
 // core components
@@ -166,7 +166,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
       />
       <Parallax small filter image={require("assets/img/signup.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div style={{background: 'black'}}>
+        <div style={{background: 'black'}} key={params.id}>
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={6} key={params.id}>
@@ -195,6 +195,11 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
                 </div>
               </GridItem>
             </GridContainer>
+
+            <GridContainer justify="center" style={{marginTop: '30px', marginBottom: '30px'}}>
+            <Button onClick={() =>applyCampaign()} color="primary">Apply Campaign</Button>
+            </GridContainer>
+
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.navWrapper} >
                 <NavPills 
@@ -270,7 +275,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
                     },
                     {
                       tabButton: "Rewards",
-                      tabIcon: GradeIcon,
+                      tabIcon: EmojiEventsIcon,
                       tabContent: (
                       <div className={gridClasses.root} >
                         <ul >
@@ -313,7 +318,6 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
                     }
                   ]}
                 />
-                <Button onClick={() =>applyCampaign()} color="primary">Apply Campaign</Button>
               </GridItem>
             </GridContainer>
           </div>
