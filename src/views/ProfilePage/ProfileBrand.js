@@ -19,6 +19,8 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import TextField from '@material-ui/core/TextField';
+
 
 import { connect } from 'react-redux'
 
@@ -40,12 +42,14 @@ function ProfileBrandPage(props) {
 
   const [companyDetails, setCompanyDetails] = useState([])
 
+
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`/branddetails?brandToken=${props.token}`)
       const jsonResponse = await response.json()
 
-      setCompanyDetails(jsonResponse.BrandProfil)
+      setCompanyDetails(jsonResponse.brandProfil)
     }
     fetchData()
   }, [])
@@ -124,45 +128,21 @@ function ProfileBrandPage(props) {
                         
                         <GridContainer justify="center" direction="column">
                           <GridItem xs={12}> 
-                            <CustomInput
-                              labelText="Company"
-                              id=""
-                            />
+                          <TextField color="primary"  label={companyDetails.firstName}/>
                           </GridItem>
                           <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Firstname"
-                              id="float"
-                            />
+                          <TextField color="primary" disabled id="standard-disabled" label={companyDetails.lastName}/>
                           </GridItem>
 
                           <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Lastname"
-                              id="float"
-                            />
+                          <TextField color="primary" disabled id="standard-disabled" label={companyDetails.phone}/>
                           </GridItem>
 
                           <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Phone"
-                              id="float"
-                            />
+                          <TextField color="primary" disabled id="standard-disabled" label={companyDetails.email}/>
                           </GridItem>
+                         
 
-                          <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Email"
-                              id="float"
-                            />
-                          </GridItem>
-
-                          <GridItem xs={12}>
-                            <CustomInput
-                              labelText="Password"
-                              id="float"
-                            />
-                          </GridItem>
 
                           
                         </GridContainer>

@@ -23,10 +23,7 @@ import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import TextField from '@material-ui/core/TextField';
 
-
-
 import profile from "assets/img/faces/christian.jpg";
-
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 import { connect } from 'react-redux'
 
@@ -135,7 +132,7 @@ function ProfilePage(props) {
 
                         <GridContainer justify="center" direction="column">
                           <GridItem xs={12}>
-                           <TextField color="primary" disabled id="standard-disabled" label={influencerDetails.firstName}/>
+                          <TextField color="primary"  label={influencerDetails.firstName}/>
                           </GridItem>
                           <GridItem xs={12}>
                           <TextField color="primary" disabled id="standard-disabled" label={influencerDetails.lastName}/>

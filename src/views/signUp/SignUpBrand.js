@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link, Redirect} from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -19,15 +19,19 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import CardHeader from "components/Card/CardHeader";
+import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+
+
 
 import image from "assets/img/signup.jpg";
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(styles);
 
 
- function SignUpBrand(props) {
+function SignUpBrand(props) {
   // GLOBAL STATE 
   const [signUpFirstName, setSignUpFirstName] = useState('')
   const [signUpEmail, setSignUpEmail] = useState('')
@@ -53,7 +57,7 @@ const useStyles = makeStyles(styles);
 
     const body = await data.json()
 
-    if(body.result == true){
+    if (body.result == true) {
       props.addToken(body.token)
       setUserExists(true)
       setRedirect(true)
@@ -61,8 +65,8 @@ const useStyles = makeStyles(styles);
       setErrorsSignup(body.error)
     }
   }
- 
-  
+
+
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function () {
     setCardAnimation("");
@@ -105,9 +109,9 @@ const useStyles = makeStyles(styles);
                       inputProps={{
                         onChange: (e) => setSignUpCompagny(e.target.value),
                       }}
-                        labelText="Company*"
-                        id="company"
-                      
+                      labelText="Company*"
+                      id="company"
+
                       formControlProps={{
                         fullWidth: true
                       }}
@@ -115,11 +119,11 @@ const useStyles = makeStyles(styles);
 
                     <CustomInput
                       inputProps={{
-                        onChange: (e) => setSignUpFirstName(e.target.value)
+                        onChange: (e) => setSignUpFirstName(e.target.value),
                       }}
-                        labelText= "Firstname*"
-                        id="firstname"
-                     
+                      labelText="First Name*"
+                      id="firstname"
+
                       formControlProps={{
                         fullWidth: true
                       }}
@@ -129,21 +133,23 @@ const useStyles = makeStyles(styles);
                       inputProps={{
                         onChange: (e) => setSignUpLastName(e.target.value),
                       }}
-                        labelTex= "Lastname*"
-                        id= "lastName"
-                      
+                      labelText="Last Name*"
+                      id="Lastname"
+
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
 
+
                     <CustomInput
                       inputProps={{
                         onChange: (e) => setSignUpEmail(e.target.value),
                       }}
-                        labelText= "Email*"
-                        id= "email"
-                      
+                      labelText="Email*"
+                      id="email"
+                      type="email"
+
                       formControlProps={{
                         fullWidth: true
                       }}
@@ -154,25 +160,28 @@ const useStyles = makeStyles(styles);
                       inputProps={{
                         onChange: (e) => setSignUpPhone(e.target.value),
                       }}
-                        labelText= "Phone*"
-                        id= "phone"
-                      
+                      labelText="Phone*"
+                      id="phone"
+
                       formControlProps={{
                         fullWidth: true
                       }}
                     />
-
-
                     <CustomInput
                       inputProps={{
                         onChange: (e) => setSignUpPassword(e.target.value),
+                        type:"password"
+
                       }}
-                        labelText= "Password*"
-                        id="password"
-                      
+                      labelText="Password*"
+                      id="Password"
+
+
                       formControlProps={{
                         fullWidth: true
                       }}
+
+
                     />
 
                   </CardBody>
@@ -188,17 +197,17 @@ const useStyles = makeStyles(styles);
           </GridContainer>
         </div>
       </div>
-      {redirect ? <Redirect to="/create-campaign" /> : null }
+      {redirect ? <Redirect to="/create-campaign" /> : null}
     </div>
 
 
   );
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return {
-    addToken: function(token){
-      dispatch({type: 'addToken', token: token})
+    addToken: function (token) {
+      dispatch({ type: 'addToken', token: token })
     }
   }
 }
