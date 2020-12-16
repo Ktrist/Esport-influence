@@ -1,17 +1,23 @@
 import React, { useState, useEffect }  from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import Button from "components/CustomButtons/Button.js";
-import imagesStyles from "assets/jss/material-kit-react/imagesStyles.js";
-import { cardTitle } from "assets/jss/material-kit-react.js";
-import {Col} from 'reactstrap';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faStar} from '@fortawesome/free-solid-svg-icons'
+import { Col } from 'reactstrap';
 
 import { connect } from 'react-redux'
-import { createAwait } from 'typescript';
+
+// core components
+import Button from "components/CustomButtons/Button.js";
+import Card from "components/Card/Card.js";
+import CardBody from "components/Card/CardBody.js";
+import Header from "components/Header/Header.js";
+import HeaderLinks from "components/Header/HeaderLinks.js";
+import Grid from '@material-ui/core/Grid';
+import GridContainer from "components/Grid/GridContainer.js";
+import ButtonBase from '@material-ui/core/ButtonBase';
+
+import image from "assets/img/signup.jpg";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "views/MessengerPage/App.css"
 
 
 
@@ -79,47 +85,193 @@ function ChoiceInfluencer(props) {
 
     }
 
-    if(status == 'accept '){
-   
-        return <Redirect to='/choiceinfluencer' />
-      } else if (status == 'waiting '){
+    const gridStyles = makeStyles((theme) => ({
+      root: {
+        flexGrow: 1,
+      },
+      paper: {
+        padding: theme.spacing(2),
+        margin: 'auto',
+        maxWidth: 500,
+      },
+      image: {
+        width: 128,
+        height: 128,
+      },
+      img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+      },
+    }));
 
-        return <Redirect to='/select-campaign' />
-    
-      }
-
-    const styles = {
-        ...imagesStyles,
-        cardTitle,
-      };
+    const gridClasses = gridStyles();
       
-      const useStyles = makeStyles(styles);
+      const useStyles = makeStyles({
+        root: {
+          maxWidth: 345,
+          marginLeft: 30,
+          border: "1mm ridge black"
+        },
+        media: {
+          height: 140,
+        },
+      });
+
       const classes = useStyles();
+      const { ...rest } = props;
 
      if(returnCampaignDetailList.status == 'waiting'){
-        return <Col xs="12" lg="6" xl="4"  key={props.token}>
-        <Card style={{ width: "20rem" }}>
-        <img
-          style={{height: "180px", width: "100%", display: "block"}}
-          className={classes.imgCardTop}
-          src='/generique.jpg'
-          alt="Card-img-cap"
-        />
-          <CardBody>
+
+        return(
+        <div>
+          <Header
+          absolute
+          color="transparent"
+          brand="Esport-Influence"
+          rightLinks={<HeaderLinks />}
+          fixed
+          changeColorOnScroll={{
+              height: 100,
+              color: "dark"
+          }}
+          {...rest}
+          />
+          <div
+            className={classes.pageHeader}
+            style={{
+              backgroundImage: "url(" + image + ")",
+              backgroundSize: "cover",
+              backgroundPosition: "top center"
+            }}
+            >
+          
+          <div className="users" key={props.token}>
+
+            <div className="current-user-container" style={{marginTop: "85px"}}>
+    
+              <div>
+        
+                <picture className="current-user-picture">
+                <img alt={"brand"} src={"https://dwglogo.com/wp-content/uploads/2016/03/1500px_Coca_Cola_logo.png"} />
+                </picture>
+
+              <div className="current-user-info">
+
+              <h3>Campaign Name: {returnCampaignDetailList.campaignName}</h3>
+
+              </div>
+              </div>
+
+            </div>
+
+            <div className="users-container" style={{marginTop: "280px"}}>
+            
+            <ul>
+    
+                <li className="user">
+                <picture className="user-picture">
+                <img src={""} alt={""} />
+                </picture>
+
+                <div className="user-info-container">
+
+                <div className="user-info">
+
+                    <h4>Firstname Influencer: {returnInfluenceur.firstName}</h4>
+                    <p>Status: {returnCampaignDetailList.status}</p>
+                    <p>Followers: {returnInfluenceur.numberFollower}</p>
+
+                </div>
+
+                <div className="user-action">
+
+                <Button onClick={() =>updateStatusAcc()} color="primary">Accept</Button>
+                <Button onClick={() =>updateStatusRef()}  color="secondary">Refuse</Button> 
+
+                </div>
+
+                </div>
+    
+                </li>
+
+                <div className={classes.description}>
+              <p>
+              {returnInfluenceur.description}
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
+              </p>
+            </div>
+
+            <div>
+            <div>
+                        <GridContainer justify="left">
+                                <Grid item>
+                                  <ButtonBase className={gridClasses.image} style={{marginLeft: "30px"}}>
+                                    <img className={gridClasses.img} src={"https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/twitch-512.png"} width='45%' /><h3>Twitch</h3>
+                                  </ButtonBase>
+                                </Grid>
+                        </GridContainer>
+                        
+                        <GridContainer justify="left" style={{marginTop: '15px'}}>
+                                <Grid item>
+                                    <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/Counter-Strike:%20Global%20Offensive-285x380.jpg"} width='35%'/>
+                                </Grid>
+                                <Grid item>
+                                    <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends-285x380.jpg"} width='35%'/>
+                                </Grid>
+                                <Grid item>
+                                    <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/FIFA%2021-285x380.jpg"} width='35%'/>
+                                </Grid>
+                        </GridContainer>
+
+                        <GridContainer justify="left">
+                                <Grid item>
+                                  <ButtonBase className={gridClasses.image} style={{marginLeft: "45px", marginTop: "20px"}}>
+                                    <img className={gridClasses.img} src={"https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png"} width='45%'/><h3>YouTube</h3>
+                                  </ButtonBase>
+                                </Grid>
+                        </GridContainer>
+                        
+                        <GridContainer justify="left" style={{marginTop: '15px'}}>
+                                <Grid item>
+                                    <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-285x380.jpg"} width='35%'/>
+                                </Grid>
+                                <Grid item>
+                                    <img className={gridClasses.img} src={"https://static-cdn.jtvnw.net/ttv-boxart/FIFA%2021-285x380.jpg"} width='35%'/>
+                                </Grid>
+                        </GridContainer>
+
+                        </div>
+            </div>
+
+            </ul>
+
+            </div>
+          
+          </div>
+
+
+        {/* Eléments à intégrer
+        
+        <Col xs="12" lg="6" xl="4"  key={props.token}> */}
+        
+
+{/* 
             <h4 className={classes.cardTitle}>{returnCampaignDetailList.campaignName}</h4>
-            <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4>
-            <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
+            <h4 className={classes.cardTitle}>{returnCampaignDetailList.status}</h4> */}
+            {/* <h4 className={classes.cardTitle}>{returnInfluenceur.firstName}</h4>
             <h4 className={classes.cardTitle}>{returnInfluenceur.favoriteGame}</h4>
             <h4 className={classes.cardTitle}>{returnInfluenceur.numberFollower}</h4>
-  
-            <p>HH</p>
             
             <Button onClick={() =>updateStatusAcc()} color="primary">Accepter</Button>
-            <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button>
+            <Button onClick={() =>updateStatusRef()}  color="secondary">Refuser</Button> */}
   
-          </CardBody>
-        </Card>
-      </Col >
+{/* 
+      </Col >  */}
+      </div> 
+      </div>
+        )
       } else if (returnCampaignDetailList.status == 'accept'){
         return <Col xs="12" lg="6" xl="4"  key={props.token}>
         <Card style={{ width: "20rem" }}>

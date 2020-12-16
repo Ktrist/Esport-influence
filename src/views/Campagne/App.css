@@ -105,3 +105,8 @@ p {
 .MuiListItem-button{
     background-color: white !important;
 }
+
+.makeStyles-primary-57 {
+    margin-left: 15px !important;
+    margin-bottom: 10px !important;
+}

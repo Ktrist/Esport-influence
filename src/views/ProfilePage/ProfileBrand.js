@@ -161,7 +161,7 @@ export default function ProfilePage(props) {
                           <GridItem xs={12}>
                             <img
                               alt="currentCampaign1"
-                              src={"https://lareclame.fr/wp-content/uploads/2014/09/coca-bis.jpg"}
+                              src={"https://pbs.twimg.com/media/CWH5mtYXAAImgdt.jpg"}
                               className={navImageClasses}
                             />
 
