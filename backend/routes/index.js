@@ -170,7 +170,7 @@ router.post('/sign-in', async function (req, res, next) {
   if (req.body.emailFromFront == ''
     || req.body.passwordFromFront == ''
   ) {
-    error.push('Empty')
+    error.push('Empty Field')
   }
 
   if (error.length == 0) {
@@ -203,6 +203,17 @@ console.log("log-user", user)
 
 })
 router.post('/addcampaign', async function (req, res, next) {
+
+  var error = []
+
+  if (req.body.nameCampaignFromFront == ''
+  || req.body.descriptionFromFront == ''
+  || req.body.audienceMinFromFront == ''
+  || req.body.audienceMaxFromFront == ''
+) {
+  error.push('Empty Field')
+  res.json({ error })
+}else{
   var user = await userModel.findOne({ token: req.body.token })
   var campaign = new campaignModel({
     campaignName: req.body.nameCampaignFromFront,
@@ -222,8 +233,8 @@ router.post('/addcampaign', async function (req, res, next) {
   console.log('insertId', insertId)
 
   res.json({ campaignSave })
-  console.log('camp+user', campaignSave)
-
+  console.log('camp+user', error)
+} 
   
 });
 

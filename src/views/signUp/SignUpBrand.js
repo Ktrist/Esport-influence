@@ -61,6 +61,9 @@ const useStyles = makeStyles(styles);
       setErrorsSignup(body.error)
     }
   }
+  var tabErrorsSignup = listErrorsSignup.map((error,i) => {
+    return(<p>{error}</p>)
+  })
  
   
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
@@ -174,7 +177,7 @@ const useStyles = makeStyles(styles);
                         fullWidth: true
                       }}
                     />
-
+                    {tabErrorsSignup}
                   </CardBody>
 
                   <CardFooter className={classes.cardFooter}>
