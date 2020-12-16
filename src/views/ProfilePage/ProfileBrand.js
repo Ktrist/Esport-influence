@@ -20,6 +20,7 @@ import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import TextField from '@material-ui/core/TextField';
+import HeaderLinksBrand from "components/Header/HeaderLinksBrand";
 
 
 import { connect } from 'react-redux'
@@ -71,7 +72,7 @@ function ProfileBrandPage(props) {
       <Header
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksBrand />}
         fixed
         changeColorOnScroll={{
           height: 200,
@@ -160,7 +161,7 @@ function ProfileBrandPage(props) {
                           <GridItem xs={12}>
                             <img
                               alt="currentCampaign1"
-                              src={"https://lareclame.fr/wp-content/uploads/2014/09/coca-bis.jpg"}
+                              src={"https://pbs.twimg.com/media/CWH5mtYXAAImgdt.jpg"}
                               className={navImageClasses}
                             />
 
