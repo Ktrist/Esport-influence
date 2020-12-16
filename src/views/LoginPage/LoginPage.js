@@ -58,13 +58,14 @@ function LoginPage(props) {
     })
 
     const body = await data.json()
-console.log(body)
-    setRoleState(body.user.role)
-    
+    console.log(body)
+  
+   
+
     if(body.result == true){
       props.addToken(body.token)
       setUserExists(true)
-      
+      setRoleState(body.user.role)
     }  else {
       setErrorsSignIn(body.error)
     }
@@ -74,13 +75,11 @@ console.log(body)
     return <Redirect to='/choiceinfluencer' />
   } else if (roleState == 'influenceur'){
     return <Redirect to='/select-campaign' />
-
   }
-  
+
   var tabErrorsSignin = listErrorsSignIn.map((error,i) => {
     return(<p>{error}</p>)
   })
-
 
   return (
     <div>
@@ -119,7 +118,7 @@ console.log(body)
                         fullWidth: true
                       }}
                     />
-
+                
                     <CustomInput
                       inputProps={{
                         onChange: (e) => setSignInPassword(e.target.value),
@@ -132,6 +131,7 @@ console.log(body)
                         fullWidth: true
                       }}
                     />
+                    {tabErrorsSignin}
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <Button onClick={() => handleSubmitSignIn()} variant="contained" color="primary" size="lg">

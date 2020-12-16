@@ -36,7 +36,7 @@ function SignUpInfluencer(props) {
   const [signUpPassword, setSignUpPassword] = useState('')
   const [signUpLastName, setSignUpLastName] = useState('')
   const [signUpPhone, setSignUpPhone] = useState('')
-  const [signUpUsernameInfluencer, setSignUpUsernameInfluencer] = useState('')
+  const [signUpUserNameInfluencer, setSignUpUserNameInfluencer] = useState('')
   const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
   const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
   const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
@@ -50,7 +50,7 @@ function SignUpInfluencer(props) {
     const data = await fetch('/sign-up/influencer', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}&usernameFromFront=${signUpUsernameInfluencer}&numberFollowerFromFront=${signUpFollowerInfluencer}&favoriteGameFromFront=${signUpFavoriteGamesInfluencer}&urlSocialNetworkFromFront=${signUpUrlSocialNetworkInfluencer}`
+      body: `userNameFromFront=${signUpUserNameInfluencer}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}&numberFollowerFromFront=${signUpFollowerInfluencer}&favoriteGameFromFront=${signUpFavoriteGamesInfluencer}&urlSocialNetworkFromFront=${signUpUrlSocialNetworkInfluencer}`
     })
     console.log(data.body + "HELLO WORLD")
 
@@ -64,8 +64,10 @@ function SignUpInfluencer(props) {
       setErrorsSignup(body.error)
     }
   }
-
-
+ 
+  var tabErrorsSignup = listErrorsSignup.map((error,i) => {
+    return(<p>{error}</p>)
+  })
 
 
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
@@ -109,7 +111,7 @@ function SignUpInfluencer(props) {
 
                     <CustomInput
                       inputProps={{
-                        onChange: (e) => setSignUpUsernameInfluencer(e.target.value)
+                        onChange: (e) => setSignUpUserNameInfluencer(e.target.value)
                       }}
                       labelText="Username*"
                       id="Username"
@@ -216,7 +218,7 @@ function SignUpInfluencer(props) {
                         fullWidth: true
                       }}
                     />
-
+                    {tabErrorsSignup}
                   </CardBody>
 
                   <CardFooter className={classes.cardFooter}>

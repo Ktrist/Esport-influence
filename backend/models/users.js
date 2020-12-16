@@ -18,6 +18,7 @@ const mongoose = require('mongoose')
 
 // User
 const userSchema = mongoose.Schema({
+    userName:String,
     firstName: String,
     lastName: String,
     email: String,
@@ -27,7 +28,6 @@ const userSchema = mongoose.Schema({
     phone: String,
     role:String,
     company:String,
-    username:String,
     numberFollower:Number,
     favoriteGame:String,
     urlSocialNetwork:String,
