@@ -6,11 +6,12 @@ import CardBody from "components/Card/CardBody.js";
 import Button from "components/CustomButtons/Button.js";
 import imagesStyles from "assets/jss/material-kit-react/imagesStyles.js";
 import { cardTitle } from "assets/jss/material-kit-react.js";
-import {Col, } from 'reactstrap';
-
+import {Col} from 'reactstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
+
+import RequestInfluencer from './RequestInfluencer';
 
 const styles = {
   ...imagesStyles,
@@ -20,7 +21,7 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 
-function MyCampaignList(props) {
+function RequestList(props) {
 
  
   const classes = useStyles();
@@ -48,7 +49,7 @@ return(
 
 }
 
-export default MyCampaignList;
+export default RequestList;
 
 
 
