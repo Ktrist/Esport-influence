@@ -32,7 +32,7 @@ function Campaign(props) {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+        image={props.campaignUpload}
       />
         <CardContent>
         <Typography gutterBottom variant="h5" component="h2">

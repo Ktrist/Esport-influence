@@ -50,7 +50,7 @@ function RequestInfluencer(props) {
 
       var returnRequestList = returnCampaignDetailList.map((mycampaign, i) => {
     
-        return (<RequestList key={i} campaignName={mycampaign.campaignName} campaignStatus={mycampaign.status} campaignDesc={mycampaign.description}/>)
+        return (<RequestList key={i} campaignName={mycampaign.campaignName} campaignStatus={mycampaign.status} campaignDesc={mycampaign.description} campaignUpload={mycampaign.uploadedDoc}/>)
     })
 
     const useStyles = makeStyles({
@@ -96,13 +96,9 @@ function RequestInfluencer(props) {
 
                 <div>
 
-                    <picture className="current-user-picture">
-                    <img alt={"influencer"} src={""} />
-                    </picture>
-
                     <div className="current-user-info">
 
-                        <h5>Firstname Influencer:</h5>
+                        <h5>My last requests</h5>
 
                     </div>
 
