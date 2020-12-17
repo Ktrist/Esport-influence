@@ -274,10 +274,6 @@ function ChoiceInfluencer(props) {
 
             <div>
 
-              <picture className="current-user-picture">
-                <img alt={"brand"} src={"https://dwglogo.com/wp-content/uploads/2016/03/1500px_Coca_Cola_logo.png"} />
-              </picture>
-
               <div className="current-user-info">
 
                 <h3>{returnCampaignDetailList.campaignName}</h3>
@@ -292,9 +288,6 @@ function ChoiceInfluencer(props) {
             <ul>
 
               <li className="user">
-                <picture className="user-picture">
-                  <img src={""} alt={""} />
-                </picture>
 
                 <div className="user-info-container">
 
@@ -309,13 +302,6 @@ function ChoiceInfluencer(props) {
                 </div>
 
               </li>
-
-              <div className={classes.description}>
-                <p>
-                  {returnInfluenceur.description}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-            </p>
-              </div>
 
               <div>
                 <div>
