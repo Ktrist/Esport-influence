@@ -4,15 +4,18 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-import VerifiedUser from '@material-ui/icons/Star';
+import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import AdjustIcon from '@material-ui/icons/Adjust';
 import Chat from '@material-ui/icons/Chat';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import StarIcon from '@material-ui/icons/Star';
+import DateRangeIcon from '@material-ui/icons/DateRange';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
-import StarIcon from '@material-ui/icons/Star';
+
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
 
@@ -22,7 +25,7 @@ export default function ProductSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <GridContainer justify="center">
+      <GridContainer justify="center" style={{marginBottom: "50px"}}>
         <GridItem xs={12} sm={12} md={8}>
           <h2 className={classes.title}>One platform to manage, create and update your Influence Marketing campaign</h2>
           <h5 className={classes.description}>
@@ -35,25 +38,25 @@ export default function ProductSection() {
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="Market Acquisition"
-              description="Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat."
+              description="Market your products and services to new customers"
               icon={AdjustIcon}
-              iconColor="black"
+              iconColor="info"
               vertical
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea 
               title="Nano Influencers Only"
-              description="Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat."
-              icon={VerifiedUser}
+              description="Achieve a much higher reach rate than macro-influencers"
+              icon={PersonPinIcon}
               iconColor="Primary"
               vertical
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Scale your sales"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+              title="Scale your sales volumes"
+              description="Scale quickly and expect consistent results"
               icon={TrendingUpIcon}
               iconColor="primary"
               vertical
@@ -62,13 +65,11 @@ export default function ProductSection() {
         </GridContainer>
         
       </div>
-      <GridContainer justify="center">
+      <GridContainer justify="center" style={{marginTop:"50px", marginBottom:"50px"}}>
         <GridItem xs={12} sm={12} md={8}>
           <h2 className={classes.title}>Let{"'"}s talk about eSport</h2>
           <h5 className={classes.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a scelerisque nulla, sit amet pulvinar augue. 
-          Praesent at egestas turpis. Ut scelerisque porttitor lacus, quis vehicula odio vestibulum ut. 
-          Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat.
+          The eSport market is booming, as evidenced by the audiences for major competitions such as the League of Legends and Fortnite World Championships, which set new records every year.
           </h5>
         </GridItem>
       </GridContainer>
@@ -77,8 +78,8 @@ export default function ProductSection() {
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="Define your strategy"
-              description="Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat."
-              icon={AdjustIcon}
+              description="Create your campaign using our tools"
+              icon={DateRangeIcon}
               iconColor="primary"
               vertical
             />
@@ -86,16 +87,16 @@ export default function ProductSection() {
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="Discuss with your Influencer"
-              description="Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat."
+              description="Choose your influencer and discuss your objectives together"
               icon={Chat}
-              iconColor="primary"
+              iconColor="info"
               vertical
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="Be the 1st"
-              description="Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat."
+              description="Benefit from innovative distribution media and technologies"
               icon={StarIcon}
               iconColor="primary"
               vertical
