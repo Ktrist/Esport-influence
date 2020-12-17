@@ -17,6 +17,7 @@ export default function Card(props) {
   const { className, children, plain, carousel, ...rest } = props;
   const cardClasses = classNames({
     [classes.card]: true,
+    color: "transparent",
     [classes.cardPlain]: plain,
     [classes.cardCarousel]: carousel,
     [className]: className !== undefined
