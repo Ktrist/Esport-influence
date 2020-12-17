@@ -29,7 +29,7 @@ function Campaign(props) {
 
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{backgroundColor: 'transparent'}}>
       <CardMedia
         className={classes.media}
         image={props.campaignUpload}
