@@ -55,7 +55,7 @@ fetchData()
 
 
     var campaignListItems = campaignList.map((campaign, i) => {
-        return (<Campaign key={i} campaignId={campaign._id} campaignName={campaign.campaignName} campaignDesc={campaign.description} campaignImg={campaign.img} globalRating={campaign.note} globalCountRating={campaign.vote} />)
+        return (<Campaign key={i} campaignId={campaign._id} campaignName={campaign.campaignName} campaignDesc={campaign.description} campaignImg={campaign.img} globalRating={campaign.note} globalCountRating={campaign.vote} campaignUpload={campaign.uploadedDoc} />)
     })
 
     return (

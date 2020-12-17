@@ -4,7 +4,7 @@ export const influencerRewards = [
     imgUrl: "https://seeklogo.com/images/C/Coca-Cola-logo-56985C1769-seeklogo.com.png",
     title: "QUEST 1",
     quest: "Talk about the campaign",
-    desc: "At any point during a stream session, talk about the Coca-Cola Campaign",
+    desc: "At any point during a stream session, talk about the Brand",
     reward: "$5.00",
     },
     {
@@ -12,7 +12,7 @@ export const influencerRewards = [
     imgUrl: "https://seeklogo.com/images/C/Coca-Cola-logo-56985C1769-seeklogo.com.png",
     title: "QUEST 2",
     quest: "Broadcast the video",
-    desc: "At any point during a stream session, broadcast the Coca-Cola Campaign's video",
+    desc: "At any point during a stream session, broadcast the Brand Campaign's video",
     reward: "$10.00",
     },
     {
@@ -28,7 +28,7 @@ export const influencerRewards = [
     imgUrl: "https://seeklogo.com/images/C/Coca-Cola-logo-56985C1769-seeklogo.com.png",
     title: "QUEST 4",
     quest: "Wearing the cap ",
-    desc: "At any point during a stream session, wearing the Coca-Cola campaign cap",
+    desc: "At any point during a stream session, wearing the Brand cap",
     reward: "$20.00",
     },
     ]

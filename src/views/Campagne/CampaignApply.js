@@ -176,7 +176,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
                     <img src={brandLogo} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title} >{campaignDetails.campaignName} Coca-Cola Campaign</h3>
+                    <h3 className={classes.title} >{campaignDetails.campaignName}</h3>
                     </div>
 
                     <div>

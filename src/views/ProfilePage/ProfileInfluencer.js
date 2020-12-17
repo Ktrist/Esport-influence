@@ -78,7 +78,7 @@ function ProfilePage(props) {
       <Header
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksInfluencer />}
         fixed
         changeColorOnScroll={{
           height: 200,
@@ -99,7 +99,7 @@ function ProfilePage(props) {
                     <img src={profile} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>{influencerDetails.firstName}</h3>
+                    <h3 className={classes.title}>{influencerDetails.userName}</h3>
                   </div>
                   <div>
                     <Button justIcon link className={classes.margin5}>
@@ -122,7 +122,7 @@ function ProfilePage(props) {
             </GridContainer>
             <div className={classes.description}>
               <h8>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
+              {influencerDetails.bio}
               </h8>
             </div>
             <GridContainer justify="center">

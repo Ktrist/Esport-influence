@@ -16,7 +16,7 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
-
+import TextField from '@material-ui/core/TextField';
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import CardHeader from "components/Card/CardHeader";
 
@@ -40,6 +40,7 @@ function SignUpInfluencer(props) {
   const [signUpFollowerInfluencer, setSignUpFollowerInfluencer] = useState('')
   const [signUpFavoriteGamesInfluencer, setSignUpFavoriteGamesInfluencer] = useState('')
   const [signUpUrlSocialNetworkInfluencer, setSignUpUrlSocialNetworkInfluencer] = useState('')
+  const [bioInfluencer, setBioInfluencer]= useState('')
   const [listErrorsSignup, setErrorsSignup] = useState([])
   const [userExists, setUserExists] = useState(false)
   const [redirect, setRedirect] = useState(false)
@@ -50,7 +51,7 @@ function SignUpInfluencer(props) {
     const data = await fetch('/sign-up/influencer', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `userNameFromFront=${signUpUserNameInfluencer}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}&numberFollowerFromFront=${signUpFollowerInfluencer}&favoriteGameFromFront=${signUpFavoriteGamesInfluencer}&urlSocialNetworkFromFront=${signUpUrlSocialNetworkInfluencer}`
+      body: `userNameFromFront=${signUpUserNameInfluencer}&firstNameFromFront=${signUpFirstName}&lastNameFromFront=${signUpLastName}&emailFromFront=${signUpEmail}&bioFromFront=${bioInfluencer}&phoneFromFront=${signUpPhone}&passwordFromFront=${signUpPassword}&numberFollowerFromFront=${signUpFollowerInfluencer}&favoriteGameFromFront=${signUpFavoriteGamesInfluencer}&urlSocialNetworkFromFront=${signUpUrlSocialNetworkInfluencer}`
     })
     console.log(data.body + "HELLO WORLD")
 
@@ -182,6 +183,16 @@ function SignUpInfluencer(props) {
                         fullWidth: true
                       }}
                     />
+                     <TextField
+                      inputProps={{
+                        onChange:(e) => setBioInfluencer(e.target.value)
+                      }}
+                        id="outlined-multiline-static"
+                        label="Biography"
+                        multiline
+                        rows={4}
+                        variant="outlined"
+                      />
 
                     <CustomInput
                       inputProps={{

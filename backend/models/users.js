@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema({
     numberFollower:Number,
     favoriteGame:String,
     urlSocialNetwork:String,
-    // brand_id:String,
+    bio:String,
     campaign_id:[{ type: mongoose.Schema.Types.ObjectId, ref: 'campaigns'}]
 })
 

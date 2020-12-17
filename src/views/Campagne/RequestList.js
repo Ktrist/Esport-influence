@@ -38,15 +38,16 @@ return(
 
         <li className="user">
           <picture className="user-picture">
-            <img src={"https://.com/wp-content/uploads/2016/03/1500px_Coca_Cola_logo.png"} alt={""} />
+            <img src={props.campaignUpload} alt={"logo brand"} />
           </picture>
 
             <div className="user-info-container">
 
               <div className="user-info">
 
-                <h4>campaignName: {props.campaignName}</h4>
+                <h4> {props.campaignName}</h4>
                 <p>Status: {props.campaignStatus}</p>
+          
 
               </div>
 
@@ -56,9 +57,8 @@ return(
 
     <div className={classes.description}>
 
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-      </p>
+      <p>{props.campaignDesc}</p>
+
 
     </div>
 
