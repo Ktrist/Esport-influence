@@ -43,9 +43,7 @@ function Campaign(props) {
           {props.campaignDesc}
           </Typography>
           </CardContent>
-          <div>
-      <Link to = {`/campaign-apply/${props.campaignId}`} target="_blank"><Button color="primary">Select Campaign</Button></Link>
-      </div>
+      <Link to = {`/campaign-apply/${props.campaignId}`}><Button color="primary">Select Campaign</Button></Link>
     </Card>
 
 
