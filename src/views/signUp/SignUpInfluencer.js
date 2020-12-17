@@ -20,6 +20,9 @@ import TextField from '@material-ui/core/TextField';
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import CardHeader from "components/Card/CardHeader";
 
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+
 import image from "assets/img/signup.jpg";
 
 import { connect } from 'react-redux'
@@ -27,6 +30,35 @@ import { connect } from 'react-redux'
 
 const useStyles = makeStyles(styles);
 
+const themeStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'white',
+        width: '385px'
+      },
+      '&:hover fieldset': {
+        borderColor: 'purple',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'purple',
+      },
+    }
+  },
+}));
 
 function SignUpInfluencer(props) {
 
@@ -70,6 +102,7 @@ function SignUpInfluencer(props) {
     return(<p>{error}</p>)
   })
 
+  const themeClasses = themeStyles();
 
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function () {
@@ -183,7 +216,8 @@ function SignUpInfluencer(props) {
                         fullWidth: true
                       }}
                     />
-                     <TextField
+                    <form className={themeClasses.root} noValidate autoComplete="off">
+                     <TextField style={{marginRight:"60px"}}
                       inputProps={{
                         onChange:(e) => setBioInfluencer(e.target.value)
                       }}
@@ -193,7 +227,7 @@ function SignUpInfluencer(props) {
                         rows={4}
                         variant="outlined"
                       />
-
+                    </form>
                     <CustomInput
                       inputProps={{
                         onChange: (e) => setSignUpFollowerInfluencer(e.target.value),
