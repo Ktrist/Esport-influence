@@ -399,7 +399,7 @@ function ChoiceInfluencer(props) {
             <div>
 
               <picture className="current-user-picture">
-                <img alt={"brand"} src={"https://dwglogo.com/wp-content/uploads/2016/03/1500px_Coca_Cola_logo.png"} />
+                <img alt={"brand"} src={returnCampaignDetailList.uploadedDoc} />
               </picture>
 
               <div className="current-user-info">
