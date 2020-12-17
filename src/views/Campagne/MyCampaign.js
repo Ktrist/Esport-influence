@@ -108,7 +108,6 @@ function MyCampaign(props) {
 
                             <div className="current-user-info">
 
-                            <h5>CompanyName:</h5>
 
                             </div>
 

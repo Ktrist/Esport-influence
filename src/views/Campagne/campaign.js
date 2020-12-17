@@ -42,7 +42,7 @@ function Campaign(props) {
           {props.campaignDesc}
           </Typography>
           </CardContent>
-      <Link to = {`/campaign-apply/${props.campaignId}`} ><Button color="primary">Select Campaign</Button></Link>
+      <Link to = {`/campaign-apply/${props.campaignId}`}><Button color="primary">Select Campaign</Button></Link>
     </Card>
 
 
