@@ -336,7 +336,6 @@ router.get('/get-request-list-influencer', async function (req, res, next) {
 
   var influencer = await userModel.findOne({ token: req.query.influencerToken })
 
-
   var returnCampaignDetail = await campaignModel.find({influencer_id: influencer.id })
 
   var brand = await userModel.findOne({ _id: returnCampaignDetail.brand_id })

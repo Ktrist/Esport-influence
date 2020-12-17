@@ -91,7 +91,7 @@ function ProfileBrandPage(props) {
                     <img src={profile} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>{companyDetails.firstName}</h3>
+                    <h3 className={classes.title}>{companyDetails.company}</h3>
                   </div>
                   <div>
                     <Button justIcon link className={classes.margin5}>
@@ -112,7 +112,7 @@ function ProfileBrandPage(props) {
             </GridContainer>
             <div className={classes.description}>
               <h8>
-              {companyDetails.company}              
+              {companyDetails.bio}
               </h8>
             </div>
             <GridContainer justify="center">

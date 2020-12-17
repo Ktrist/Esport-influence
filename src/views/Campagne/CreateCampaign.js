@@ -339,7 +339,7 @@ function CreateCampaign(props) {
           </GridContainer>
         </div>
       </div>
-      {redirect ? <Redirect to="/choiceinfluencer" /> : null }
+      {redirect ? <Redirect to="/mycampaign" /> : null }
     </div>
 
 
