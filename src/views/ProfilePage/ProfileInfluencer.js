@@ -30,6 +30,10 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
 import { connect } from 'react-redux'
 
 import "../ProfilePage/App.css"
+import { green } from "@material-ui/core/colors";
+
+
+
 
 
 
@@ -123,7 +127,9 @@ function ProfilePage(props) {
             </div>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
-                <NavPills
+              
+                <NavPills 
+               
                   alignCenter
                   color="primary"
                   tabs={[
@@ -131,7 +137,7 @@ function ProfilePage(props) {
                       tabButton: "Infos",
                       tabIcon: InfoIcon,
                       tabContent:(
-
+                     
                         <GridContainer justify="center" direction="column">
                           <GridItem xs={12}>
                           <TextField color="primary"  label={influencerDetails.firstName}/>
@@ -165,6 +171,7 @@ function ProfilePage(props) {
 
                       )
                     },
+                  
                     {
                       tabButton: "My Last Campaign",
                       tabIcon: WorkIcon,
@@ -261,7 +268,9 @@ function ProfilePage(props) {
                       )
                     }
                   ]}
+                
                 />
+             
               </GridItem>
             </GridContainer>
           </div>

@@ -203,7 +203,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.navWrapper} >
-                <NavPills 
+                <NavPills
                   alignCenter
                   color="primary"
                   tabs={[
@@ -215,13 +215,9 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
 
                         <div className={classes.description} justify="center" style={{marginTop: '100px'}}>
-                        <p>
+                        <h8>
                         {campaignDetails.description}
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-                        </p>
+                        </h8>
                       </div>
 
                       )
