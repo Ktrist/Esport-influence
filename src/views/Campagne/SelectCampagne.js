@@ -89,7 +89,7 @@ fetchData()
                     </Row>
                 </div>  
             </div>
-            {/* <Redirect to="/campaign-apply/:id" />  */}
+            
         </div>
 
 
