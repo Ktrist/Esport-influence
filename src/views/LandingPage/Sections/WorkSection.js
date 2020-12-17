@@ -21,12 +21,6 @@ export default function WorkSection() {
       <GridContainer justify="center">
         <GridItem cs={12} sm={12} md={8}>
           <h2 className={classes.title}>Contact us</h2>
-          <h4 className={classes.description}>
-          Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat.
-          Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat.
-          Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat.
-          Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat.
-          </h4>
           <form>
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
@@ -56,11 +50,11 @@ export default function WorkSection() {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5
+                  rows: 1
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Message</Button>
+                <Button color="primary" style={{marginTop: "20px"}}>Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>
