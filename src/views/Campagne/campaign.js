@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     marginLeft: 30,
-    border: "1mm ridge black",
+    border: "1mm ridge black"
   },
   media: {
     height: 140,
@@ -29,7 +29,7 @@ function Campaign(props) {
 
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{backgroundColor: 'transparent'}}>
       <CardMedia
         className={classes.media}
         image={props.campaignUpload}
@@ -42,7 +42,7 @@ function Campaign(props) {
           {props.campaignDesc}
           </Typography>
           </CardContent>
-      <Link to = {`/campaign-apply/${props.campaignId}`}><Button color="primary">Select Campaign</Button></Link>
+      <Link to = {`/campaign-apply/${props.campaignId}`} target="_blank"><Button color="primary">Select Campaign</Button></Link>
     </Card>
 
 
