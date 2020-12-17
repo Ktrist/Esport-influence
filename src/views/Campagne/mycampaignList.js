@@ -45,6 +45,7 @@ return(
 
                 <h4>{props.campaignName}</h4>
                 <p>Status: {props.campaignStatus}</p>
+                <p>{props.campaignDesc}</p>
 
               </div>
 
