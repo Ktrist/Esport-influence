@@ -24,11 +24,9 @@ export default function ProductSection() {
     <div className={classes.section}>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Let{"'"}s talk about Esport</h2>
+          <h2 className={classes.title}>One platform to manage, create and update your Influence Marketing campaign</h2>
           <h5 className={classes.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a scelerisque nulla, sit amet pulvinar augue. 
-          Praesent at egestas turpis. Ut scelerisque porttitor lacus, quis vehicula odio vestibulum ut. 
-          Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat.
+          Esport-Influence is an influence marketing platform in esport that connects advertisers and video game streamers. Distribute your campaigns as a brand or join them to earn rewards as a streamer!
           </h5>
         </GridItem>
       </GridContainer>
@@ -39,16 +37,16 @@ export default function ProductSection() {
               title="Market Acquisition"
               description="Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat."
               icon={AdjustIcon}
-              iconColor="primary"
+              iconColor="black"
               vertical
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
-            <InfoArea
+            <InfoArea 
               title="Nano Influencers Only"
               description="Mauris sed aliquam augue, eget condimentum quam. In iaculis consectetur purus a tristique. Aliquam erat volutpat."
               icon={VerifiedUser}
-              iconColor="primary"
+              iconColor="Primary"
               vertical
             />
           </GridItem>
@@ -66,7 +64,7 @@ export default function ProductSection() {
       </div>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={8}>
-          <h2 className={classes.title}>One platform to manage, create and update your Influence marketing campaign</h2>
+          <h2 className={classes.title}>Let{"'"}s talk about eSport</h2>
           <h5 className={classes.description}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a scelerisque nulla, sit amet pulvinar augue. 
           Praesent at egestas turpis. Ut scelerisque porttitor lacus, quis vehicula odio vestibulum ut. 

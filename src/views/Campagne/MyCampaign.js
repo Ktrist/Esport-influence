@@ -22,6 +22,7 @@ import image from "assets/img/signup.jpg";
 
 
 
+
 function MyCampaign(props) {
     const [myCampaignList, setMyCampaignList] = useState([])
     const [companyCampaign, setCompanyCampaign] = useState([])
@@ -55,14 +56,19 @@ function MyCampaign(props) {
     })
 
 
-    const styles = {
-        ...imagesStyles,
-        cardTitle,
-    };
+    const useStyles = makeStyles({
+        root: {
+          maxWidth: 345,
+          marginLeft: 30,
+          border: "1mm ridge black"
+        },
+        media: {
+          height: 140,
+        },
+      });
 
-    const useStyles = makeStyles(styles);
-    const classes = useStyles();
-    const { ...rest } = props;
+      const classes = useStyles();
+      const { ...rest } = props;
 
     const myCampaignReturn = (
         <div>
@@ -86,15 +92,34 @@ function MyCampaign(props) {
                     backgroundImage: "url(" + image + ")",
                     backgroundSize: "cover",
                     backgroundPosition: "top center",
-                    height:"100vh"
+                    minHeight:"100vh"
                 }}
             >
-                <div className={classes.container}>
+                
+                <div className="users" key={props.token}>
 
+                    <div className="current-user-container" style={{marginTop: "125px", marginRight:"950px"}}>
+
+                        <div>
+
+                        <picture className="current-user-picture">
+                        <img alt={"brand"} src={""} />
+                        </picture>
+
+                            <div className="current-user-info">
+
+                            <h5>CompanyName:</h5>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
                     <Row>
                         {returnList}
                     </Row>
-                </div>
             </div>
             {/* <Redirect to="/mycampaign-apply/:id" />  */}
         </div>
