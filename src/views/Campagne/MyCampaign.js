@@ -52,7 +52,7 @@ function MyCampaign(props) {
 
     var returnList = myCampaignList.map((mycampaign, i) => {
     
-        return (<MyCampaignList key={i} campaignName={mycampaign.campaignName} campaignDesc={mycampaign.description} campaignStatus={mycampaign.status}/>)
+        return (<MyCampaignList key={i} campaignName={mycampaign.campaignName} campaignDesc={mycampaign.description} campaignStatus={mycampaign.status} campaignImage={mycampaign.uploadedDoc}/>)
     })
 
 
@@ -102,13 +102,11 @@ function MyCampaign(props) {
 
                         <div>
 
-                        <picture className="current-user-picture">
-                        <img alt={"brand"} src={""} />
-                        </picture>
 
                             <div className="current-user-info">
 
-                            <h5>CompanyName:</h5>
+                            {/* <h5>CompanyName:</h5> */}
+
 
                             </div>
 

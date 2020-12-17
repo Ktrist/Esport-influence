@@ -173,7 +173,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
               <GridItem xs={12} sm={12} md={6} key={params.id}>
                 <div className={classes.profile}>
                   <div>
-                    <img src={brandLogo} alt="..." className={imageClasses} />
+                    <img src={campaignDetails.uploadedDoc} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
                     <h3 className={classes.title} >{campaignDetails.campaignName}</h3>

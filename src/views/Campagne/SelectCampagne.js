@@ -43,9 +43,6 @@ useEffect(() => {
 fetchData()
   }, [])
 
-
-
-
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
     setTimeout(function () {
         setCardAnimation("");
@@ -89,7 +86,7 @@ fetchData()
                     </Row>
                 </div>  
             </div>
-            {/* <Redirect to="/campaign-apply/:id" />  */}
+            
         </div>
 
 

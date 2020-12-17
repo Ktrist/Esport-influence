@@ -234,7 +234,7 @@ function SignUpInfluencer(props) {
 
                   <CardFooter className={classes.cardFooter}>
                     <Button onClick={() => handleSubmitSignupInfluencer()} variant="contained" color="primary" size="lg">
-                    CONNEXION
+                    Sign up
                     </Button>
                   </CardFooter>
                 </form>
