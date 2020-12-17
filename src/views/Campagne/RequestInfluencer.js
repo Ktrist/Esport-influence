@@ -50,7 +50,7 @@ function RequestInfluencer(props) {
 
       var returnRequestList = returnCampaignDetailList.map((mycampaign, i) => {
     
-        return (<RequestList key={i} campaignName={mycampaign.campaignName} campaignStatus={mycampaign.status}/>)
+        return (<RequestList key={i} campaignName={mycampaign.campaignName} campaignStatus={mycampaign.status} campaignDesc={mycampaign.description}/>)
     })
 
     const useStyles = makeStyles({

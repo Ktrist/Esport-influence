@@ -45,8 +45,9 @@ return(
 
               <div className="user-info">
 
-                <h4>campaignName: {props.campaignName}</h4>
+                <h4>Campaign : {props.campaignName}</h4>
                 <p>Status: {props.campaignStatus}</p>
+          
 
               </div>
 
@@ -56,9 +57,8 @@ return(
 
     <div className={classes.description}>
 
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
-      </p>
+      <p>{props.campaignDesc}</p>
+
 
     </div>
 
