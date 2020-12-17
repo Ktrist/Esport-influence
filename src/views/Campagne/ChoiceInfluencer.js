@@ -150,7 +150,7 @@ function ChoiceInfluencer(props) {
 
                 <div className="current-user-info">
 
-                  <h3>Campaign Name: {returnCampaignDetailList.campaignName}</h3>
+                  <h3>{returnCampaignDetailList.campaignName}</h3>
 
                 </div>
               </div>
@@ -162,15 +162,15 @@ function ChoiceInfluencer(props) {
               <ul>
 
                 <li className="user">
-                  <picture className="user-picture">
-                    <img src={""} alt={""} />
-                  </picture>
+                 
 
                   <div className="user-info-container">
 
                     <div className="user-info">
-
-                      <h4>Firstname Influencer: {returnInfluenceur.firstName}</h4>
+                    
+                      <h4>{returnInfluenceur.userName}</h4>
+                      <p>Name: {returnInfluenceur.firstName}</p>
+                      <p>Bio: {returnInfluenceur.bio}</p>
                       <p>Status: {returnCampaignDetailList.status}</p>
                       <p>Followers: {returnInfluenceur.numberFollower}</p>
 
@@ -188,8 +188,7 @@ function ChoiceInfluencer(props) {
 
                 <div className={classes.description}>
                   <p>
-                    {returnInfluenceur.description}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
+                    {returnInfluenceur.description}        
               </p>
                 </div>
 
@@ -281,7 +280,7 @@ function ChoiceInfluencer(props) {
 
               <div className="current-user-info">
 
-                <h3>Campaign Name: {returnCampaignDetailList.campaignName}</h3>
+                <h3>{returnCampaignDetailList.campaignName}</h3>
 
               </div>
             </div>
@@ -405,7 +404,7 @@ function ChoiceInfluencer(props) {
 
               <div className="current-user-info">
 
-                <h3>Campaign Name: {returnCampaignDetailList.campaignName}</h3>
+                <h3>{returnCampaignDetailList.campaignName}</h3>
 
               </div>
             </div>

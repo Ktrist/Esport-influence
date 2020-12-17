@@ -122,6 +122,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
     || req.body.emailFromFront == ''
     || req.body.passwordFromFront == ''
     || req.body.phoneFromFront == ''
+    || req.body.bioFromFront == ''
 
 
   ) {
@@ -137,6 +138,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
       firstName: req.body.firstNameFromFront,
       lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
+      bio: req.body.bioFromFront,
       password: SHA256(req.body.passwordFromFront + salt).toString(encBase64),
       token: uid2(32),
       salt: salt,
@@ -146,7 +148,7 @@ router.post('/sign-up/influencer', async function (req, res, next) {
       favoriteGame: req.body.favoriteGameFromFront,
       urlSocialNetwork: req.body.urlSocialNetworkFromFront,
     })
-    console.log('userName', req.body.userNameFromFront,)
+    console.log('bio', req.body.bioFromFront,)
 
     saveUser = await newUser.save()
 
@@ -188,11 +190,11 @@ router.post('/sign-in', async function (req, res, next) {
         token = user.token
       } else {
         result = false
-        error.push('Incorrect password mother fucker')
+        error.push('Incorrect Password ')
       }
 
     } else {
-      error.push('Incorrect email mother fucker ')
+      error.push('Incorrect Email')
     }
   }
 
@@ -224,8 +226,9 @@ router.post('/addcampaign', async function (req, res, next) {
     audienceCriteriaMin: req.body.audienceMinFromFront,
     audienceCriteriaMax: req.body.audienceMaxFromFront,
     uploadedDoc: req.body.uploadDocFromFront,
-    brand_id: user._id // id de la marque récupérer a la ligne 173 avec le token 
+    brand_id: user._id, // id de la marque récupérer a la ligne 173 avec le token 
   })
+  console.log('bio', req.body.descriptionFromFront,)
   var campaignSave = await campaign.save()
   console.log("campaignSaved", campaignSave)
   let insertId = await userModel.findOneAndUpdate({ token: req.body.token }, { campaign_id: campaignSave._id }) // ajouter la nouvelle id de la creation de campagne

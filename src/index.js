@@ -101,6 +101,7 @@ ReactDOM.render(
         <Route path="/login-page" exact component={LoginPage} />
         <Route path="/sign-up/brand" exact component={SignUpBrand} />
         <Route path="/sign-up/influencer" exact component={SignUpInfluencer} />
+        <Route path="/request-influencer-list" exact component={RequestInfluencer} />
         <Route path="/select-campaign" exact component={SelectCampagne} />
         <Route path="/mycampaign" exact component={MyCampaign} />
         <Route path="/select-influencer" exact component={SelectInfluencer} />

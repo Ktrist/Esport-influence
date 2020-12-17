@@ -86,10 +86,10 @@ const themeStyles = makeStyles((theme) => ({
 
 function CreateCampaign(props) {
 
-
+// 'Controlled'
   // GLOBAL STATE 
   const [nameCampaign, setNameCampaign] = useState('')
-  const [description, setDescription] = useState('Controlled')
+  const [description, setDescription] = useState('Controlled') 
   const [audienceMin, setAudienceMin] = React.useState('')
   const [audienceMax, setAudienceMax] = React.useState('')
   const [uploadDoc, setUploadDoc] = useState('')
