@@ -289,9 +289,7 @@ function ChoiceInfluencer(props) {
             <ul>
 
               <li className="user">
-                <picture className="user-picture">
-                  <img src={""} alt={""} />
-                </picture>
+              
 
                 <div className="user-info-container">
 
@@ -310,7 +308,6 @@ function ChoiceInfluencer(props) {
               <div className={classes.description}>
                 <p>
                   {returnInfluenceur.description}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra, neque ut aliquet sagittis, est massa facilisis elit, ac tristique velit elit non dolor. In quam metus, aliquet sed ex sed, tempor ultricies dolor. Praesent in scelerisque neque. Phasellus vel diam quis mi porttitor fringilla.
             </p>
               </div>
 
