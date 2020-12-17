@@ -25,7 +25,7 @@ import HeaderLinksBrand from "components/Header/HeaderLinksBrand";
 
 import { connect } from 'react-redux'
 
-import profile from "assets/img/coca-logo.png";
+import profile from "assets/img/logo-company.png";
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
