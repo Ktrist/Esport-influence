@@ -74,7 +74,7 @@ function ProfilePage(props) {
       <Header
         color="transparent"
         brand="Esport-Influence"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksInfluencer />}
         fixed
         changeColorOnScroll={{
           height: 200,

@@ -32,7 +32,7 @@ function Campaign(props) {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+        image={props.campaignUpload}
       />
         <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
@@ -42,7 +42,7 @@ function Campaign(props) {
           {props.campaignDesc}
           </Typography>
           </CardContent>
-      <Link to = {`/campaign-apply/${props.campaignId}`}><Button color="primary">Select Campaign</Button></Link>
+      <Link to = {`/campaign-apply/${props.campaignId}`} target="_blank"><Button color="primary">Select Campaign</Button></Link>
     </Card>
 
 

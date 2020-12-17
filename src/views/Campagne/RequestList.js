@@ -38,7 +38,7 @@ return(
 
         <li className="user">
           <picture className="user-picture">
-            <img src={"https://.com/wp-content/uploads/2016/03/1500px_Coca_Cola_logo.png"} alt={""} />
+            <img src={props.campaignUpload} alt={"logo brand"} />
           </picture>
 
             <div className="user-info-container">
@@ -47,6 +47,7 @@ return(
 
                 <h4> {props.campaignName}</h4>
                 <p>Status: {props.campaignStatus}</p>
+          
 
               </div>
 
@@ -56,9 +57,8 @@ return(
 
     <div className={classes.description}>
 
-      <p>
-      {props.description}
-      </p>
+      <p>{props.campaignDesc}</p>
+
 
     </div>
 
