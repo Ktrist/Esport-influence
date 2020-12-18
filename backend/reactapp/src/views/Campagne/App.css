@@ -1,0 +1,153 @@
+.MuiPickersUtilsProvider {
+    color: blue;
+}
+
+body {
+    color: rgb(221, 0, 0);
+}
+
+.dateColor {
+    color: "green"
+}
+
+.MuiInputBase-input {
+    color: white !important
+}
+
+.MuiInput-input {
+    color: white !important
+}
+
+.MuiInputBase-inputAdornedEnd {
+    color: white !important
+}
+
+.MuiInputLabel-animated {
+    color: grey !important
+}
+
+.MuiSvgIcon-root {
+    color: white !important
+}
+
+
+.MuiInputLabel-outlined {
+    margin-top: 15px
+}
+
+.MuiOutlinedInput-root{
+    width: 500px;
+    margin-top: 10px;
+}
+
+.Mui-OutlinedInput-multiline {
+    color: purple !important
+}
+
+#standard-select-currency-helper-text {
+    color: white !important
+}
+
+/* MuiFormControl-root MuiTextField-root */
+
+.MuiTextField-root {
+    margin-left: 100px
+}
+
+.size-subscribers{
+    margin-left: 300px
+}
+
+.MuiTypography-body2 {
+    color: white;
+}
+
+.MuiTypography-root {
+    color: white !important;
+    font-size: "3Opx" !important;
+}
+
+.MuiTypography-colorTextSecondary {
+    color: white !important;
+}
+
+.MuiGrid-container {
+    flex-wrap: nowrap !important;
+}
+
+.makeStyles-title-20 {
+    color: white !important;
+}
+
+p {
+    color: white !important;
+}
+
+.MuiTypography-subtitle1 {
+    font-size: "3Opx" !important;
+}
+
+.MuiFormControl-marginNormal {
+    margin-left: "30px" !important;
+}
+
+.makeStyles-card-79 {
+    background: #6f676705 !important;
+}
+
+.MuiPaper-root {
+    background-color: black !important;
+}
+
+.MuiPickersCalendarHeader-iconButton{
+    background-color: black !important;
+}
+
+.MuiListItem-button{
+    background-color: white !important;
+}
+
+.makeStyles-primary-57 {
+    margin-left: 15px !important;
+    margin-bottom: 10px !important;
+}
+
+.makeStyles-card-173 {
+    background: transparent !important;
+}
+
+.makeStyles-description-92 {
+    color: grey !important
+}
+
+.makeStyles-icon-89 {
+    color: purple !important;
+}
+
+.makeStyles-input-109{
+    color: black !important;
+}
+
+.MuiCardContent-root {
+    color: transparent !important;
+}
+
+.makeStyles-card{
+    color: transparent !important;
+}
+
+.makeStyles-root {
+    color: transparent !important;
+}
+
+.makeStyles-card-261{
+    color: transparent !important;
+}
+
+.makeStyles-card-204{
+    color: transparent !important;
+}
+
+.makeStyles-root-259{
+    color: transparent !important;
+}
