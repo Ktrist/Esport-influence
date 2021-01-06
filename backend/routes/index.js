@@ -40,6 +40,11 @@ const campaignModel = require('../models/campaigns');
 
 /* GET home page. */
 
+router.get('/', function(req, res, next) {
+  res.send('slash');
+});
+
+
 router.post('/sign-up/brand', async function (req, res, next) {
 
   console.log('PASSING', req.body);
