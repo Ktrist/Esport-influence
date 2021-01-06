@@ -8,7 +8,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 require('./models/connection')
+
+const PORT = process.env.PORT || '8080'
 var app = express();
+
+app.set("port", PORT)
+
 
 
 // view engine setup
