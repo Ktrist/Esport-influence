@@ -29,7 +29,7 @@ function ChoiceInfluencer(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/get-influencer-request-list?brandToken=${props.token}`)
+      const response = await fetch(process.env.REACT_APP_BACKEND + `/get-influencer-request-list?brandToken=${props.token}`)
       const jsonResponse = await response.json()
       console.log('jsonR', jsonResponse)
       setReturnCampaignDetailList(jsonResponse.returnCampaignDetail)
@@ -47,7 +47,7 @@ function ChoiceInfluencer(props) {
 
     setReturnCampaignDetailList(UpdateStatusAccepted)
 
-    const data = await fetch('/update-request-acc', {
+    const data = await fetch(process.env.REACT_APP_BACKEND + '/update-request-acc', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: `token=${props.token}`
@@ -65,7 +65,7 @@ function ChoiceInfluencer(props) {
 
     setReturnCampaignDetailList(UpdateStatusRefused)
 
-    const data = await fetch('/update-request-ref', {
+    const data = await fetch(process.env.REACT_APP_BACKEND + '/update-request-ref', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: `token=${props.token}`

@@ -35,7 +35,7 @@ function RequestInfluencer(props) {
 
     useEffect(() => {
         async function fetchData() {
-        const response = await fetch(`/get-request-list-influencer?influencerToken=${props.token}`)
+        const response = await fetch(process.env.REACT_APP_BACKEND + `/get-request-list-influencer?influencerToken=${props.token}`)
         const jsonResponse = await response.json()
         console.log('jsonR',jsonResponse)
         setReturnCampaignDetailList(jsonResponse.returnCampaignDetail)

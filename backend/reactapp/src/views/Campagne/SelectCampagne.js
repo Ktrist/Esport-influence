@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {Link, Redirect} from 'react-router-dom'
-import Button from "components/CustomButtons/Button.js";
+
 import { Row } from 'reactstrap'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import Email from "@material-ui/icons/Email";
 // core components
 import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
@@ -35,7 +32,7 @@ const [campaignList, setCampaignList] = useState([])
 
 useEffect(() => {
     async function fetchData() {
-    const response = await fetch('/get-campaign')
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/get-campaign')
     const jsonResponse = await response.json()
     console.log('jsonResponse', jsonResponse)
     setCampaignList(jsonResponse.campaignListItem)

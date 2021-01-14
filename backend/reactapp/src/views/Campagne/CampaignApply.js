@@ -55,7 +55,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
     
     const applyCampaign = async () => {
 
-        const data = await fetch('/campaign-apply', {
+        const data = await fetch(process.env.REACT_APP_BACKEND + '/campaign-apply', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `id=${params.id}&token=${props.token}`

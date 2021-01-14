@@ -100,7 +100,7 @@ function CreateCampaign(props) {
 
   var handleSubmitCampaign = async () => {
 
-    const data = await fetch('/addcampaign', {
+    const data = await fetch(process.env.REACT_APP_BACKEND + '/addcampaign', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: `nameCampaignFromFront=${nameCampaign}&dateStartFromFront=${dateStart}&dateEndFromFront=${dateEnd}&descriptionFromFront=${description}&audienceMinFromFront=${audienceMin}&audienceMaxFromFront=${audienceMax}&uploadDocFromFront=${uploadDoc}&token=${props.token}`

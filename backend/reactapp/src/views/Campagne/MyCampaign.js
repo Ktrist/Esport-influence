@@ -34,7 +34,7 @@ function MyCampaign(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`/mycampaign?companyToken=${props.token}`)
+            const response = await fetch(process.env.REACT_APP_BACKEND + `/mycampaign?companyToken=${props.token}`)
             const jsonResponse = await response.json()
             console.log('jsonR', jsonResponse)
             setMyCampaignList(jsonResponse.myCampaign)
